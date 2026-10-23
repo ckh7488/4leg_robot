@@ -2,9 +2,10 @@
 from pathlib import Path
 import sys, unittest
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from control.response_metrics import step_metrics
+from control.response_metrics import response_assessment, step_metrics
 
 class MetricsTest(unittest.TestCase):
+    targets={'command_to_first_motion_p95_ms':40,'step_rise_to_90pct_of_reached_p95_ms':150}
     def trace(self, values, goal=10):
         return step_metrics([(i+1)*.01 for i in range(len(values))],values,0,goal,goal)
     def test_biased_final_is_not_goal_settling(self):
@@ -35,6 +36,45 @@ class MetricsTest(unittest.TestCase):
         self.assertIsNone(self.trace([0]*30)['rise_to_90percent_of_final_ms'])
     def test_negative_rise(self):
         self.assertEqual(self.trace([0,-5,-9.5]+[-10]*20,goal=-10)['rise_to_90percent_of_final_ms'],30)
+    def test_continuous_oscillation_cannot_pass_speed(self):
+        r=self.trace([0,0]+[5,15]*14)
+        self.assertEqual(r['time_to_90percent_of_goal_ms'],40)
+        self.assertFalse(r['terminal_estimate_stable'])
+        self.assertIsNone(r['rise_to_90percent_of_final_ms'])
+        self.assertFalse(response_assessment(r,self.targets)['single_trial_targets_met'])
+    def test_short_record_cannot_estimate_final_position(self):
+        r=self.trace([0,5,10])
+        self.assertFalse(r['terminal_estimate_stable'])
+        self.assertIsNone(r['rise_to_90percent_of_final_ms'])
+    def test_terminal_drift_rejected_even_with_wide_span_limit(self):
+        values=[2*i*.01 for i in range(30)]
+        r=step_metrics([(i+1)*.01 for i in range(30)],values,0,10,10,
+                       max_terminal_span_deg=1.0)
+        self.assertAlmostEqual(r['terminal_drift_deg_s'],2)
+        self.assertFalse(r['terminal_estimate_stable'])
+        self.assertIsNone(r['rise_to_90percent_of_final_ms'])
+    def test_tiny_fast_motion_is_not_overall_acceptance(self):
+        r=self.trace([0,0]+[.2]*28)
+        a=response_assessment(r,self.targets)
+        self.assertTrue(a['single_trial_targets_met'])
+        self.assertAlmostEqual(r['actual_to_command_step_ratio'],.02)
+        self.assertAlmostEqual(r['terminal_goal_error_deg'],-9.8)
+        self.assertIsNone(a['accuracy_target_met'])
+        self.assertIsNone(a['overall_response_accepted'])
+    def test_motion_at_detection_threshold_is_not_valid_speed(self):
+        r=self.trace([0,0]+[.1]*28)
+        self.assertIsNone(r['first_motion_ms'])
+        self.assertFalse(r['speed_metric_valid'])
+    def test_unstable_pre_step_rejects_otherwise_fast_response(self):
+        r=self.trace([0,0]+[10]*28)
+        self.assertFalse(response_assessment(r,self.targets,pre_stable=False)['single_trial_targets_met'])
+    def test_stability_limits_are_configurable(self):
+        values=[0,0]+[9.95,10.05]*14
+        times=[(i+1)*.01 for i in range(len(values))]
+        r=step_metrics(times,values,0,10,10,max_terminal_span_deg=.05)
+        self.assertIsNone(r['rise_to_90percent_of_final_ms'])
+        with self.assertRaises(ValueError):
+            step_metrics(times,values,0,10,10,max_terminal_span_deg=0)
     def test_nonfinite_and_nonmonotonic_samples_rejected(self):
         for ts,qs in [([.01,.02],[0,float('nan')]),([.01,.01],[0,10]),([] ,[])]:
             with self.assertRaises(ValueError):step_metrics(ts,qs,0,10,10)

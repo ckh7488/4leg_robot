@@ -15,7 +15,10 @@
     "stale_command_stop_ms": 100,
     "static_compliance": "characterized in deg per N*m from loaded hold; no pass/fail until a gait accuracy budget exists; simulation must reproduce the measured 5V value",
     "diagnostic_goal_band_deg": 0.2,
-    "diagnostic_settle_hold_ms": 100
+    "diagnostic_settle_hold_ms": 100,
+    "terminal_stability_max_span_deg": 0.1,
+    "terminal_stability_max_drift_deg_s": 1.0,
+    "accuracy_acceptance_status": "pending gait accuracy budget; speed pass alone is not overall acceptance"
   },
   "results": [
     {
@@ -24,7 +27,10 @@
       "first_motion_ms_max": 29.0,
       "rise_to_90percent_of_final_ms_max": 1226.0,
       "unloaded_rise_to_90percent_ms": 178.0,
+      "invalid_speed_case_count": 0,
       "unloaded_terminal_goal_error_deg_max": 0.22106053466445807,
+      "loaded_terminal_goal_error_deg_max": 10.02866457016295,
+      "actual_to_command_step_ratio_min": 0.6230762674048906,
       "static_compliance": [
         {
           "load_nm": 0.05,
@@ -37,7 +43,9 @@
           "compliance_deg_per_nm": 62.59219864351289
         }
       ],
-      "speed_targets_met_all_cases": false
+      "speed_targets_met_all_cases": false,
+      "accuracy_target_met": null,
+      "overall_response_accepted": null
     },
     {
       "firmware_kp": 800,
@@ -45,7 +53,10 @@
       "first_motion_ms_max": 22.0,
       "rise_to_90percent_of_final_ms_max": 139.0,
       "unloaded_rise_to_90percent_ms": 105.0,
+      "invalid_speed_case_count": 0,
       "unloaded_terminal_goal_error_deg_max": 0.11515075079233128,
+      "loaded_terminal_goal_error_deg_max": 3.9125133905261933,
+      "actual_to_command_step_ratio_min": 0.9641943709625119,
       "static_compliance": [
         {
           "load_nm": 0.05,
@@ -58,7 +69,9 @@
           "compliance_deg_per_nm": 35.54306805236022
         }
       ],
-      "speed_targets_met_all_cases": true
+      "speed_targets_met_all_cases": true,
+      "accuracy_target_met": null,
+      "overall_response_accepted": null
     },
     {
       "firmware_kp": 1600,
@@ -66,7 +79,10 @@
       "first_motion_ms_max": 22.0,
       "rise_to_90percent_of_final_ms_max": 83.0,
       "unloaded_rise_to_90percent_ms": 72.0,
+      "invalid_speed_case_count": 0,
       "unloaded_terminal_goal_error_deg_max": 0.01580051097485402,
+      "loaded_terminal_goal_error_deg_max": 1.939598261347136,
+      "actual_to_command_step_ratio_min": 0.998343604169291,
       "static_compliance": [
         {
           "load_nm": 0.05,
@@ -79,7 +95,9 @@
           "compliance_deg_per_nm": 18.91311910035318
         }
       ],
-      "speed_targets_met_all_cases": true
+      "speed_targets_met_all_cases": true,
+      "accuracy_target_met": null,
+      "overall_response_accepted": null
     },
     {
       "firmware_kp": 3200,
@@ -87,7 +105,10 @@
       "first_motion_ms_max": 22.0,
       "rise_to_90percent_of_final_ms_max": 72.0,
       "unloaded_rise_to_90percent_ms": 61.0,
+      "invalid_speed_case_count": 0,
       "unloaded_terminal_goal_error_deg_max": 0.0002702885809533484,
+      "loaded_terminal_goal_error_deg_max": 0.9481783606320526,
+      "actual_to_command_step_ratio_min": 0.9983198508883039,
       "static_compliance": [
         {
           "load_nm": 0.05,
@@ -100,7 +121,9 @@
           "compliance_deg_per_nm": 9.55793592001637
         }
       ],
-      "speed_targets_met_all_cases": true
+      "speed_targets_met_all_cases": true,
+      "accuracy_target_met": null,
+      "overall_response_accepted": null
     }
   ],
   "observation": {
@@ -112,6 +135,7 @@
     },
     "note": "Roughly constant product means compliance is roughly inverse to P gain in this model.",
     "kp_needed_for_0.2deg_at_0.1nm_if_inverse_scaling_from_design_gain_holds": 12518,
+    "extrapolation_note": "Approximate static offset scaling only; not a tested required gain, settling guarantee, or proof of infeasibility.",
     "register_max": 16383
   },
   "limitations": [

@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import mujoco
 import numpy as np
 from control.bam_controller import BamController
-from control.response_metrics import step_metrics
+from control.response_metrics import response_assessment, step_metrics
 
 LOADS_NM=[0,.05,.10]
 GOALS_DEG=[-10,10]
@@ -39,16 +39,14 @@ def run_cases(C):
                 peak=max(peak,abs(float(d.qfrc_actuator[0])))
             metrics=step_metrics(times,positions,baseline,goal_deg,goal_deg,
                                  tolerance_deg=targets['diagnostic_goal_band_deg'],
-                                 min_hold_s=targets['diagnostic_settle_hold_ms']/1000)
+                                 min_hold_s=targets['diagnostic_settle_hold_ms']/1000,
+                                 max_terminal_span_deg=targets['terminal_stability_max_span_deg'],
+                                 max_terminal_drift_deg_s=targets['terminal_stability_max_drift_deg_s'])
             pre_stable=baseline_span<=.1 and baseline_speed<=1.0
-            onset=metrics['first_motion_ms'];rise=metrics['rise_to_90percent_of_final_ms']
-            checks={'pre_step_stable':pre_stable,
-                    'onset_within_design_target':onset is not None and onset<=targets['command_to_first_motion_p95_ms'],
-                    'rise_within_design_target':rise is not None and rise<=targets['step_rise_to_90pct_of_reached_p95_ms']}
             rows.append({'nominal_gravity_load_nm_at_zero':torque,'command_goal_deg':goal_deg,
                          'pre_step_actual_deg':baseline,'pre_step_span_100ms_deg':baseline_span,
                          'pre_step_speed_deg_s':baseline_speed,'peak_predicted_torque_nm':peak,
-                         **metrics,'numerical_target_checks':checks,'single_trial_targets_met':all(checks.values()),
+                         **metrics,**response_assessment(metrics,targets,pre_stable),
                          'diagnostic_goal_settle_within_150ms':metrics['settle_to_goal_band_ms'] is not None and metrics['settle_to_goal_band_ms']<=150})
     return rows
 
@@ -82,12 +80,16 @@ def main():
          'transport_delay_quantized_ms':math.ceil(C['motor']['fit_delay_s']/DT)*DT*1000,'command_bus_hz':C['control']['mcu_joint_bus_hz'],'numerical_design_targets':targets,
          'fixture':{'arm_length_m':ARM_M,'inertia_at_com_kgm2':[.0001]*3,'pre_hold_s':PRE_STEPS*DT,'post_observation_s':POST_STEPS*DT,'timestep_s':DT},
          'definitions':{'first_motion':'Toward goal, more than 1% commanded step or 0.05 degree from actual pre-step position',
-                        'rise_to_90percent_of_final':'Speed: first time the joint covers 90% of the displacement it actually reached (terminal 100ms mean minus pre-step position); undefined if it did not move toward the goal',
+                        'rise_to_90percent_of_final':'Command-to-90% latency including delay, not conventional 10%-90% rise time. Uses the terminal-window mean; undefined unless the complete window meets span/drift limits and motion toward the goal exceeds the motion threshold.',
+                        'terminal_estimate_stable':'Finite-window screening only: full diagnostic hold duration, span and least-squares drift within design.json limits; does not prove asymptotic stability.',
+                        'actual_to_command_step_ratio':'Actual terminal displacement from baseline divided by the commanded step. Report with absolute goal error; a small ratio can still meet speed-only targets.',
                         'static_compliance':'Accuracy: pre-step hold offset under load relative to the unloaded fixture, divided by the nominal load; characterization only',
                         'goal_settle':'Diagnostic: within the diagnostic band of the commanded angle for all remaining samples with the diagnostic hold; with P-only control under load this is not expected',
                         'final_band':'Diagnostic only: settling near terminal 100ms mean'},
          'results':rows,'static_compliance':compliance(rows),
          'all_single_trial_targets_met':all(r['single_trial_targets_met'] for r in rows),
+         'accuracy_target_met':None,'overall_response_accepted':None,
+         'acceptance_status':'pending_accuracy_budget_and_hardware_validation',
          'statistical_p95_verified':False,
          'limitations':['BAM fit not identified on our 5V actuator; reference prediction only.',
                         'Pendulum test load is not the assembled robot leg.',

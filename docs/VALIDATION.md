@@ -26,7 +26,11 @@ reports/checkpoint-validation.json에는 실제 명령, 종료 코드, 의존성
 .venv\Scripts\python.exe scripts/check_failure_gates.py --freecad-python '<FreeCAD 설치 폴더>/bin/python.exe'
 ~~~
 
-응답 전용 검사는 회귀검사 9개, 양방향 10°/부하 3종의 6조건, P 게인 비교를 계산한다. 판정은 빠르기만 한다: 최초동작 ≤40ms, 실제 도달 변위 90%까지 ≤150ms(design.json response_acceptance_targets). 하중 정확도는 하중당 처짐(°/N·m)으로 보고서 static_compliance에 기록하며 합격/불합격이 없다. 명령 각도 ±0.2° 정착과 마지막 실제 위치 근처 정착은 둘 다 진단값이다.
+응답 전용 검사는 회귀검사 16개, 양방향 10°/부하 3종의 6조건, P 게인 비교를 계산한다. 판정은 빠르기만 한다: 최초동작 ≤40ms, 명령 시점부터 실제 도달 변위 90%까지 ≤150ms(design.json response_acceptance_targets). 하중 정확도는 하중당 처짐(°/N·m)으로 보고서 static_compliance에 기록하며 합격 기준은 미정이다. 명령 각도 ±0.2° 정착과 마지막 실제 위치 근처 정착은 둘 다 진단값이다.
+
+마지막 100ms 전체가 관찰되고 범위 ≤0.1°, 선형회귀 드리프트 절댓값 ≤1°/s일 때만 최종 위치 추정값을 속도 계산에 사용한다. 임계값은 design.json에 있으며, 위반하면 speed_metric_valid=false 및 rise_to_90percent_of_final_ms=null로 기록한다. 이 선별은 유한 시간 관찰의 유효성을 확인할 뿐 점근 안정성 보장이 아니다. 계속 진동하는 응답·관찰 시간 부족·드리프트·감지 임계값 이하 움직임을 회귀검사로 거부한다.
+
+actual_to_command_step_ratio와 terminal_goal_error_deg를 속도 옆에 기록한다. 정확도 예산과 실기 검증 전에는 accuracy_target_met 및 overall_response_accepted가 null이다. single_trial_targets_met와 all_single_trial_targets_met는 결정론적 속도 선별 결과만 뜻한다. 게인 요약에서 계산 불가능한 속도는 null로 유지하며 해당 조건 수를 표시한다.
 
 scripts/check_gain_sweep.py는 P 400/800/1600/3200에서 같은 6조건을 계산해 reports/gain-sweep.json에 쓴다. design.json의 게인은 바꾸지 않는다.
 
