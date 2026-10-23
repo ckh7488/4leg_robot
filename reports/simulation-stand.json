@@ -9,6 +9,93 @@
   "end_base_height_m": 0.10709782260099741,
   "max_base_lean_deg": 0.05078444225082042,
   "peak_actuator_torque_nm": 0.32328344843159246,
+  "peak_actuator_torque_note": "Overall peak includes the initial settling transient in the first 100ms; see per_joint for steady standing values. Stall torque is not continuous torque.",
+  "per_joint": {
+    "FL_HAA": {
+      "peak_first_100ms_nm": 0.0022901809224146158,
+      "peak_after_100ms_nm": 0.010406818839572743,
+      "mean_last_1s_nm": 0.009626960307268615,
+      "mean_last_1s_over_stall": 0.018513385206285798,
+      "hold_error_deg_at_end": 0.7886232094024916
+    },
+    "FL_HFE": {
+      "peak_first_100ms_nm": 0.20331458746140224,
+      "peak_after_100ms_nm": 0.0453478309553616,
+      "mean_last_1s_nm": 0.003992806546015312,
+      "mean_last_1s_over_stall": 0.0076784741269525225,
+      "hold_error_deg_at_end": 0.23359299159368663
+    },
+    "FL_KFE": {
+      "peak_first_100ms_nm": 0.3232760963734409,
+      "peak_after_100ms_nm": 0.10795740475838658,
+      "mean_last_1s_nm": 0.044926584805727164,
+      "mean_last_1s_over_stall": 0.08639727847255224,
+      "hold_error_deg_at_end": -3.4649568316586437
+    },
+    "FR_HAA": {
+      "peak_first_100ms_nm": 0.002340561114541851,
+      "peak_after_100ms_nm": 0.01040413170985591,
+      "mean_last_1s_nm": 0.009624910346898646,
+      "mean_last_1s_over_stall": 0.01850944297480509,
+      "hold_error_deg_at_end": -0.7884227575383995
+    },
+    "FR_HFE": {
+      "peak_first_100ms_nm": 0.20328815534187472,
+      "peak_after_100ms_nm": 0.045380229891733,
+      "mean_last_1s_nm": 0.003994041573366742,
+      "mean_last_1s_over_stall": 0.0076808491795514276,
+      "hold_error_deg_at_end": 0.2335694843190036
+    },
+    "FR_KFE": {
+      "peak_first_100ms_nm": 0.323280579898109,
+      "peak_after_100ms_nm": 0.10818071026376956,
+      "mean_last_1s_nm": 0.044958733292629206,
+      "mean_last_1s_over_stall": 0.08645910248582539,
+      "hold_error_deg_at_end": -3.467077946854393
+    },
+    "RL_HAA": {
+      "peak_first_100ms_nm": 0.002348944285249062,
+      "peak_after_100ms_nm": 0.01099618110869885,
+      "mean_last_1s_nm": 0.010164015234749227,
+      "mean_last_1s_over_stall": 0.019546183143748515,
+      "hold_error_deg_at_end": 0.8332029964312551
+    },
+    "RL_HFE": {
+      "peak_first_100ms_nm": 0.20317390674538383,
+      "peak_after_100ms_nm": 0.04637906942395398,
+      "mean_last_1s_nm": 0.00329823614649261,
+      "mean_last_1s_over_stall": 0.006342761820178096,
+      "hold_error_deg_at_end": 0.18053364815910355
+    },
+    "RL_KFE": {
+      "peak_first_100ms_nm": 0.32326964016557747,
+      "peak_after_100ms_nm": 0.11050985404292013,
+      "mean_last_1s_nm": 0.04691024470316145,
+      "mean_last_1s_over_stall": 0.09021200904454124,
+      "hold_error_deg_at_end": -3.6191056631724714
+    },
+    "RR_HAA": {
+      "peak_first_100ms_nm": 0.0023865269222001985,
+      "peak_after_100ms_nm": 0.011004826382038766,
+      "mean_last_1s_nm": 0.010173984839961077,
+      "mean_last_1s_over_stall": 0.01956535546146361,
+      "hold_error_deg_at_end": -0.8338755186207032
+    },
+    "RR_HFE": {
+      "peak_first_100ms_nm": 0.20318570953250548,
+      "peak_after_100ms_nm": 0.04645001490541899,
+      "mean_last_1s_nm": 0.0033114129798124505,
+      "mean_last_1s_over_stall": 0.006368101884254712,
+      "hold_error_deg_at_end": 0.1813896894244538
+    },
+    "RR_KFE": {
+      "peak_first_100ms_nm": 0.32328344843159246,
+      "peak_after_100ms_nm": 0.11060548602941384,
+      "mean_last_1s_nm": 0.04693480525724561,
+      "mean_last_1s_over_stall": 0.09025924087931848,
+      "hold_error_deg_at_end": -3.6206792662489566
+    }
+  },
   "feet_contacting_at_end": [
     "FL_foot",
     "FR_foot",

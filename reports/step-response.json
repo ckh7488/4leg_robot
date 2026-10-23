@@ -9,11 +9,13 @@
   "command_bus_hz": 500,
   "numerical_design_targets": {
     "status": "design targets, not measurements or guarantees",
+    "speed_and_accuracy_are_separate": true,
     "command_to_first_motion_p95_ms": 40,
-    "loaded_10degree_step_settle_p95_ms": 150,
+    "step_rise_to_90pct_of_reached_p95_ms": 150,
     "stale_command_stop_ms": 100,
-    "position_tolerance_deg": 0.2,
-    "settle_observed_hold_ms": 100
+    "static_compliance": "characterized in deg per N*m from loaded hold; no pass/fail until a gait accuracy budget exists; simulation must reproduce the measured 5V value",
+    "diagnostic_goal_band_deg": 0.2,
+    "diagnostic_settle_hold_ms": 100
   },
   "fixture": {
     "arm_length_m": 0.05,
@@ -27,9 +29,11 @@
     "timestep_s": 0.001
   },
   "definitions": {
-    "goal_settle": "Within configured position tolerance of commanded absolute angle for all remaining samples, with configured minimum observed hold",
     "first_motion": "Toward goal, more than 1% commanded step or 0.05 degree from actual pre-step position",
-    "final_band": "Diagnostic only: settling near terminal 100ms mean; never a substitute for commanded angle"
+    "rise_to_90percent_of_final": "Speed: first time the joint covers 90% of the displacement it actually reached (terminal 100ms mean minus pre-step position); undefined if it did not move toward the goal",
+    "static_compliance": "Accuracy: pre-step hold offset under load relative to the unloaded fixture, divided by the nominal load; characterization only",
+    "goal_settle": "Diagnostic: within the diagnostic band of the commanded angle for all remaining samples with the diagnostic hold; with P-only control under load this is not expected",
+    "final_band": "Diagnostic only: settling near terminal 100ms mean"
   },
   "results": [
     {
@@ -41,6 +45,7 @@
       "peak_predicted_torque_nm": 0.126769632432274,
       "first_motion_ms": 21.0,
       "time_to_90percent_of_goal_ms": 187.0,
+      "rise_to_90percent_of_final_ms": 178.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 355.0,
       "terminal_mean_deg": -9.778939465335542,
@@ -52,9 +57,10 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
     },
     {
       "nominal_gravity_load_nm_at_zero": 0,
@@ -65,6 +71,7 @@
       "peak_predicted_torque_nm": 0.12676363910277164,
       "first_motion_ms": 21.0,
       "time_to_90percent_of_goal_ms": 187.0,
+      "rise_to_90percent_of_final_ms": 178.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 355.0,
       "terminal_mean_deg": 9.779650558397607,
@@ -76,9 +83,10 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
     },
     {
       "nominal_gravity_load_nm_at_zero": 0.05,
@@ -89,6 +97,7 @@
       "peak_predicted_torque_nm": 0.16848145610233953,
       "first_motion_ms": 24.0,
       "time_to_90percent_of_goal_ms": null,
+      "rise_to_90percent_of_final_ms": 488.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 1509.0,
       "terminal_mean_deg": -5.020718139409406,
@@ -100,9 +109,10 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
     },
     {
       "nominal_gravity_load_nm_at_zero": 0.05,
@@ -113,6 +123,7 @@
       "peak_predicted_torque_nm": 0.08698069815595616,
       "first_motion_ms": 21.0,
       "time_to_90percent_of_goal_ms": 111.0,
+      "rise_to_90percent_of_final_ms": 180.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 1232.0,
       "terminal_mean_deg": 13.043680892983401,
@@ -124,23 +135,25 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
     },
     {
       "nominal_gravity_load_nm_at_zero": 0.1,
       "command_goal_deg": -10,
       "pre_step_actual_deg": 6.259427244211858,
       "pre_step_span_100ms_deg": 0.043325823166023625,
-      "pre_step_speed_deg_s": 0.43069301011207034,
+      "pre_step_speed_deg_s": 0.43069301011207056,
       "peak_predicted_torque_nm": 0.21219165526060862,
       "first_motion_ms": 29.0,
       "time_to_90percent_of_goal_ms": null,
+      "rise_to_90percent_of_final_ms": 1226.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 1699.0,
-      "terminal_mean_deg": 0.028664570162951514,
-      "terminal_goal_error_deg": 10.02866457016295,
+      "terminal_mean_deg": 0.028664570162951708,
+      "terminal_goal_error_deg": 10.028664570162952,
       "actual_step_deg": -6.230762674048907,
       "goal_band_deg": 0.2,
       "required_hold_ms": 100.0,
@@ -148,19 +161,21 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
     },
     {
       "nominal_gravity_load_nm_at_zero": 0.1,
       "command_goal_deg": 10,
       "pre_step_actual_deg": 6.259427244211858,
       "pre_step_span_100ms_deg": 0.043325823166023625,
-      "pre_step_speed_deg_s": 0.43069301011207034,
+      "pre_step_speed_deg_s": 0.43069301011207056,
       "peak_predicted_torque_nm": 0.08437757633720769,
       "first_motion_ms": 21.0,
       "time_to_90percent_of_goal_ms": 73.0,
+      "rise_to_90percent_of_final_ms": 201.0,
       "settle_to_goal_band_ms": null,
       "settle_to_final_band_ms_diagnostic": 1470.0,
       "terminal_mean_deg": 16.148349082160617,
@@ -172,9 +187,22 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "onset_within_design_target": true,
-        "goal_settle_within_design_target": false
+        "rise_within_design_target": false
       },
-      "single_trial_targets_met": false
+      "single_trial_targets_met": false,
+      "diagnostic_goal_settle_within_150ms": false
+    }
+  ],
+  "static_compliance": [
+    {
+      "load_nm": 0.05,
+      "hold_offset_deg": 3.0087837882970083,
+      "compliance_deg_per_nm": 60.17567576594016
+    },
+    {
+      "load_nm": 0.1,
+      "hold_offset_deg": 6.259219864351289,
+      "compliance_deg_per_nm": 62.59219864351289
     }
   ],
   "all_single_trial_targets_met": false,

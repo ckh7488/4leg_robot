@@ -1,4 +1,8 @@
-"""Command-referenced step metrics; times are measured after the command in seconds."""
+"""Step metrics; times are measured after the command in seconds.
+
+Speed (first motion, rise to 90% of the reached displacement) and accuracy (terminal error
+against the commanded angle) are reported separately. Goal-band settling is diagnostic.
+"""
 import math
 
 def step_metrics(times_s, positions_deg, baseline_deg, goal_deg, command_step_deg,
@@ -26,8 +30,14 @@ def step_metrics(times_s, positions_deg, baseline_deg, goal_deg, command_step_de
         return round(times[index]*1000,6)
     terminal=[q for t,q in zip(times,values) if t>=times[-1]-min_hold_s-1e-12]
     final=sum(terminal)/len(terminal)
+    # Speed is judged against the displacement the joint actually reached, so a load-induced
+    # static offset (accuracy) cannot hide or fake the rise time (speed).
+    reached=direction*(final-baseline_deg)
+    rise_valid=reached>=motion_band
+    rise=first(lambda q:direction*(q-baseline_deg)>=0.9*reached) if rise_valid else None
     return {'first_motion_ms':first(lambda q:direction*(q-baseline_deg)>motion_band),
             'time_to_90percent_of_goal_ms':first(lambda q:direction*(q-baseline_deg)>=abs(goal_deg-baseline_deg)*0.9),
+            'rise_to_90percent_of_final_ms':rise,
             'settle_to_goal_band_ms':settled(goal_deg),
             'settle_to_final_band_ms_diagnostic':settled(final),
             'terminal_mean_deg':final,'terminal_goal_error_deg':final-goal_deg,

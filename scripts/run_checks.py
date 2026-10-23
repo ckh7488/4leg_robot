@@ -17,7 +17,7 @@ def main():
         commands += [(sys.executable, 'scripts/check_failure_gates.py', ['--freecad-python',args.freecad_python]),
                      (args.freecad_python, 'scripts/export_dynamics.py', [])]
     scripts = (['scripts/build_models.py','scripts/check_model_contract.py','scripts/check_sim.py'] if args.suite=='full' else [])
-    scripts += ['scripts/check_response_regression.py','scripts/check_step_response.py']
+    scripts += ['scripts/check_response_regression.py','scripts/check_step_response.py','scripts/check_gain_sweep.py']
     if args.suite=='full': scripts += ['scripts/package_print.py','scripts/render_cad.py']
     commands += [(sys.executable, script, ['--require-targets'] if args.require_response_targets and script.endswith('check_step_response.py') else []) for script in scripts]
     logdir = ROOT / '_runs'

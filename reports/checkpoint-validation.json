@@ -1,8 +1,8 @@
 {
   "scope": "Executed checks only; no hardware, walking, RL or Isaac claim",
-  "created_utc": "2026-10-23T16:00:46.174916+00:00",
-  "python_version": "3.12.14",
-  "platform": "Windows",
+  "created_utc": "2026-10-23T17:03:44.553925+00:00",
+  "python_version": "3.12.3",
+  "platform": "Linux",
   "hash_encoding": "Text LF-normalized; binary CAD/mesh/package/image raw bytes",
   "package_versions": {
     "numpy": "2.5.4",
@@ -12,26 +12,11 @@
     "Pillow": "12.3.0",
     "trimesh": "5.1.1"
   },
-  "suite": "full",
+  "suite": "response",
   "cad_regenerated": false,
   "response_numerical_targets_met": false,
   "response_p95_verified": false,
   "commands": [
-    {
-      "script": "scripts/build_models.py",
-      "args": [],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_model_contract.py",
-      "args": [],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_sim.py",
-      "args": [],
-      "exit_code": 0
-    },
     {
       "script": "scripts/check_response_regression.py",
       "args": [],
@@ -43,34 +28,30 @@
       "exit_code": 0
     },
     {
-      "script": "scripts/package_print.py",
-      "args": [],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/render_cad.py",
+      "script": "scripts/check_gain_sweep.py",
       "args": [],
       "exit_code": 0
     }
   ],
   "all_commands_passed": true,
   "input_sha256": {
-    "design.json": "a46accf81bbd28d4ee816d533f8c11de972f2937b15cd3d565c72ab1c94c1849",
+    "design.json": "3cb586ab83e023026bcae54ac0e1c9159e21bd6cd01ce45a1d102f8d5a3591f4",
     "scripts/build_cad.py": "0bb19e22facad9b96f2c14f880e6789a62087252ec6a649c464df5e4db7d4165",
     "scripts/build_models.py": "97d8ac30a27e0c785311f36ec2f6d2534ac300088f7a1ce8c188620327eb481a",
     "scripts/check_cad.py": "b728c10436521ed033962743c540934358489a7a783f65b889752fbb122d75db",
     "scripts/check_failure_gates.py": "2fc9d1de3a274528122da3e3693cfa85ded8a8a3a2b58745b0473f58516e5626",
+    "scripts/check_gain_sweep.py": "66fb86f563db2aeaf970ce9af7746848cf5d3950127176257abb910c66fa0d89",
     "scripts/check_model_contract.py": "6b8543403ccffa8672af23e7939bf795c146e89284c06d00fc290af2c5b8d79c",
     "scripts/check_motion.py": "64b6642dbc09cb669e5d4d3d3e3e2902f4fdd906d093bb044cc83d3e272a4304",
-    "scripts/check_response_regression.py": "8f48799981eb908bead6a198dd7d6d173de3d7fd3b405cd271c507848a9c0408",
-    "scripts/check_sim.py": "dc81610813dc3eed79b3451195b5b102e415c336dfdf2fee5c529dc62e8b6939",
-    "scripts/check_step_response.py": "4b83de17851623b617e1f6bafa89ec090cdc46d157acc75d0c7931629ea4cf9e",
+    "scripts/check_response_regression.py": "4d9605a468e7347c0840dc97e4a67604323e9856cc25cf5cfded332b03447b37",
+    "scripts/check_sim.py": "dfdc9d457749d312f8839540edb6ec7c6d71acf49f8dd01377d822c2de01391d",
+    "scripts/check_step_response.py": "04d6371bac64dc2ff1ca4d51e390a7a1b4b25d3dc8ee8bc59bed61aaa2082f6a",
     "scripts/export_dynamics.py": "ae464fae47526242c653aa9f8a9b134e9687a6fdcc6e305f1ba8251c4f100c04",
     "scripts/package_print.py": "62624804015eac6337523d51fc28b736ac4d1168e71968e20fa5a5049c16b5fd",
     "scripts/render_cad.py": "de004ecdc9e917df18e83c8120ada1e7964c028c72037bd7c0dc488c29331e49",
-    "scripts/run_checks.py": "374d772599da33c1924a7e128fe465282f090895eb764a7813e1448e8dd0577e",
+    "scripts/run_checks.py": "80a7f09d49b8addf0434a7bbb0692574a0822c095c18258e3feb93b4af87eab7",
     "control/bam_controller.py": "30ddf3708f1186712936dafc650bbc7f15b6700f40109bbc0ced15a5e0847eee",
-    "control/response_metrics.py": "2ebe74a9c4e185942fca46dc9942ee4933b33e4f3fb1344a5c970965aed65e47",
+    "control/response_metrics.py": "ecdaf38335fca7d2488ffcf9f750a4f8e518f5df7b27db880f0f700dc38b19fe",
     "requirements-sim-lock.txt": "10fbeb8aa4c0bc3c805d8b0ae3129174b6502983c71a8880ad867a4f222ea1c5",
     "requirements-sim.txt": "fc90027361fca68f4f80529955943cd8dc663d967461b2f2ae0e9731c8d3436f"
   },
@@ -143,13 +124,14 @@
     "reports/cad-build.json": "ee4650489408220904d0a1eca6350b0f92b88fc101ad22262a7f194336cdaeb6",
     "reports/cad-intersections.json": "c4c66808c1ef9c8f487684a69c31c87dada2b93c91eb767171858d542ad85409",
     "reports/failure-gate-regression.json": "26f4cddd8cd662896d716fdc10314c233b592c734bfc33c72370a3fd6e8d9f38",
+    "reports/gain-sweep.json": "612ee71d760ff3fce6289e735fc1c67fb9260d46bef2f9e9f311818d2ca02738",
     "reports/model-contract.json": "9496944a8a6f9c52d1192d0329a48f52f92bb62dd1bfccb4cc6db3e6aae96232",
     "reports/motion-FL.json": "85d53b0e265169c6a093bf7b5869c4dade4557f282047b1c3b05dc4ef761ccc3",
     "reports/motion-FR.json": "fa58bc446e838679481e861d1a0569caa5548da96634b1ac035071e319241d9e",
     "reports/motion-RL.json": "81e06befa8434c35b9ad23f5aca4409749ae97e08a46d9f5ab12a15717e1787c",
     "reports/motion-RR.json": "e46dd24178873a9fa7673396df72945ae9129e7686e21af572f5a5f9dab89c40",
     "reports/print-meshes.json": "d4667bdf82cdea0038d3dd0a8f24f92d0a79057e382c31d9709e55b670574a42",
-    "reports/simulation-stand.json": "6490f1911bb07cdb10848df9ee705b9f5790865fd7d1efee0b47d87edbbf7d28",
-    "reports/step-response.json": "c66c54a0ef84eb095aedb4bd415297dd9e4265940059cdee2a6084c24c4a2cd6"
+    "reports/simulation-stand.json": "5b6ebe611c9f3cf654428374b4e7ab4d7a747bdf9548be642e224908603d4815",
+    "reports/step-response.json": "9b0e151d774a7acfc93c104e60a8c3b72b9e1db006f7bfc5fe18501c0373258f"
   }
 }

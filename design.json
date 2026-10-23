@@ -129,11 +129,13 @@
   },
   "response_acceptance_targets": {
     "status": "design targets, not measurements or guarantees",
+    "speed_and_accuracy_are_separate": true,
     "command_to_first_motion_p95_ms": 40,
-    "loaded_10degree_step_settle_p95_ms": 150,
+    "step_rise_to_90pct_of_reached_p95_ms": 150,
     "stale_command_stop_ms": 100,
-    "position_tolerance_deg": 0.2,
-    "settle_observed_hold_ms": 100
+    "static_compliance": "characterized in deg per N*m from loaded hold; no pass/fail until a gait accuracy budget exists; simulation must reproduce the measured 5V value",
+    "diagnostic_goal_band_deg": 0.2,
+    "diagnostic_settle_hold_ms": 100
   },
   "mass_budget_kg": {
     "motors": 0.216,
@@ -155,7 +157,7 @@
     {
       "id": "R02",
       "url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
-      "scope": "dimensions, stall vs continuous, voltage, registers, default PWM slope"
+      "scope": "dimensions, stall vs continuous, voltage, stall current, registers, default PWM slope, gain ranges"
     },
     {
       "id": "R03",
@@ -182,5 +184,14 @@
       "url": "https://us.store.bambulab.com/products/a1-mini",
       "scope": "180mm build volume / 0.4mm nozzle"
     }
-  ]
+  ],
+  "power": {
+    "status": "open; not designed",
+    "motor_rail_v": 5,
+    "motor_stall_current_a_at_5v": 1.47,
+    "motor_rail_all_stall_upper_bound_a": 17.64,
+    "walking_rail_current_a": null,
+    "regulator_part": null,
+    "note": "Upper bound assumes all 12 motors at stall simultaneously; typical walking current is unmeasured. Regulator, battery, wiring gauge and connectors are not selected."
+  }
 }
