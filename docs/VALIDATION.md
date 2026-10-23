@@ -17,3 +17,19 @@ CAD 재생성을 제외하고 커밋된 모델을 검사하려면 마지막 명�
 reports/checkpoint-validation.json에는 실제 명령, 종료 코드, 의존성 버전과 입력/핵심 산출물 SHA-256(텍스트 줄바꿈은 LF로 정규화, FCStd는 원본 바이트)을 남긴다. _runs/ 로그는 로컬 진단용이며 커밋하지 않는다. 실패한 검사는 0 이외의 종료 코드를 반환한다. 단축 응답 스크립트의 정상 종료는 계산 성공만 의미하며 반응성 목표 통과가 아니다.
 
 범위: 각 다리를 따로 움직인 유한 표본 검사이다. 여러 다리 동시 동작, 연속 이동 경로, 나사머리·공구·케이블, 강도와 열 검증은 별도다. URDF는 관절/관성/시각 모델이며 Isaac의 접촉·구동계 검증을 대신하지 않는다. 5초 정지 자세는 보행 성공이 아니다.
+
+## 응답 판정과 실패 경로
+
+~~~powershell
+.venv\Scripts\python.exe scripts/run_checks.py --suite response
+.venv\Scripts\python.exe scripts/check_step_response.py --require-targets
+.venv\Scripts\python.exe scripts/check_failure_gates.py --freecad-python '<FreeCAD 설치 폴더>/bin/python.exe'
+~~~
+
+응답 전용 검사는 회귀검사 6개와 양방향 10°/부하 3종의 6조건을 계산한다. design.json의 P 게인, 위치 허용 오차(현재 ±0.2°), 정착 후 최소 관찰 유지(현재 100ms)를 사용한다. 목표 각도 정착과 마지막 실제 위치 근처 정착은 구분한다. 전자는 명령 정확도 판정이며 후자는 진단값이다.
+
+현재 --require-targets 명령은 6조건 모두 목표 미달이므로 종료 코드 1을 반환한다. 일반 계산 명령은 계산 성공 시 0을 반환하되 reports/step-response.json의 all_single_trial_targets_met는 false다. 실행기 보고서도 all_commands_passed와 response_numerical_targets_met를 나누며 p95/하드웨어 성공을 주장하지 않는다.
+
+실패 경로 검사는 _runs 아래의 별도 CAD 복사본에 FL_calf_front와 완전히 겹치는 고정 장애물을 삽입한다. 원본 CAD는 건드리지 않는다. 기준 자세/다리 동작 검사 둘 다 간섭 보고서와 종료 코드 1을 내야 시험이 통과한다. reports/failure-gate-regression.json에 기록한다. 전체 CAD 실행기에도 이 검사를 포함한다.
+
+초기 전체 CAD 재생성/검사의 실행 증거는 커밋 f6dea2c 및 reports/archive/cp003/에 남겼다. 최신 보고서 suite/cad_regenerated/commands 필드로 이번에 실제 실행한 범위를 확인한다.

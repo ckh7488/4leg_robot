@@ -131,7 +131,9 @@
     "status": "design targets, not measurements or guarantees",
     "command_to_first_motion_p95_ms": 40,
     "loaded_10degree_step_settle_p95_ms": 150,
-    "stale_command_stop_ms": 100
+    "stale_command_stop_ms": 100,
+    "position_tolerance_deg": 0.2,
+    "settle_observed_hold_ms": 100
   },
   "mass_budget_kg": {
     "motors": 0.216,

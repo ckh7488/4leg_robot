@@ -7,7 +7,7 @@ P=json.loads((ROOT/'cad/preview-mesh.json').read_text())
 font='DejaVuSans.ttf'
 def F(n):
  try:return ImageFont.truetype(font,n)
- except OSError:return ImageFont.load_default()
+ except OSError:return ImageFont.load_default(size=n)
 im=Image.new('RGB',(1600,1120),'#edf3f7');d=ImageDraw.Draw(im)
 d.text((50,24),'MICROQUAD  /  XL330-M288-T x12',font=F(34),fill='#213747')
 d.text((50,70),'Prototype CAD - mm - shaft-based reference geometry',font=F(20),fill='#536878')

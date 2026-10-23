@@ -1,0 +1,189 @@
+{
+  "status": "Deterministic simulation screening only; no hardware sample or p95 verification",
+  "voltage_v": 5,
+  "firmware_kp": 400,
+  "velocity_feedback_s": 0.0,
+  "pwm_slope": 140,
+  "transport_delay_reference_s": 0.010220594809412403,
+  "transport_delay_quantized_ms": 11.0,
+  "command_bus_hz": 500,
+  "numerical_design_targets": {
+    "status": "design targets, not measurements or guarantees",
+    "command_to_first_motion_p95_ms": 40,
+    "loaded_10degree_step_settle_p95_ms": 150,
+    "stale_command_stop_ms": 100,
+    "position_tolerance_deg": 0.2,
+    "settle_observed_hold_ms": 100
+  },
+  "fixture": {
+    "arm_length_m": 0.05,
+    "inertia_at_com_kgm2": [
+      0.0001,
+      0.0001,
+      0.0001
+    ],
+    "pre_hold_s": 2.0,
+    "post_observation_s": 2.0,
+    "timestep_s": 0.001
+  },
+  "definitions": {
+    "goal_settle": "Within configured position tolerance of commanded absolute angle for all remaining samples, with configured minimum observed hold",
+    "first_motion": "Toward goal, more than 1% commanded step or 0.05 degree from actual pre-step position",
+    "final_band": "Diagnostic only: settling near terminal 100ms mean; never a substitute for commanded angle"
+  },
+  "results": [
+    {
+      "nominal_gravity_load_nm_at_zero": 0,
+      "command_goal_deg": -10,
+      "pre_step_actual_deg": 0.00020737986056957266,
+      "pre_step_span_100ms_deg": 6.850034980468314e-06,
+      "pre_step_speed_deg_s": 6.783042172929696e-05,
+      "peak_predicted_torque_nm": 0.126769632432274,
+      "first_motion_ms": 21.0,
+      "time_to_90percent_of_goal_ms": 187.0,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 355.0,
+      "terminal_mean_deg": -9.778939465335542,
+      "terminal_goal_error_deg": 0.22106053466445807,
+      "actual_step_deg": -9.779146845196111,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    },
+    {
+      "nominal_gravity_load_nm_at_zero": 0,
+      "command_goal_deg": 10,
+      "pre_step_actual_deg": 0.00020737986056957266,
+      "pre_step_span_100ms_deg": 6.850034980468314e-06,
+      "pre_step_speed_deg_s": 6.783042172929696e-05,
+      "peak_predicted_torque_nm": 0.12676363910277164,
+      "first_motion_ms": 21.0,
+      "time_to_90percent_of_goal_ms": 187.0,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 355.0,
+      "terminal_mean_deg": 9.779650558397607,
+      "terminal_goal_error_deg": -0.22034944160239256,
+      "actual_step_deg": 9.779443178537038,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    },
+    {
+      "nominal_gravity_load_nm_at_zero": 0.05,
+      "command_goal_deg": -10,
+      "pre_step_actual_deg": 3.008991168157578,
+      "pre_step_span_100ms_deg": 0.02918348079288835,
+      "pre_step_speed_deg_s": 0.28962760471694055,
+      "peak_predicted_torque_nm": 0.16848145610233953,
+      "first_motion_ms": 24.0,
+      "time_to_90percent_of_goal_ms": null,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 1509.0,
+      "terminal_mean_deg": -5.020718139409406,
+      "terminal_goal_error_deg": 4.979281860590594,
+      "actual_step_deg": -8.029709307566984,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    },
+    {
+      "nominal_gravity_load_nm_at_zero": 0.05,
+      "command_goal_deg": 10,
+      "pre_step_actual_deg": 3.008991168157578,
+      "pre_step_span_100ms_deg": 0.02918348079288835,
+      "pre_step_speed_deg_s": 0.28962760471694055,
+      "peak_predicted_torque_nm": 0.08698069815595616,
+      "first_motion_ms": 21.0,
+      "time_to_90percent_of_goal_ms": 111.0,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 1232.0,
+      "terminal_mean_deg": 13.043680892983401,
+      "terminal_goal_error_deg": 3.043680892983401,
+      "actual_step_deg": 10.034689724825823,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    },
+    {
+      "nominal_gravity_load_nm_at_zero": 0.1,
+      "command_goal_deg": -10,
+      "pre_step_actual_deg": 6.259427244211858,
+      "pre_step_span_100ms_deg": 0.043325823166023625,
+      "pre_step_speed_deg_s": 0.43069301011207034,
+      "peak_predicted_torque_nm": 0.21219165526060862,
+      "first_motion_ms": 29.0,
+      "time_to_90percent_of_goal_ms": null,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 1699.0,
+      "terminal_mean_deg": 0.028664570162951514,
+      "terminal_goal_error_deg": 10.02866457016295,
+      "actual_step_deg": -6.230762674048907,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    },
+    {
+      "nominal_gravity_load_nm_at_zero": 0.1,
+      "command_goal_deg": 10,
+      "pre_step_actual_deg": 6.259427244211858,
+      "pre_step_span_100ms_deg": 0.043325823166023625,
+      "pre_step_speed_deg_s": 0.43069301011207034,
+      "peak_predicted_torque_nm": 0.08437757633720769,
+      "first_motion_ms": 21.0,
+      "time_to_90percent_of_goal_ms": 73.0,
+      "settle_to_goal_band_ms": null,
+      "settle_to_final_band_ms_diagnostic": 1470.0,
+      "terminal_mean_deg": 16.148349082160617,
+      "terminal_goal_error_deg": 6.1483490821606175,
+      "actual_step_deg": 9.88892183794876,
+      "goal_band_deg": 0.2,
+      "required_hold_ms": 100.0,
+      "observation_ms": 2000.0,
+      "numerical_target_checks": {
+        "pre_step_stable": true,
+        "onset_within_design_target": true,
+        "goal_settle_within_design_target": false
+      },
+      "single_trial_targets_met": false
+    }
+  ],
+  "all_single_trial_targets_met": false,
+  "statistical_p95_verified": false,
+  "limitations": [
+    "BAM fit not identified on our 5V actuator; reference prediction only.",
+    "Pendulum test load is not the assembled robot leg.",
+    "No supply droop, backlash, temperature or sampling jitter identification.",
+    "Gravity torque changes with angle; the zero-load fixture retains a 1e-5kg minimum mass.",
+    "Firmware PWM slew is an approximation; direct measurement is needed."
+  ]
+}

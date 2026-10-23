@@ -1,9 +1,9 @@
 {
   "scope": "Executed checks only; no hardware, walking, RL or Isaac claim",
-  "created_utc": "2026-10-23T15:50:49.118792+00:00",
+  "created_utc": "2026-10-23T16:00:46.174916+00:00",
   "python_version": "3.12.14",
   "platform": "Windows",
-  "hash_encoding": "UTF-8/text LF-normalized; FCStd raw bytes",
+  "hash_encoding": "Text LF-normalized; binary CAD/mesh/package/image raw bytes",
   "package_versions": {
     "numpy": "2.5.4",
     "mujoco": "3.3.7",
@@ -12,55 +12,11 @@
     "Pillow": "12.3.0",
     "trimesh": "5.1.1"
   },
-  "cad_regenerated": true,
+  "suite": "full",
+  "cad_regenerated": false,
+  "response_numerical_targets_met": false,
+  "response_p95_verified": false,
   "commands": [
-    {
-      "script": "scripts/build_cad.py",
-      "args": [],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_cad.py",
-      "args": [],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_motion.py",
-      "args": [
-        "--leg",
-        "FL"
-      ],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_motion.py",
-      "args": [
-        "--leg",
-        "FR"
-      ],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_motion.py",
-      "args": [
-        "--leg",
-        "RL"
-      ],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/check_motion.py",
-      "args": [
-        "--leg",
-        "RR"
-      ],
-      "exit_code": 0
-    },
-    {
-      "script": "scripts/export_dynamics.py",
-      "args": [],
-      "exit_code": 0
-    },
     {
       "script": "scripts/build_models.py",
       "args": [],
@@ -73,6 +29,11 @@
     },
     {
       "script": "scripts/check_sim.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_response_regression.py",
       "args": [],
       "exit_code": 0
     },
@@ -94,19 +55,24 @@
   ],
   "all_commands_passed": true,
   "input_sha256": {
-    "design.json": "c10260f1765d929c728ab1f41b9c71d2ef16a923d8c735301ab9a5aa61b6dc12",
+    "design.json": "a46accf81bbd28d4ee816d533f8c11de972f2937b15cd3d565c72ab1c94c1849",
     "scripts/build_cad.py": "0bb19e22facad9b96f2c14f880e6789a62087252ec6a649c464df5e4db7d4165",
     "scripts/build_models.py": "97d8ac30a27e0c785311f36ec2f6d2534ac300088f7a1ce8c188620327eb481a",
     "scripts/check_cad.py": "b728c10436521ed033962743c540934358489a7a783f65b889752fbb122d75db",
+    "scripts/check_failure_gates.py": "2fc9d1de3a274528122da3e3693cfa85ded8a8a3a2b58745b0473f58516e5626",
     "scripts/check_model_contract.py": "6b8543403ccffa8672af23e7939bf795c146e89284c06d00fc290af2c5b8d79c",
     "scripts/check_motion.py": "64b6642dbc09cb669e5d4d3d3e3e2902f4fdd906d093bb044cc83d3e272a4304",
+    "scripts/check_response_regression.py": "8f48799981eb908bead6a198dd7d6d173de3d7fd3b405cd271c507848a9c0408",
     "scripts/check_sim.py": "dc81610813dc3eed79b3451195b5b102e415c336dfdf2fee5c529dc62e8b6939",
-    "scripts/check_step_response.py": "2e799398b68f6134c0d255b85ea5ca9c8b45657baad8dd96c7606d64034c7a26",
+    "scripts/check_step_response.py": "4b83de17851623b617e1f6bafa89ec090cdc46d157acc75d0c7931629ea4cf9e",
     "scripts/export_dynamics.py": "ae464fae47526242c653aa9f8a9b134e9687a6fdcc6e305f1ba8251c4f100c04",
     "scripts/package_print.py": "62624804015eac6337523d51fc28b736ac4d1168e71968e20fa5a5049c16b5fd",
-    "scripts/render_cad.py": "8dc988690ca7da54aac11ff8f534783489db797091875ee088c74d7a7d5acbe4",
-    "scripts/run_checks.py": "57d0e2031ab9186e59ec28275f4fd0aa9c69b10f331306b30de12bd6ca3da89b",
-    "control/bam_controller.py": "30ddf3708f1186712936dafc650bbc7f15b6700f40109bbc0ced15a5e0847eee"
+    "scripts/render_cad.py": "de004ecdc9e917df18e83c8120ada1e7964c028c72037bd7c0dc488c29331e49",
+    "scripts/run_checks.py": "374d772599da33c1924a7e128fe465282f090895eb764a7813e1448e8dd0577e",
+    "control/bam_controller.py": "30ddf3708f1186712936dafc650bbc7f15b6700f40109bbc0ced15a5e0847eee",
+    "control/response_metrics.py": "2ebe74a9c4e185942fca46dc9942ee4933b33e4f3fb1344a5c970965aed65e47",
+    "requirements-sim-lock.txt": "10fbeb8aa4c0bc3c805d8b0ae3129174b6502983c71a8880ad867a4f222ea1c5",
+    "requirements-sim.txt": "fc90027361fca68f4f80529955943cd8dc663d967461b2f2ae0e9731c8d3436f"
   },
   "artifact_sha256": {
     "cad/microquad-xl330-v1.FCStd": "f84301efce1a057976fbb9e634b84ad630c1911b68e118f10cc9926570d37682",
@@ -116,6 +82,74 @@
     "models/dynamics.json": "a044766f58fc6db72dc84fcd425084ac328e0fe0e3e946c23c1da865c1aa38f5",
     "models/mujoco/robot.xml": "bf0ae531abf66ebea7a68b83d66704a1131a46fbf3e5aa34c2ce4f49a273e96a",
     "models/urdf/robot.urdf": "a92eed4a1a24e4c2526c7ad5785fbd06b063259b7ed146d7e542daeb7668682a",
-    "print/manifest.json": "872cbbb64e181ac196d27492e1d969f097b193823ff0addd1f54c22893236789"
+    "print/manifest.json": "872cbbb64e181ac196d27492e1d969f097b193823ff0addd1f54c22893236789",
+    "models/meshes/FL_calf.stl": "3753d4fec34eedfd57cba90c5939071b7a86002047c5689b0f1fab4aa8d34496",
+    "models/meshes/FL_haa.stl": "30cd6be2e2feb90773606663961b61c1d4a3f0428545e012769c9be945838e27",
+    "models/meshes/FL_thigh.stl": "f13686cf323dd85f73c4c68a5759c6d8207b0d08bb1354d241b9496e4aa11c49",
+    "models/meshes/FR_calf.stl": "5be6e95a57273c96c3e5ef4f8825f8f68bd0de4fc3bcf84b96918e55367b2c71",
+    "models/meshes/FR_haa.stl": "cee24ec923f13fc369722db98d802a6730656719f0b4ab7bddde683c706ad6a5",
+    "models/meshes/FR_thigh.stl": "0c1b1dcb93353211de41b531fcafcf7eabca8081d771279ba28a9ec758281541",
+    "models/meshes/RL_calf.stl": "f04dacadb6a2f614576dfc3eb01742cd75e5981df93406cac4aa9f347fa1a72c",
+    "models/meshes/RL_haa.stl": "32ccb387da0e2decef1875fadff20ecd28a5523ce49a252a1de4ac098c2a8eea",
+    "models/meshes/RL_thigh.stl": "563aa81825e4568e98d328c8c3afe4cb20f38e07971ae487f8dee94d3fbc7e4c",
+    "models/meshes/RR_calf.stl": "746619098bbf40db9c080f87beb4ff4c0f6e3c0c23ec809abb138bcfb353b796",
+    "models/meshes/RR_haa.stl": "e314723c214e21a1020081c99d7810b90c7cc61245ddee5be37240c4c6c61654",
+    "models/meshes/RR_thigh.stl": "e873b456ad6ba0c200d0e813a66879436671700f6883ef7a3d41de043449154f",
+    "models/meshes/trunk.stl": "14ffb0d20fedcd21c1d89e1dce74146091ead8a5f21e19ad5d1349064a5ce487",
+    "print/stl/back_spacer.stl": "98995e7ae20112aa5e1960a2e2f94a84b03619458dddf4bd3921e3a4531b14d8",
+    "print/stl/body_base.stl": "48f6a66b00722473761ad89cc383c75abf2338318683becf3a29fd387852c238",
+    "print/stl/body_lid.stl": "d25ca4ea276477e66f1873248672738254c9fa571ba25be4ca5ec8985ad581d0",
+    "print/stl/calf_back.stl": "b68df7a7e9990d5f760e19573838bd6089b843fe1c689cf3b44995827a8124c1",
+    "print/stl/calf_bridge.stl": "7d4b7c44077f26cd20303c3648e26a28eda9c8ebad639f74bb3fd239aa3e19ca",
+    "print/stl/calf_front.stl": "a03ddb1ac7dec7860f6e118c7b5c7eb5e029d6aea6819e2b2d94030c03681e65",
+    "print/stl/electronics_deck.stl": "96e9d9c572f965fb98d8ac3c770137e101e07bad4bf7b14c39c39a8953b8e9a9",
+    "print/stl/fit_coupon.stl": "2c012349cf6a5ce7474c04c927b0c68c5de392ec6d794da387c42acbd9af2205",
+    "print/stl/foot_pad.stl": "05712fbb42ebeea0eb3a4be72c19a2de51f744cdcd78395280a688abe563045e",
+    "print/stl/front_spacer.stl": "a900f6b0ff4bf9834e0ff14934d93b136b6e83e3b46d95b1de33c1d68e352ff6",
+    "print/stl/haa_back.stl": "1bd800e7b20146e62fc9a89fc4ddc903b2dcb2084af248f8f2ff6a215dc6d681",
+    "print/stl/haa_bridge.stl": "43d6e6549b1a9abba7a719ba36c1bf3ba42c97111d4412e5de021651e25cfd40",
+    "print/stl/haa_case_mount.stl": "ab447fddbdf7d56bbf79d884d9f62b9657b51b36adf52117466a9d00a7063a8f",
+    "print/stl/hip_front_carrier_FL.stl": "58c469dd180012bc5f14b191c7ecfe9cead9911238e73d1425981622fa15d06f",
+    "print/stl/hip_front_carrier_FR.stl": "982df07f1fa93a1be1ef4080a5bf69cc8ec2fce0c82225a1b08ab257f2d39142",
+    "print/stl/hip_front_carrier_RL.stl": "0cc642b82594565332ac031f264e72398c45bb7fd0363c9f2babbc4caf7e0267",
+    "print/stl/hip_front_carrier_RR.stl": "78422b23682acdb1eedd6e2c8402a0f590c5b3dac1515e28215d40d870013fed",
+    "print/stl/spacer_lower.stl": "bf4b24aa0e4b703a33e5658f43f93779a6eb9b14851b6da379fed571e45d3b6d",
+    "print/stl/spacer_upper.stl": "60825711770b06518543ecc791408bc6cb63bee46cee6b9468a21c3b8c4e114f",
+    "print/stl/thigh_back.stl": "fb26df7a0ed653bf86e60a9ef353fb22197341ee8953ac42f8b3afa04bbb477a",
+    "print/stl/thigh_bridge.stl": "43d6e6549b1a9abba7a719ba36c1bf3ba42c97111d4412e5de021651e25cfd40",
+    "print/stl/thigh_front.stl": "5dfff61997387c9c1f7c05e14de11613f6749704a4eefe1d195bafd79ac7e82c",
+    "print/3mf/back_spacer.3mf": "246f049d700061d0d3baebd3e273c669fe5484159569239596d5645b139bf15b",
+    "print/3mf/body_base.3mf": "d6027c0fa182fd601f55170259453f6fc1752b034576a210c922b3f33dc0aaa8",
+    "print/3mf/body_lid.3mf": "9b545bcdc97300e05d5c5c79580ab146d9cb401bd48cb44cf91711396ca1b63b",
+    "print/3mf/calf_back.3mf": "6886b4197e0c4b03df6d1fffdcec6f4d3cb57a0c8e57f8bab7d8a2f4d8b0cbf2",
+    "print/3mf/calf_bridge.3mf": "7e03f4b671d8dc44b132e69838ce27ada7571136e116b84ade6f25f4ff9ac080",
+    "print/3mf/calf_front.3mf": "20e85df6d609d4d43e0c8818b9f2b3354423b2947543d24453c8b245cb20c7ee",
+    "print/3mf/electronics_deck.3mf": "6c285921eeba5a1287cc1672928d4f23cfca07fe9e8fb72bcb05947306ffb792",
+    "print/3mf/fit_coupon.3mf": "f8b499a508ee48aff881932d85a8eb0fcffc6bc7ce8ba7db0f6de1cc62c85b07",
+    "print/3mf/foot_pad.3mf": "762daed676b9e738f77530cf263cd17c4395a88cd579b7b287052d164c91b58b",
+    "print/3mf/front_spacer.3mf": "3b07975916e35913cccedefd1895c207dd874195372f1f08da056c107cf7fefe",
+    "print/3mf/haa_back.3mf": "b573487c270220e571b80f96369d5be208b07d6a90a14cd33c63a51f01eec8bd",
+    "print/3mf/haa_bridge.3mf": "707a1d75357fa78120e88bde91758c2362bcc733f821211b8e0684d60c6f9f71",
+    "print/3mf/haa_case_mount.3mf": "35a6baf4d4ecef1d87ef1e1bf909ffdada086d5d1a52587eed0af04ff013e26b",
+    "print/3mf/hip_front_carrier_FL.3mf": "a36050d69a534e33233d6491c9e57f596e95eb76820094609a9c1d57254bb060",
+    "print/3mf/hip_front_carrier_FR.3mf": "0d523f936924efb3316c958169160686bfa81fa02d12cf6e2c9a704bac0ae269",
+    "print/3mf/hip_front_carrier_RL.3mf": "2f6af708ec247e26f9f6b6644a7f020acc84d7618f1a9aa4c52579cb66c3a9df",
+    "print/3mf/hip_front_carrier_RR.3mf": "0da22e555c5ad28de848dce874c03c172d3036482431c60a4ee3fa40412e6581",
+    "print/3mf/spacer_lower.3mf": "bf0f722096c3d91bf2f69f84b3b6e8aa6455d407b3e292aa474cb02bf6a28db1",
+    "print/3mf/spacer_upper.3mf": "1a1b319f8fca03c6a1568f61109d96a8787d7d1c131b486d401093276d66ce3e",
+    "print/3mf/thigh_back.3mf": "d1749b410938cdf9c3594eed7790ad5531edc221c28d181509dc61c680e3eb97",
+    "print/3mf/thigh_bridge.3mf": "af5eb3d59f007627c791d273ff3c276ce0a942eb8efe3af4f5b9606f7c907bd3",
+    "print/3mf/thigh_front.3mf": "cd468990be0210ba1ccfcbee31825d06d6e42e09fce1e50bc7d4ccea4909d8f1",
+    "reports/cad-build.json": "ee4650489408220904d0a1eca6350b0f92b88fc101ad22262a7f194336cdaeb6",
+    "reports/cad-intersections.json": "c4c66808c1ef9c8f487684a69c31c87dada2b93c91eb767171858d542ad85409",
+    "reports/failure-gate-regression.json": "26f4cddd8cd662896d716fdc10314c233b592c734bfc33c72370a3fd6e8d9f38",
+    "reports/model-contract.json": "9496944a8a6f9c52d1192d0329a48f52f92bb62dd1bfccb4cc6db3e6aae96232",
+    "reports/motion-FL.json": "85d53b0e265169c6a093bf7b5869c4dade4557f282047b1c3b05dc4ef761ccc3",
+    "reports/motion-FR.json": "fa58bc446e838679481e861d1a0569caa5548da96634b1ac035071e319241d9e",
+    "reports/motion-RL.json": "81e06befa8434c35b9ad23f5aca4409749ae97e08a46d9f5ab12a15717e1787c",
+    "reports/motion-RR.json": "e46dd24178873a9fa7673396df72945ae9129e7686e21af572f5a5f9dab89c40",
+    "reports/print-meshes.json": "d4667bdf82cdea0038d3dd0a8f24f92d0a79057e382c31d9709e55b670574a42",
+    "reports/simulation-stand.json": "6490f1911bb07cdb10848df9ee705b9f5790865fd7d1efee0b47d87edbbf7d28",
+    "reports/step-response.json": "c66c54a0ef84eb095aedb4bd415297dd9e4265940059cdee2a6084c24c4a2cd6"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "scope": "Isolated intentional collision; original CAD unchanged",
+  "expected_exit_codes": [
+    0,
+    1,
+    1
+  ],
+  "observed": [
+    {
+      "script": "inject_collision.py",
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_cad.py",
+      "exit_code": 1
+    },
+    {
+      "script": "scripts/check_motion.py",
+      "exit_code": 1
+    }
+  ],
+  "intended_collision_detected": true,
+  "motion_failed_pose_count": 14,
+  "pass": true
+}

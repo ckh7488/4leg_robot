@@ -1,0 +1,121 @@
+{
+  "scope": "Executed checks only; no hardware, walking, RL or Isaac claim",
+  "created_utc": "2026-10-23T15:50:49.118792+00:00",
+  "python_version": "3.12.14",
+  "platform": "Windows",
+  "hash_encoding": "UTF-8/text LF-normalized; FCStd raw bytes",
+  "package_versions": {
+    "numpy": "2.5.4",
+    "mujoco": "3.3.7",
+    "better-actuator-models": "1.0.2",
+    "colorama": "0.4.6",
+    "Pillow": "12.3.0",
+    "trimesh": "5.1.1"
+  },
+  "cad_regenerated": true,
+  "commands": [
+    {
+      "script": "scripts/build_cad.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_cad.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_motion.py",
+      "args": [
+        "--leg",
+        "FL"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_motion.py",
+      "args": [
+        "--leg",
+        "FR"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_motion.py",
+      "args": [
+        "--leg",
+        "RL"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_motion.py",
+      "args": [
+        "--leg",
+        "RR"
+      ],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/export_dynamics.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/build_models.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_model_contract.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_sim.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/check_step_response.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/package_print.py",
+      "args": [],
+      "exit_code": 0
+    },
+    {
+      "script": "scripts/render_cad.py",
+      "args": [],
+      "exit_code": 0
+    }
+  ],
+  "all_commands_passed": true,
+  "input_sha256": {
+    "design.json": "c10260f1765d929c728ab1f41b9c71d2ef16a923d8c735301ab9a5aa61b6dc12",
+    "scripts/build_cad.py": "0bb19e22facad9b96f2c14f880e6789a62087252ec6a649c464df5e4db7d4165",
+    "scripts/build_models.py": "97d8ac30a27e0c785311f36ec2f6d2534ac300088f7a1ce8c188620327eb481a",
+    "scripts/check_cad.py": "b728c10436521ed033962743c540934358489a7a783f65b889752fbb122d75db",
+    "scripts/check_model_contract.py": "6b8543403ccffa8672af23e7939bf795c146e89284c06d00fc290af2c5b8d79c",
+    "scripts/check_motion.py": "64b6642dbc09cb669e5d4d3d3e3e2902f4fdd906d093bb044cc83d3e272a4304",
+    "scripts/check_sim.py": "dc81610813dc3eed79b3451195b5b102e415c336dfdf2fee5c529dc62e8b6939",
+    "scripts/check_step_response.py": "2e799398b68f6134c0d255b85ea5ca9c8b45657baad8dd96c7606d64034c7a26",
+    "scripts/export_dynamics.py": "ae464fae47526242c653aa9f8a9b134e9687a6fdcc6e305f1ba8251c4f100c04",
+    "scripts/package_print.py": "62624804015eac6337523d51fc28b736ac4d1168e71968e20fa5a5049c16b5fd",
+    "scripts/render_cad.py": "8dc988690ca7da54aac11ff8f534783489db797091875ee088c74d7a7d5acbe4",
+    "scripts/run_checks.py": "57d0e2031ab9186e59ec28275f4fd0aa9c69b10f331306b30de12bd6ca3da89b",
+    "control/bam_controller.py": "30ddf3708f1186712936dafc650bbc7f15b6700f40109bbc0ced15a5e0847eee"
+  },
+  "artifact_sha256": {
+    "cad/microquad-xl330-v1.FCStd": "f84301efce1a057976fbb9e634b84ad630c1911b68e118f10cc9926570d37682",
+    "cad/assembly-instances.json": "5d32675a412eb3e49468d67f261eeb0f617182ad325246e531788eba75c4170e",
+    "cad/home-kinematics.json": "b1d40caacb06b0517a34196e31608ea0cff4da30dde80f715a1199f9d400c1da",
+    "cad/preview-mesh.json": "65818475638fe5a50f8648b2883c1aabe04ad9660324818ddf122158228ec6ac",
+    "models/dynamics.json": "a044766f58fc6db72dc84fcd425084ac328e0fe0e3e946c23c1da865c1aa38f5",
+    "models/mujoco/robot.xml": "bf0ae531abf66ebea7a68b83d66704a1131a46fbf3e5aa34c2ce4f49a273e96a",
+    "models/urdf/robot.urdf": "a92eed4a1a24e4c2526c7ad5785fbd06b063259b7ed146d7e542daeb7668682a",
+    "print/manifest.json": "872cbbb64e181ac196d27492e1d969f097b193823ff0addd1f54c22893236789"
+  }
+}
