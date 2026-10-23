@@ -1,0 +1,24 @@
+{
+  "scope": "CAD validity and individual-part build-volume only; no fabrication release",
+  "object_count": 115,
+  "custom_part_types": 21,
+  "all_solids_valid": true,
+  "assembly_bbox_mm": [
+    184.406,
+    235.0,
+    131.432
+  ],
+  "individual_parts_fit_180mm": true,
+  "printed_solid_mass_g": 356.4,
+  "home_foot_bottom_z_mm": [
+    -0.0,
+    -0.0,
+    -0.0,
+    -0.0
+  ],
+  "unknown": [
+    "Fastener heads/tool access and cable sweep must be checked separately.",
+    "No strength, fatigue, heat or actual printer validation.",
+    "Motor and module CAD objects are envelopes, not purchased as-built metrology."
+  ]
+}

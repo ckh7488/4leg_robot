@@ -72,10 +72,24 @@
       10
     ],
     "sbc_center": [
-      -8,
+      -25,
       0,
-      10
-    ]
+      8
+    ],
+    "mcu_box": [
+      51,
+      21,
+      8
+    ],
+    "mcu_center": [
+      43,
+      0,
+      8
+    ],
+    "body_base_thickness": 3,
+    "body_top_thickness": 2,
+    "body_deck_z": 0,
+    "body_deck_thickness": 2
   },
   "home_rad": [
     0,

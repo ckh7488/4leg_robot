@@ -1,0 +1,401 @@
+[
+  {
+    "part": "front_spacer",
+    "quantity": 12,
+    "material": "PLA",
+    "solid_volume_mm3": 294.74,
+    "solid_mass_g": 0.365,
+    "print_bbox_mm": [
+      16.0,
+      16.0,
+      2.0
+    ],
+    "note": "4x M2, PCD12; fit before printing quantity",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "back_spacer",
+    "quantity": 12,
+    "material": "PLA",
+    "solid_volume_mm3": 368.43,
+    "solid_mass_g": 0.457,
+    "print_bbox_mm": [
+      16.0,
+      16.0,
+      2.5
+    ],
+    "note": "4x M2, PCD12; fit before printing quantity",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "haa_front",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 2960.12,
+    "solid_mass_g": 3.671,
+    "print_bbox_mm": [
+      24.0,
+      48.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "haa_back",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 2960.12,
+    "solid_mass_g": 3.671,
+    "print_bbox_mm": [
+      24.0,
+      48.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "haa_bridge",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 4569.31,
+    "solid_mass_g": 5.666,
+    "print_bbox_mm": [
+      24.0,
+      33.5,
+      6.0
+    ],
+    "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "thigh_front",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 4719.23,
+    "solid_mass_g": 5.852,
+    "print_bbox_mm": [
+      24.0,
+      89.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "thigh_back",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 4764.85,
+    "solid_mass_g": 5.908,
+    "print_bbox_mm": [
+      24.0,
+      89.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "thigh_bridge",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 4569.31,
+    "solid_mass_g": 5.666,
+    "print_bbox_mm": [
+      24.0,
+      33.5,
+      6.0
+    ],
+    "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "calf_front",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 3602.12,
+    "solid_mass_g": 4.467,
+    "print_bbox_mm": [
+      24.0,
+      63.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "calf_back",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 3602.12,
+    "solid_mass_g": 4.467,
+    "print_bbox_mm": [
+      24.0,
+      63.0,
+      3.0
+    ],
+    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "calf_bridge",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 4546.5,
+    "solid_mass_g": 5.638,
+    "print_bbox_mm": [
+      24.0,
+      33.5,
+      6.0
+    ],
+    "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "haa_case_mount",
+    "quantity": 4,
+    "material": "PLA",
+    "solid_volume_mm3": 3314.3,
+    "solid_mass_g": 4.11,
+    "print_bbox_mm": [
+      24.0,
+      41.5,
+      17.5
+    ],
+    "note": "Use case holes, not case-assembly screws. Support needed under short foot if necessary.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "hip_C_carrier_left",
+    "quantity": 2,
+    "material": "PLA",
+    "solid_volume_mm3": 6014.3,
+    "solid_mass_g": 7.458,
+    "print_bbox_mm": [
+      24.0,
+      48.0,
+      39.5
+    ],
+    "note": "Support-required prototype. 2x M2x10/nuts to riser; front case M2x6 + washer.",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "hip_C_carrier_right",
+    "quantity": 2,
+    "material": "PLA",
+    "solid_volume_mm3": 6014.3,
+    "solid_mass_g": 7.458,
+    "print_bbox_mm": [
+      24.0,
+      48.0,
+      39.5
+    ],
+    "note": "Support-required prototype. 2x M2x10/nuts to riser; front case M2x6 + washer.",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "body_base",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 44600.34,
+    "solid_mass_g": 55.304,
+    "print_bbox_mm": [
+      156.0,
+      96.0,
+      3.0
+    ],
+    "note": "PCB and battery held by straps and foam. Board headers remain an envelope check.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "electronics_deck",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 14066.38,
+    "solid_mass_g": 17.442,
+    "print_bbox_mm": [
+      156.0,
+      46.0,
+      2.0
+    ],
+    "note": "PCB and battery held by straps and foam. Board headers remain an envelope check.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "body_lid",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 24626.38,
+    "solid_mass_g": 30.537,
+    "print_bbox_mm": [
+      156.0,
+      96.0,
+      2.0
+    ],
+    "note": "PCB and battery held by straps and foam. Board headers remain an envelope check.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "spacer_lower",
+    "quantity": 6,
+    "material": "PLA",
+    "solid_volume_mm3": 836.87,
+    "solid_mass_g": 1.038,
+    "print_bbox_mm": [
+      6.4,
+      6.4,
+      29.5
+    ],
+    "note": "M2x60 through-bolt, washer and nut; do not overtighten",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "spacer_upper",
+    "quantity": 6,
+    "material": "PLA",
+    "solid_volume_mm3": 510.63,
+    "solid_mass_g": 0.633,
+    "print_bbox_mm": [
+      6.4,
+      6.4,
+      18.0
+    ],
+    "note": "M2x60 through-bolt, washer and nut; do not overtighten",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  {
+    "part": "foot_pad",
+    "quantity": 4,
+    "material": "TPU",
+    "solid_volume_mm3": 1432.04,
+    "solid_mass_g": 1.733,
+    "print_bbox_mm": [
+      13.99,
+      14.0,
+      16.458
+    ],
+    "note": "TPU95A optional; start with bought rubber pad if no TPU is available",
+    "print_rotation_quat_xyzw": [
+      0.7071067811865476,
+      0.0,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "fit_coupon",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 4627.11,
+    "solid_mass_g": 5.738,
+    "print_bbox_mm": [
+      62.0,
+      32.0,
+      3.0
+    ],
+    "note": "One before production; hole labels recorded in print guide",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  }
+]
