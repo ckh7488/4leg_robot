@@ -1,0 +1,34 @@
+{
+  "joint_names": [
+    "FL_HAA",
+    "FL_HFE",
+    "FL_KFE",
+    "FR_HAA",
+    "FR_HFE",
+    "FR_KFE",
+    "RL_HAA",
+    "RL_HFE",
+    "RL_KFE",
+    "RR_HAA",
+    "RR_HFE",
+    "RR_KFE"
+  ],
+  "home_rad": [
+    0,
+    0.5,
+    -1.1,
+    0,
+    0.5,
+    -1.1,
+    0,
+    0.5,
+    -1.1,
+    0,
+    0.5,
+    -1.1
+  ],
+  "unit": "radians",
+  "axes": "HAA=+X, pitch=-front*Y",
+  "servo_encoder_mapping": "physical sign: HAA=front, HFE/KFE=-front*side; zero offsets must be measured",
+  "urdf_status": "visual/inertia/joint import asset only; no Isaac contact model or actuator is silently assigned"
+}

@@ -38,33 +38,14 @@
     ]
   },
   {
-    "part": "haa_front",
-    "quantity": 4,
-    "material": "PLA",
-    "solid_volume_mm3": 2960.12,
-    "solid_mass_g": 3.671,
-    "print_bbox_mm": [
-      24.0,
-      48.0,
-      3.0
-    ],
-    "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
-    "print_rotation_quat_xyzw": [
-      0.0,
-      0.0,
-      0.0,
-      1.0
-    ]
-  },
-  {
     "part": "haa_back",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 2960.12,
-    "solid_mass_g": 3.671,
+    "solid_volume_mm3": 1445.46,
+    "solid_mass_g": 1.792,
     "print_bbox_mm": [
       24.0,
-      48.0,
+      43.998,
       3.0
     ],
     "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
@@ -79,12 +60,12 @@
     "part": "haa_bridge",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 4569.31,
-    "solid_mass_g": 5.666,
+    "solid_volume_mm3": 2093.98,
+    "solid_mass_g": 2.597,
     "print_bbox_mm": [
-      24.0,
+      22.4,
       33.5,
-      6.0
+      6.4
     ],
     "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
     "print_rotation_quat_xyzw": [
@@ -98,8 +79,8 @@
     "part": "thigh_front",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 4719.23,
-    "solid_mass_g": 5.852,
+    "solid_volume_mm3": 4045.21,
+    "solid_mass_g": 5.016,
     "print_bbox_mm": [
       24.0,
       89.0,
@@ -117,8 +98,8 @@
     "part": "thigh_back",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 4764.85,
-    "solid_mass_g": 5.908,
+    "solid_volume_mm3": 4090.83,
+    "solid_mass_g": 5.073,
     "print_bbox_mm": [
       24.0,
       89.0,
@@ -136,12 +117,12 @@
     "part": "thigh_bridge",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 4569.31,
-    "solid_mass_g": 5.666,
+    "solid_volume_mm3": 2093.98,
+    "solid_mass_g": 2.597,
     "print_bbox_mm": [
-      24.0,
+      22.4,
       33.5,
-      6.0
+      6.4
     ],
     "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
     "print_rotation_quat_xyzw": [
@@ -155,11 +136,11 @@
     "part": "calf_front",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 3602.12,
-    "solid_mass_g": 4.467,
+    "solid_volume_mm3": 1655.46,
+    "solid_mass_g": 2.053,
     "print_bbox_mm": [
       24.0,
-      63.0,
+      61.998,
       3.0
     ],
     "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
@@ -174,11 +155,11 @@
     "part": "calf_back",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 3602.12,
-    "solid_mass_g": 4.467,
+    "solid_volume_mm3": 1655.46,
+    "solid_mass_g": 2.053,
     "print_bbox_mm": [
       24.0,
-      63.0,
+      61.998,
       3.0
     ],
     "note": "Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.",
@@ -193,12 +174,12 @@
     "part": "calf_bridge",
     "quantity": 4,
     "material": "PLA",
-    "solid_volume_mm3": 4546.5,
-    "solid_mass_g": 5.638,
+    "solid_volume_mm3": 2071.17,
+    "solid_mass_g": 2.568,
     "print_bbox_mm": [
-      24.0,
+      22.4,
       33.5,
-      6.0
+      6.4
     ],
     "note": "Two M2x45 through-bolts and nuts join flat cheeks; no hidden printed threads",
     "print_rotation_quat_xyzw": [
@@ -228,39 +209,77 @@
     ]
   },
   {
-    "part": "hip_C_carrier_left",
-    "quantity": 2,
+    "part": "hip_front_carrier_FL",
+    "quantity": 1,
     "material": "PLA",
-    "solid_volume_mm3": 6014.3,
-    "solid_mass_g": 7.458,
+    "solid_volume_mm3": 3903.57,
+    "solid_mass_g": 4.84,
     "print_bbox_mm": [
-      24.0,
-      48.0,
-      39.5
+      39.0,
+      43.998,
+      38.5
     ],
-    "note": "Support-required prototype. 2x M2x10/nuts to riser; front case M2x6 + washer.",
+    "note": "One-piece HAA front cheek / HFE case carrier. Four case screws and four horn screws are distinct.",
     "print_rotation_quat_xyzw": [
-      0.7071067811865476,
       0.0,
+      0.7071067811865476,
       0.0,
       0.7071067811865476
     ]
   },
   {
-    "part": "hip_C_carrier_right",
-    "quantity": 2,
+    "part": "hip_front_carrier_FR",
+    "quantity": 1,
     "material": "PLA",
-    "solid_volume_mm3": 6014.3,
-    "solid_mass_g": 7.458,
+    "solid_volume_mm3": 3903.57,
+    "solid_mass_g": 4.84,
     "print_bbox_mm": [
-      24.0,
-      48.0,
-      39.5
+      39.0,
+      43.998,
+      38.5
     ],
-    "note": "Support-required prototype. 2x M2x10/nuts to riser; front case M2x6 + washer.",
+    "note": "One-piece HAA front cheek / HFE case carrier. Four case screws and four horn screws are distinct.",
     "print_rotation_quat_xyzw": [
+      0.0,
       0.7071067811865476,
       0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "hip_front_carrier_RL",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 3903.57,
+    "solid_mass_g": 4.84,
+    "print_bbox_mm": [
+      39.0,
+      43.998,
+      38.5
+    ],
+    "note": "One-piece HAA front cheek / HFE case carrier. Four case screws and four horn screws are distinct.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.7071067811865476,
+      0.0,
+      0.7071067811865476
+    ]
+  },
+  {
+    "part": "hip_front_carrier_RR",
+    "quantity": 1,
+    "material": "PLA",
+    "solid_volume_mm3": 3903.57,
+    "solid_mass_g": 4.84,
+    "print_bbox_mm": [
+      39.0,
+      43.998,
+      38.5
+    ],
+    "note": "One-piece HAA front cheek / HFE case carrier. Four case screws and four horn screws are distinct.",
+    "print_rotation_quat_xyzw": [
+      0.0,
+      0.7071067811865476,
       0.0,
       0.7071067811865476
     ]
@@ -269,10 +288,10 @@
     "part": "body_base",
     "quantity": 1,
     "material": "PLA",
-    "solid_volume_mm3": 44600.34,
-    "solid_mass_g": 55.304,
+    "solid_volume_mm3": 12250.24,
+    "solid_mass_g": 15.19,
     "print_bbox_mm": [
-      156.0,
+      144.0,
       96.0,
       3.0
     ],
@@ -288,10 +307,10 @@
     "part": "electronics_deck",
     "quantity": 1,
     "material": "PLA",
-    "solid_volume_mm3": 14066.38,
-    "solid_mass_g": 17.442,
+    "solid_volume_mm3": 9762.38,
+    "solid_mass_g": 12.105,
     "print_bbox_mm": [
-      156.0,
+      144.0,
       46.0,
       2.0
     ],
@@ -307,11 +326,11 @@
     "part": "body_lid",
     "quantity": 1,
     "material": "PLA",
-    "solid_volume_mm3": 24626.38,
-    "solid_mass_g": 30.537,
+    "solid_volume_mm3": 9650.38,
+    "solid_mass_g": 11.966,
     "print_bbox_mm": [
-      156.0,
-      96.0,
+      144.0,
+      50.0,
       2.0
     ],
     "note": "PCB and battery held by straps and foam. Board headers remain an envelope check.",
@@ -364,12 +383,12 @@
     "part": "foot_pad",
     "quantity": 4,
     "material": "TPU",
-    "solid_volume_mm3": 1432.04,
-    "solid_mass_g": 1.733,
+    "solid_volume_mm3": 1203.07,
+    "solid_mass_g": 1.456,
     "print_bbox_mm": [
       13.99,
       14.0,
-      16.458
+      11.458
     ],
     "note": "TPU95A optional; start with bought rubber pad if no TPU is available",
     "print_rotation_quat_xyzw": [

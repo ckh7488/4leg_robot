@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="microquad_xl330_v1">
+  <link name="trunk">
+    <inertial>
+      <origin xyz="-0.001866055275 3.322375373e-19 -0.007129704448" rpy="0 0 0" />
+      <mass value="0.3027270000000001" />
+      <inertia ixx="0.00019616630563338221" iyy="0.0003086090761809876" izz="0.00039997512120392424" ixy="-2.4851486705875544e-21" ixz="-9.036483534627585e-06" iyz="2.0268308676980805e-21" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/trunk.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FL_haa">
+    <inertial>
+      <origin xyz="0.0167231887 0.01440885314 -0.004145687934" rpy="0 0 0" />
+      <mass value="0.037550999999999994" />
+      <inertia ixx="8.537278037047847e-06" iyy="2.163923073155643e-05" izz="2.4228575069318563e-05" ixy="-3.824936419106813e-06" ixz="2.8452376208948594e-06" iyz="7.37318934155472e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FL_haa.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FL_thigh">
+    <inertial>
+      <origin xyz="4.139692064e-18 -0.005222979142 -0.03691657553" rpy="0 0 0" />
+      <mass value="0.038507999999999994" />
+      <inertia ixx="3.3606882685493e-05" iyy="2.9534689704197693e-05" izz="7.1140551355140615e-06" ixy="-1.1880000632768742e-21" ixz="3.770380603353045e-21" iyz="1.6621321040047016e-06" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FL_thigh.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FL_calf">
+    <inertial>
+      <origin xyz="-1.658119621e-12 -0.007346335885 -0.01845891785" rpy="0 0 0" />
+      <mass value="0.015952000000000004" />
+      <inertia ixx="1.1230469128256474e-05" iyy="9.108277796533332e-06" izz="2.8521241512235843e-06" ixy="-6.808066610710886e-17" ixz="-9.414802005796836e-16" iyz="-2.660899168411519e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FL_calf.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FR_haa">
+    <inertial>
+      <origin xyz="0.0167231887 -0.01440885314 -0.004145687934" rpy="0 0 0" />
+      <mass value="0.037550999999999994" />
+      <inertia ixx="8.537278037047847e-06" iyy="2.163923073155643e-05" izz="2.422857506931856e-05" ixy="3.824936419106813e-06" ixz="2.845237620894858e-06" iyz="-7.373189341554729e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FR_haa.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FR_thigh">
+    <inertial>
+      <origin xyz="3.924971974e-18 0.005222979142 -0.03691657553" rpy="0 0 0" />
+      <mass value="0.038507999999999994" />
+      <inertia ixx="3.3606882685493006e-05" iyy="2.953468970419769e-05" izz="7.114055135514062e-06" ixy="1.0467435487613982e-21" ixz="4.158086768402869e-21" iyz="-1.662132104004702e-06" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FR_thigh.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="FR_calf">
+    <inertial>
+      <origin xyz="1.658122763e-12 0.007346335885 -0.01845891785" rpy="0 0 0" />
+      <mass value="0.015952000000000004" />
+      <inertia ixx="1.1230469128256477e-05" iyy="9.108277796533328e-06" izz="2.8521241512235843e-06" ixy="-6.808073317848089e-17" ixz="9.414818255340728e-16" iyz="2.660899168411558e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/FR_calf.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RL_haa">
+    <inertial>
+      <origin xyz="-0.0167231887 0.01440885314 -0.004145687934" rpy="0 0 0" />
+      <mass value="0.037550999999999994" />
+      <inertia ixx="8.537278037047847e-06" iyy="2.1639230731556434e-05" izz="2.4228575069318563e-05" ixy="3.824936419106812e-06" ixz="-2.8452376208948585e-06" iyz="7.373189341554718e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RL_haa.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RL_thigh">
+    <inertial>
+      <origin xyz="1.456980466e-18 -0.005222979142 -0.03691657553" rpy="0 0 0" />
+      <mass value="0.038507999999999994" />
+      <inertia ixx="3.360688268549302e-05" iyy="2.953468970419771e-05" izz="7.1140551355140615e-06" ixy="1.6575379686637442e-22" ixz="1.1033659113248546e-21" iyz="1.6621321040047056e-06" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RL_thigh.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RL_calf">
+    <inertial>
+      <origin xyz="-1.658128648e-12 -0.007346335885 -0.01845891785" rpy="0 0 0" />
+      <mass value="0.015952000000000004" />
+      <inertia ixx="1.1230469128256474e-05" iyy="9.108277796533327e-06" izz="2.852124151223585e-06" ixy="-6.808072300904911e-17" ixz="-9.414851646051104e-16" iyz="-2.6608991684115325e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RL_calf.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RR_haa">
+    <inertial>
+      <origin xyz="-0.0167231887 -0.01440885314 -0.004145687934" rpy="0 0 0" />
+      <mass value="0.037550999999999994" />
+      <inertia ixx="8.537278037047844e-06" iyy="2.163923073155643e-05" izz="2.4228575069318556e-05" ixy="-3.824936419106812e-06" ixz="-2.8452376208948594e-06" iyz="-7.373189341554732e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RR_haa.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RR_thigh">
+    <inertial>
+      <origin xyz="1.282722686e-18 0.005222979142 -0.03691657553" rpy="0 0 0" />
+      <mass value="0.038507999999999994" />
+      <inertia ixx="3.3606882685493026e-05" iyy="2.953468970419771e-05" izz="7.1140551355140615e-06" ixy="-2.9432416208468683e-22" ixz="1.2747857995565907e-21" iyz="-1.6621321040047022e-06" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RR_thigh.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="RR_calf">
+    <inertial>
+      <origin xyz="1.658112339e-12 0.007346335885 -0.01845891785" rpy="0 0 0" />
+      <mass value="0.015952000000000004" />
+      <inertia ixx="1.123046912825647e-05" iyy="9.108277796533327e-06" izz="2.8521241512235843e-06" ixy="-6.808035937018225e-17" ixz="9.414774040449653e-16" iyz="2.660899168411551e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="../meshes/RR_calf.stl" scale=".001 .001 .001" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="FL_HAA" type="revolute">
+    <parent link="trunk" />
+    <child link="FL_haa" />
+    <origin xyz="0.03 0.036 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.3" upper="0.3" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="FL_HFE" type="revolute">
+    <parent link="FL_haa" />
+    <child link="FL_thigh" />
+    <origin xyz="0.035 0.025 0" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="0.15" upper="1" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="FL_KFE" type="revolute">
+    <parent link="FL_thigh" />
+    <child link="FL_calf" />
+    <origin xyz="0 0.005 -0.065" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.8" upper="-0.4" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="FR_HAA" type="revolute">
+    <parent link="trunk" />
+    <child link="FR_haa" />
+    <origin xyz="0.03 -0.036 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.3" upper="0.3" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="FR_HFE" type="revolute">
+    <parent link="FR_haa" />
+    <child link="FR_thigh" />
+    <origin xyz="0.035 -0.025 0" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="0.15" upper="1" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="FR_KFE" type="revolute">
+    <parent link="FR_thigh" />
+    <child link="FR_calf" />
+    <origin xyz="0 -0.005 -0.065" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.8" upper="-0.4" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RL_HAA" type="revolute">
+    <parent link="trunk" />
+    <child link="RL_haa" />
+    <origin xyz="-0.03 0.036 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.3" upper="0.3" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RL_HFE" type="revolute">
+    <parent link="RL_haa" />
+    <child link="RL_thigh" />
+    <origin xyz="-0.035 0.025 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.15" upper="1" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RL_KFE" type="revolute">
+    <parent link="RL_thigh" />
+    <child link="RL_calf" />
+    <origin xyz="0 0.005 -0.065" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.8" upper="-0.4" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RR_HAA" type="revolute">
+    <parent link="trunk" />
+    <child link="RR_haa" />
+    <origin xyz="-0.03 -0.036 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.3" upper="0.3" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RR_HFE" type="revolute">
+    <parent link="RR_haa" />
+    <child link="RR_thigh" />
+    <origin xyz="-0.035 -0.025 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.15" upper="1" effort=".52" velocity="10.786134777324955" />
+  </joint>
+  <joint name="RR_KFE" type="revolute">
+    <parent link="RR_thigh" />
+    <child link="RR_calf" />
+    <origin xyz="0 -0.005 -0.065" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.8" upper="-0.4" effort=".52" velocity="10.786134777324955" />
+  </joint>
+</robot>

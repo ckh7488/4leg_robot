@@ -1,0 +1,28 @@
+{
+  "scope": "5 seconds deterministic standing, BAM M6 + transport delay + PWM slew, no RL or walking",
+  "mujoco_version": "3.3.7",
+  "joint_count": 12,
+  "mass_kg": 0.6707709999999999,
+  "cad_foot_max_error_m": 4.2906540299871865e-11,
+  "inertia_eigenvalues_positive": true,
+  "min_base_height_m": 0.10683336710252819,
+  "end_base_height_m": 0.10709782260099741,
+  "max_base_lean_deg": 0.05078444225082042,
+  "peak_actuator_torque_nm": 0.32328344843159246,
+  "feet_contacting_at_end": [
+    "FL_foot",
+    "FR_foot",
+    "RL_foot",
+    "RR_foot"
+  ],
+  "motor_voltage_v": 5,
+  "command_delay_model_s": 0.010220594809412403,
+  "pwm_slope_register": 140,
+  "pass": true,
+  "limitations": [
+    "No hardware calibration at 5V.",
+    "No RL gait, disturbances or terrain trial.",
+    "Collision geometry is a documented primitive approximation, not the whole CAD mesh.",
+    "Supply droop, backlash, temperature and continuous torque require further identification."
+  ]
+}

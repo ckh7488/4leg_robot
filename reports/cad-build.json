@@ -1,18 +1,18 @@
 {
   "scope": "CAD validity and individual-part build-volume only; no fabrication release",
-  "object_count": 115,
-  "custom_part_types": 21,
+  "object_count": 111,
+  "custom_part_types": 22,
   "all_solids_valid": true,
   "assembly_bbox_mm": [
-    184.406,
-    235.0,
+    226.811,
+    155.0,
     131.432
   ],
   "individual_parts_fit_180mm": true,
-  "printed_solid_mass_g": 356.4,
+  "printed_solid_mass_g": 195.77,
   "home_foot_bottom_z_mm": [
-    -0.0,
-    -0.0,
+    0.0,
+    0.0,
     -0.0,
     -0.0
   ],

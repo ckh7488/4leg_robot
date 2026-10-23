@@ -1,0 +1,6 @@
+{
+  "scope": "all home-pose solid pairs including module envelopes; positive volumes are unresolved unless explicitly explained",
+  "object_count": 111,
+  "exact_common_tests": 60,
+  "positive_intersections": []
+}

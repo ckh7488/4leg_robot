@@ -9,3 +9,10 @@ sources/XL330-official.*
 sources/XL330-drawing-*.png
 sources/oem-inspection.json
 *.zip
+
+.venv/
+_runs/
+*.FCBak
+_probe_bam.py
+inspect_oem.py
+read_drawing.py

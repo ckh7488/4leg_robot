@@ -16,7 +16,7 @@ def mul(*rr):
  r=I
  for x in rr:r=r.multiply(x)
  return r
-R_HAA=A.Rotation(A.Vector(0,1,0),A.Vector(0,0,1),A.Vector(1,0,0),'ZXY')
+def r_haa(front):return A.Rotation(A.Vector(0,front,0),A.Vector(0,0,1),A.Vector(front,0,0),'ZXY')
 def r_pitch(side):return A.Rotation(A.Vector(-side,0,0),A.Vector(0,0,1),A.Vector(0,side,0),'ZXY')
 def box(x,y,z,dx,dy,dz):return Part.makeBox(dx,dy,dz,A.Vector(x,y,z))
 def cyl(r,h,p,axis=(0,0,1)):return Part.makeCylinder(r,h,V(p),V(axis))
@@ -66,14 +66,16 @@ for name,th in [('front_spacer',G['front_spacer']),('back_spacer',G['back_spacer
 # Each yoke is two flat cheeks and a separate bridge: no long unsupported roof.
 def cheek(kind,back=False):
  z=G['back_cheek_z'] if back else G['front_cheek_z']
- if kind=='haa':ymin=-38
+ if kind=='haa':ymin=-35
  elif kind=='thigh':ymin=-(G['upper_length']+14)
  else:ymin=-53
- sh=box(-12,ymin,z,24,10-ymin,3)
+ if kind in ['haa','calf']:
+  by=-47 if kind=='calf' else -32
+  sh=fuse([cyl(9,3,(0,0,z)),box(-6,ymin,z,12,-5-ymin,3),box(-12,by-3,z,24,6,3)])
+ else:sh=box(-12,ymin,z,24,10-ymin,3)
  # Remove windows without weakening the PCD12 output attachment.
  if kind=='thigh':
-  sh=sh.cut(box(-5,-24,z-1,10,12,5))
-  sh=sh.cut(box(-5,-G['upper_length']+12,z-1,10,15,5))
+  sh=sh.cut(box(-5,-G['upper_length']-12,z-1,10,G['upper_length'],5))
  elif kind=='calf':sh=sh.cut(box(-5,-40,z-1,10,25,5))
  else:sh=sh.cut(box(-4,-26,z-1,8,13,5))
  sh=holes_z(sh,[(6,0),(-6,0),(0,6),(0,-6)],z-1,5)
@@ -96,7 +98,8 @@ for kind in ['haa','thigh','calf']:
   add_def(kind+('_back' if back else '_front'),cheek(kind,back),'PLA','#35b7bc',
           'Print flat. Standard 2.2mm clearance holes; verify coupon and screw engagement.')
  by=-50 if kind=='calf' else -35
- sh=box(-12,by,G['bridge_z_min'],24,6,G['bridge_z_max']-G['bridge_z_min'])
+ depth=G['bridge_z_max']-G['bridge_z_min']
+ sh=fuse([cyl(3.2,depth,(-8,by+3,G['bridge_z_min'])),cyl(3.2,depth,(8,by+3,G['bridge_z_min'])),box(-8,by,-9.75,16,6,3)])
  sh=holes_z(sh,[(-8,by+3),(8,by+3)],G['bridge_z_min']-1,40)
  if kind=='calf':
   sh=sh.cut(cyl(1.1,8,(0,by-1,-8.25),(0,1,0)))
@@ -109,44 +112,45 @@ sh=sh.cut(cyl(8.3,5,(0,0,-23.5)))
 sh=holes_z(sh,[(x,y) for x in [-8,8] for y in [7.5,-22.5]],-23.5,5)
 for x in [-8,8]:sh=sh.cut(cyl(1.1,5,(x,-30.5,-12),(0,1,0)))
 add_def('haa_case_mount',sh,'PLA','#e4a74a','Use case holes, not case-assembly screws. Support needed under short foot if necessary.')
-# C-shaped HFE carrier in the HAA parent frame. It clears the whole rear cheek.
-for side,label in [(1,'left'),(-1,'right')]:
- def sybox(x,ya,z,dx,dy,dz):
-  return box(x,ya if side==1 else -ya-dy,z,dx,dy,dz)
- f=G['hfe_offset_y']; plate=f+3.5
- sh=fuse([sybox(-20,32,9,24,3,12),sybox(-20,32,18,24,plate+3-32,3),
-          sybox(-20,plate,-27,24,3,48)])
- # motor output axis and four case mounting holes
- sh=sh.cut(cyl(8.3,5,(-8,side*(plate-1),0),(0,side,0)))
+# Integrated HAA rotating front cheek + short orthogonal HFE fixed-case mount.
+# HFE is shifted fore/aft by 35mm, keeping lateral lever arm at 25mm.
+for name,front,side in [('FL',1,1),('FR',1,-1),('RL',-1,1),('RR',-1,-1)]:
+ def bsign(x,y,z,dx,dy,dz):
+  return box(x if front==1 else -x-dx,y if side==1 else -y-dy,z,dx,dy,dz)
+ f=G['hfe_offset_y'];xx=G['hfe_offset_x'];plate=f+3.5
+ rotor=placed(parts['haa_front']['shape'],[0,0,0],mul(rx(side*math.pi/2),r_haa(front)))
+ sh=fuse([rotor,bsign(8.5,plate,-5,xx-8.5,3,10),bsign(xx-12,plate,-27,24,3,39)])
+ sh=sh.cut(cyl(8.3,5,(front*xx,side*(plate-1),0),(0,side,0)))
  for x in [-8,8]:
   for y in [7.5,-22.5]:
-   sh=sh.cut(cyl(1.1,5,(-8-side*x,side*(plate-1),y),(0,side,0)))
- # Connect carrier to HAA bridge with two through-bolts in the vertical riser.
- # These are separate from the two long Z-axis bridge bolts.
- for xx in [-16,0]:
-  sh=sh.cut(cyl(1.1,5,(xx,side*31,15),(0,side,0)))
- add_def('hip_C_carrier_'+label,sh,'PLA','#e4a74a',
-         'Support-required prototype. 2x M2x10/nuts to riser; front case M2x6 + washer.',
-         rx(math.pi/2))
+   sh=sh.cut(cyl(1.1,5,(front*xx-side*x,side*(plate-1),y),(0,side,0)))
+ add_def('hip_front_carrier_'+name,sh,'PLA','#e4a74a',
+  'One-piece HAA front cheek / HFE case carrier. Four case screws and four horn screws are distinct.',
+  ry(math.pi/2))
 # Base, divider and lid with shared spacer holes.
-spacers=[(x,y) for x in [-58,0,58] for y in [-20,20]]
+spacers=[(x,y) for x in [-40,0,40] for y in [-20,20]]
 for name,z,th,w in [('body_base',G['body_bottom_z'],3,G['body_width']),
-                    ('electronics_deck',0,2,46),('body_lid',20,2,G['body_width'])]:
- sh=box(-86,-w/2,z,156,w,th)
+                    ('electronics_deck',0,2,46),('body_lid',20,2,50)]:
+ sh=box(-G['body_length']/2,-w/2,z,G['body_length'],w,th)
  sh=holes_z(sh,spacers,z-1,th+2)
  if name=='body_base':
+  sh=fuse([box(-G['body_length']/2,-18,z,G['body_length'],36,th),box(13,-48,z,10,96,th),box(-23,-48,z,10,96,th)]+[cyl(4,th,(x,y,z)) for x,y in spacers])
+  sh=holes_z(sh,spacers,z-1,th+2)
+  for xx,ww in [(-64,24),(-32,24),(2,24),(34,30)]:sh=sh.cut(box(xx,-12,z-1,ww,24,th+2))
   for front in [1,-1]:
    for side in [1,-1]:
     # local carrier foot holes transformed through R_HAA
     for xx in [-8,8]:
-     sh=sh.cut(cyl(1.1,5,(front*G['haa_x']-12,side*G['haa_y']+xx,z-1)))
+     sh=sh.cut(cyl(1.1,5,(front*(G['haa_x']-12),side*G['haa_y']+xx,z-1)))
   for x in [-30,14]:
    for y in [-19,17]:sh=sh.cut(box(x,y,z-1,7,2,th+2))
  if name=='body_lid':
   for x in range(-70,60,16):
-   for y in [-35,27]:sh=sh.cut(box(x,y,z-1,10,8,th+2))
+   for y in [-14,6]:sh=sh.cut(box(x,y,z-1,10,8,th+2))
   for x in [-50,-30,-10,10,30,50]:sh=sh.cut(box(x,-10,z-1,10,20,th+2))
  if name=='electronics_deck':
+  # Slots and central windows leave board edge supports and spacer lands.
+  for xx in [-70,-44,-18,8,34]:sh=sh.cut(box(xx,-10,z-1,16,20,th+2))
   # Universal strap / tie slots; no claim of a specific board standoff fit.
   for x in [-60,-32,-4,24,52]:
    for y in [-16,14]:sh=sh.cut(box(x,y,z-1,6,2,th+2))
@@ -156,7 +160,7 @@ for name,z,h in [('spacer_lower',-29.5,29.5),('spacer_upper',2,18)]:
  sh=cyl(3.2,h,(0,0,z)).cut(cyl(1.1,h+2,(0,0,z-1)))
  add_def(name,sh,'PLA','#738b9c','M2x60 through-bolt, washer and nut; do not overtighten')
 # TPU foot, with a removable screw/washer retained central stem.
-pad=fuse([Part.makeSphere(7,A.Vector(0,-55,-8.25)),cyl(3.8,6,(0,-51,-8.25),(0,1,0))])
+pad=Part.makeSphere(7,A.Vector(0,-55,-8.25)).cut(box(-10,-50,-20,20,20,25))
 pad=pad.cut(cyl(1.1,15,(0,-62,-8.25),(0,1,0)))
 pad=pad.cut(cyl(2.7,7,(0,-63,-8.25),(0,1,0)))
 add_def('foot_pad',pad,'TPU','#d8e4e9','TPU95A optional; start with bought rubber pad if no TPU is available',rx(math.pi/2))
@@ -173,34 +177,34 @@ add_def('fit_coupon',coupon,'PLA','#e4a74a','One before production; hole labels 
 kin=[]
 for name,front,side in [('FL',1,1),('FR',1,-1),('RL',-1,1),('RR',-1,-1)]:
  p0=[front*G['haa_x'],side*G['haa_y'],H]
- RH=rx(q0); RP=r_pitch(side)
- p1=vecsum(p0,list(rotp(RH,[G['hfe_offset_x'],side*G['hfe_offset_y'],0])))
- p2=vecsum(p1,list(rotp(mul(RH,ry(q1)),[0,side*G['knee_lateral_offset'],-G['upper_length']])))
- foot=vecsum(p2,list(rotp(mul(RH,ry(q1+q2)),[0,side*G['foot_lateral_offset'],-G['lower_foot_center_length']])))
+ RH=rx(q0); RP=r_pitch(side);R_HAA=r_haa(front);ps=-front
+ p1=vecsum(p0,list(rotp(RH,[front*G['hfe_offset_x'],side*G['hfe_offset_y'],0])))
+ p2=vecsum(p1,list(rotp(mul(RH,ry(ps*q1)),[0,side*G['knee_lateral_offset'],-G['upper_length']])))
+ foot=vecsum(p2,list(rotp(mul(RH,ry(ps*(q1+q2))),[0,side*G['foot_lateral_offset'],-G['lower_foot_center_length']])))
  k={'name':name,'front':front,'side':side,'haa':p0,'hfe':p1,'kfe':p2,'foot_center':foot}
  kin.append(k)
  add_inst(name+'_haa_case','reference_motor',p0,R_HAA,'reference')
  add_inst(name+'_haa_idler','reference_idler',p0,R_HAA,'reference')
  add_inst(name+'_haa_mount','haa_case_mount',p0,R_HAA)
  rhaa=mul(rx(q0+side*math.pi/2),R_HAA)
- rth=mul(RH,ry(q1),RP);rcalf=mul(RH,ry(q1+q2),RP)
+ rth=mul(RH,ry(ps*q1),RP);rcalf=mul(RH,ry(ps*(q1+q2)),RP)
  add_inst(name+'_hfe_case','reference_motor',p1,mul(RH,RP),'reference')
  add_inst(name+'_hfe_idler','reference_idler',p1,mul(RH,RP),'reference')
- add_inst(name+'_kfe_case','reference_motor',p2,mul(RH,ry(q1),RP,rz(math.pi)),'reference')
+ add_inst(name+'_kfe_case','reference_motor',p2,mul(RH,ry(ps*q1),RP,rz(math.pi)),'reference')
  add_inst(name+'_kfe_idler','reference_idler',p2,mul(RH,ry(q1),RP,rz(math.pi)),'reference')
  for kind,p,r in [('haa',p0,rhaa),('thigh',p1,rth),('calf',p2,rcalf)]:
-  for suffix in ['front','back','bridge']:add_inst(name+'_'+kind+'_'+suffix,kind+'_'+suffix,p,r)
+  for suffix in (['back','bridge'] if kind=='haa' else ['front','back','bridge']):add_inst(name+'_'+kind+'_'+suffix,kind+'_'+suffix,p,r)
   # Spacers are part of the child link, not the motor case.
   add_inst(name+'_'+kind+'_front_spacer','front_spacer',vecsum(p,list(rotp(r,[0,0,6.5]))),r)
   add_inst(name+'_'+kind+'_back_spacer','back_spacer',vecsum(p,list(rotp(r,[0,0,-25]))),r)
- add_inst(name+'_hip_C_carrier','hip_C_carrier_'+('left' if side==1 else 'right'),p0,RH)
+ add_inst(name+'_hip_front_carrier','hip_front_carrier_'+name,p0,RH)
  add_inst(name+'_foot','foot_pad',p2,rcalf)
 for key in ['body_base','electronics_deck','body_lid']:add_inst(key,key,[0,0,H])
 for i,(x,y) in enumerate(spacers):
  for key in ['spacer_lower','spacer_upper']:add_inst(f'{key}_{i}',key,[x,y,H])
 # Board/battery envelopes are included in FCStd for review, but not print outputs.
 for key,sz,pc in [('battery',G['battery_box'],G['battery_center']),('sbc',G['sbc_box'],G['sbc_center']),
-                  ('mcu',G['mcu_box'],G['mcu_center']),('motor_regulator',[46,31,10],[-61,0,-16])]:
+                  ('mcu',G['mcu_box'],G['mcu_center']),('motor_regulator',[46,31,10],[-48.5,0,-16])]:
  sh=box(*[-s/2 for s in sz],*sz)
  add_def('envelope_'+key,sh,'envelope','#be6d5c','MODULE ENVELOPE: verify exact purchased SKU')
  add_inst(key+'_envelope','envelope_'+key,[pc[0],pc[1],H+pc[2]],I,'envelope')
@@ -212,6 +216,7 @@ for key,p in parts.items():
  if p['material'] in ['reference','envelope']:continue
  qty=sum(a['key']==key for a in instances)
  if key=='fit_coupon':qty=1
+ if qty==0:continue
  # Flat cheeks need only translation. Bridges/carriers have documented orientations.
  sh=placed(p['shape'],[0,0,0],p['print_rotation'])
  b=sh.BoundBox;sh.translate(A.Vector(-b.XMin,-b.YMin,-b.ZMin))

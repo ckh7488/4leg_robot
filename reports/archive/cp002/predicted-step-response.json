@@ -1,0 +1,39 @@
+{
+  "status": "simulation prediction only; no hardware sample and no p95 claim",
+  "voltage_v": 5,
+  "firmware_kp": 400,
+  "pwm_slope": 140,
+  "transport_delay_reference_s": 0.010220594809412403,
+  "results": [
+    {
+      "nominal_gravity_load_nm": 0,
+      "first_motion_ms": 20,
+      "settle_to_final_band_ms": 225,
+      "static_goal_error_deg": -0.3302610824815393,
+      "actual_step_deg": 9.669620212585391,
+      "definition": "1% or 0.05deg initial movement; 2% or 0.1deg of final steady state, not zero position error"
+    },
+    {
+      "nominal_gravity_load_nm": 0.05,
+      "first_motion_ms": 18,
+      "settle_to_final_band_ms": 421,
+      "static_goal_error_deg": 2.7586686349001788,
+      "actual_step_deg": 10.118809525078627,
+      "definition": "1% or 0.05deg initial movement; 2% or 0.1deg of final steady state, not zero position error"
+    },
+    {
+      "nominal_gravity_load_nm": 0.1,
+      "first_motion_ms": 18,
+      "settle_to_final_band_ms": 594,
+      "static_goal_error_deg": 5.713400292698625,
+      "actual_step_deg": 9.992723758993641,
+      "definition": "1% or 0.05deg initial movement; 2% or 0.1deg of final steady state, not zero position error"
+    }
+  ],
+  "limitations": [
+    "BAM fit was not identified on our 5V actuator.",
+    "No gear backlash or controller sampling jitter.",
+    "The gravity load changes with angle.",
+    "Firmware slew wrapper is a documented approximation needing measured comparison."
+  ]
+}

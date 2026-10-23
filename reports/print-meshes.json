@@ -1,0 +1,314 @@
+{
+  "status": "STL topology and standard 3MF package check; Bambu Studio slicing not executed",
+  "parts": [
+    {
+      "part": "front_spacer",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        16.0,
+        16.0,
+        2.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2032
+    },
+    {
+      "part": "back_spacer",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        16.0,
+        16.0,
+        2.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2032
+    },
+    {
+      "part": "haa_back",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        43.997825622558594,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2688
+    },
+    {
+      "part": "haa_bridge",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        22.399999618530273,
+        33.5,
+        6.400000095367432
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 1624
+    },
+    {
+      "part": "thigh_front",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        89.0,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 3984
+    },
+    {
+      "part": "thigh_back",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        89.0,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2624
+    },
+    {
+      "part": "thigh_bridge",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        22.399999618530273,
+        33.5,
+        6.400000095367432
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 1624
+    },
+    {
+      "part": "calf_front",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        61.997825622558594,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2704
+    },
+    {
+      "part": "calf_back",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        61.997825622558594,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2704
+    },
+    {
+      "part": "calf_bridge",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        22.399999618530273,
+        33.5,
+        6.400000095367439
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 1964
+    },
+    {
+      "part": "haa_case_mount",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        24.0,
+        41.5,
+        17.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2400
+    },
+    {
+      "part": "hip_front_carrier_FL",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        39.0,
+        43.99782533571124,
+        38.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 4420
+    },
+    {
+      "part": "hip_front_carrier_FR",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        39.0,
+        43.99782562255859,
+        38.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 4420
+    },
+    {
+      "part": "hip_front_carrier_RL",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        39.0,
+        43.99782533571124,
+        38.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 4420
+    },
+    {
+      "part": "hip_front_carrier_RR",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        39.0,
+        43.997825622558594,
+        38.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 4420
+    },
+    {
+      "part": "body_base",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        144.0,
+        96.0,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 6340
+    },
+    {
+      "part": "electronics_deck",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        144.0,
+        46.0,
+        2.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2352
+    },
+    {
+      "part": "body_lid",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        144.0,
+        50.0,
+        2.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2436
+    },
+    {
+      "part": "spacer_lower",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        6.400000095367432,
+        6.400000095367432,
+        29.5
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 672
+    },
+    {
+      "part": "spacer_upper",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        6.400000095367432,
+        6.400000095367432,
+        18.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 672
+    },
+    {
+      "part": "foot_pad",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        13.990406743250787,
+        14.0,
+        11.458327949047089
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 3928
+    },
+    {
+      "part": "fit_coupon",
+      "watertight": true,
+      "winding_consistent": true,
+      "volume_positive": true,
+      "bounds_mm": [
+        62.0,
+        32.0,
+        3.0
+      ],
+      "fits_180mm": true,
+      "standard_3mf_unit_mm": true,
+      "triangles": 2392
+    }
+  ],
+  "all_pass": true
+}

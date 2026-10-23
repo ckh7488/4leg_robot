@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="microquad_xl330_v1">
+  <compiler angle="radian" meshdir="../meshes" />
+  <option timestep=".001" gravity="0 0 -9.81" iterations="80" integrator="implicitfast" />
+  <default>
+    <joint limited="true" damping=".005" armature=".0016" />
+    <geom friction=".8 .01 .001" condim="3" solref=".006 1" solimp=".9 .95 .001" />
+  </default>
+  <asset>
+    <mesh name="trunk_mesh" file="trunk.stl" scale=".001 .001 .001" />
+    <mesh name="FL_haa_mesh" file="FL_haa.stl" scale=".001 .001 .001" />
+    <mesh name="FL_thigh_mesh" file="FL_thigh.stl" scale=".001 .001 .001" />
+    <mesh name="FL_calf_mesh" file="FL_calf.stl" scale=".001 .001 .001" />
+    <mesh name="FR_haa_mesh" file="FR_haa.stl" scale=".001 .001 .001" />
+    <mesh name="FR_thigh_mesh" file="FR_thigh.stl" scale=".001 .001 .001" />
+    <mesh name="FR_calf_mesh" file="FR_calf.stl" scale=".001 .001 .001" />
+    <mesh name="RL_haa_mesh" file="RL_haa.stl" scale=".001 .001 .001" />
+    <mesh name="RL_thigh_mesh" file="RL_thigh.stl" scale=".001 .001 .001" />
+    <mesh name="RL_calf_mesh" file="RL_calf.stl" scale=".001 .001 .001" />
+    <mesh name="RR_haa_mesh" file="RR_haa.stl" scale=".001 .001 .001" />
+    <mesh name="RR_thigh_mesh" file="RR_thigh.stl" scale=".001 .001 .001" />
+    <mesh name="RR_calf_mesh" file="RR_calf.stl" scale=".001 .001 .001" />
+  </asset>
+  <worldbody>
+    <light pos="0 0 1" dir="0 0 -1" />
+    <geom name="floor" type="plane" size="2 2 .1" rgba=".85 .87 .9 1" />
+    <body name="trunk" pos="0 0 0.1094363253">
+      <freejoint name="root" />
+      <inertial pos="-0.001866055275 3.322375373e-19 -0.007129704448" mass="0.3027270000000001" fullinertia="0.0001961663056 0.0003086090762 0.0003999751212 -2.485148671e-21 -9.036483535e-06 2.026830868e-21" />
+      <geom type="mesh" mesh="trunk_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+      <body name="FL_haa" pos="0.03 0.036 0">
+        <body name="FL_thigh" pos="0.035 0.025 0">
+          <body name="FL_calf" pos="0 0.005 -0.065">
+            <joint name="FL_KFE" axis="0 -1 0" range="-1.8 -0.4" />
+            <inertial pos="-1.658119621e-12 -0.007346335885 -0.01845891785" mass="0.015952000000000004" fullinertia="1.123046913e-05 9.108277797e-06 2.852124151e-06 -6.808066611e-17 -9.414802006e-16 -2.660899168e-07" />
+            <geom type="mesh" mesh="FL_calf_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+            <geom name="FL_foot" type="sphere" pos="0 -0.00825 -0.055" size="0.007" rgba=".2 .2 .2 1" />
+          </body>
+          <joint name="FL_HFE" axis="0 -1 0" range="0.15 1" />
+          <inertial pos="4.139692064e-18 -0.005222979142 -0.03691657553" mass="0.038507999999999994" fullinertia="3.360688269e-05 2.95346897e-05 7.114055136e-06 -1.188000063e-21 3.770380603e-21 1.662132104e-06" />
+          <geom type="mesh" mesh="FL_thigh_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+          <geom name="FL_kfe_case_collision" type="box" pos="1.303328537e-17 -0.003 -0.0575" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="-0.7071067812 0.7071067812 5.551115123e-17 5.551115123e-17" />
+        </body>
+        <joint name="FL_HAA" axis="1 0 0" range="-0.3 0.3" />
+        <inertial pos="0.0167231887 0.01440885314 -0.004145687934" mass="0.037550999999999994" fullinertia="8.537278037e-06 2.163923073e-05 2.422857507e-05 -3.824936419e-06 2.845237621e-06 7.373189342e-07" />
+        <geom type="mesh" mesh="FL_haa_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+        <geom name="FL_hfe_case_collision" type="box" pos="0.035 0.017 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0 0 0.7071067812 0.7071067812" />
+      </body>
+      <body name="FR_haa" pos="0.03 -0.036 0">
+        <body name="FR_thigh" pos="0.035 -0.025 0">
+          <body name="FR_calf" pos="0 -0.005 -0.065">
+            <joint name="FR_KFE" axis="0 -1 0" range="-1.8 -0.4" />
+            <inertial pos="1.658122763e-12 0.007346335885 -0.01845891785" mass="0.015952000000000004" fullinertia="1.123046913e-05 9.108277797e-06 2.852124151e-06 -6.808073318e-17 9.414818255e-16 2.660899168e-07" />
+            <geom type="mesh" mesh="FR_calf_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+            <geom name="FR_foot" type="sphere" pos="0 0.00825 -0.055" size="0.007" rgba=".2 .2 .2 1" />
+          </body>
+          <joint name="FR_HFE" axis="0 -1 0" range="0.15 1" />
+          <inertial pos="3.924971974e-18 0.005222979142 -0.03691657553" mass="0.038507999999999994" fullinertia="3.360688269e-05 2.95346897e-05 7.114055136e-06 1.046743549e-21 4.158086768e-21 -1.662132104e-06" />
+          <geom type="mesh" mesh="FR_thigh_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+          <geom name="FR_kfe_case_collision" type="box" pos="1.538842406e-17 0.003 -0.0575" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="5.551115123e-17 5.551115123e-17 -0.7071067812 0.7071067812" />
+        </body>
+        <joint name="FR_HAA" axis="1 0 0" range="-0.3 0.3" />
+        <inertial pos="0.0167231887 -0.01440885314 -0.004145687934" mass="0.037550999999999994" fullinertia="8.537278037e-06 2.163923073e-05 2.422857507e-05 3.824936419e-06 2.845237621e-06 -7.373189342e-07" />
+        <geom type="mesh" mesh="FR_haa_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+        <geom name="FR_hfe_case_collision" type="box" pos="0.035 -0.017 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.7071067812 0.7071067812 0 0" />
+      </body>
+      <body name="RL_haa" pos="-0.03 0.036 0">
+        <body name="RL_thigh" pos="-0.035 0.025 0">
+          <body name="RL_calf" pos="0 0.005 -0.065">
+            <joint name="RL_KFE" axis="0 1 0" range="-1.8 -0.4" />
+            <inertial pos="-1.658128648e-12 -0.007346335885 -0.01845891785" mass="0.015952000000000004" fullinertia="1.123046913e-05 9.108277797e-06 2.852124151e-06 -6.808072301e-17 -9.414851646e-16 -2.660899168e-07" />
+            <geom type="mesh" mesh="RL_calf_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+            <geom name="RL_foot" type="sphere" pos="0 -0.00825 -0.055" size="0.007" rgba=".2 .2 .2 1" />
+          </body>
+          <joint name="RL_HFE" axis="0 1 0" range="0.15 1" />
+          <inertial pos="1.456980466e-18 -0.005222979142 -0.03691657553" mass="0.038507999999999994" fullinertia="3.360688269e-05 2.95346897e-05 7.114055136e-06 1.657537969e-22 1.103365911e-21 1.662132104e-06" />
+          <geom type="mesh" mesh="RL_thigh_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+          <geom name="RL_kfe_case_collision" type="box" pos="-1.177569344e-18 -0.003 -0.0575" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="-0.7071067812 0.7071067812 5.551115123e-17 5.551115123e-17" />
+        </body>
+        <joint name="RL_HAA" axis="1 0 0" range="-0.3 0.3" />
+        <inertial pos="-0.0167231887 0.01440885314 -0.004145687934" mass="0.037550999999999994" fullinertia="8.537278037e-06 2.163923073e-05 2.422857507e-05 3.824936419e-06 -2.845237621e-06 7.373189342e-07" />
+        <geom type="mesh" mesh="RL_haa_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+        <geom name="RL_hfe_case_collision" type="box" pos="-0.035 0.017 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0 0 0.7071067812 0.7071067812" />
+      </body>
+      <body name="RR_haa" pos="-0.03 -0.036 0">
+        <body name="RR_thigh" pos="-0.035 -0.025 0">
+          <body name="RR_calf" pos="0 -0.005 -0.065">
+            <joint name="RR_KFE" axis="0 1 0" range="-1.8 -0.4" />
+            <inertial pos="1.658112339e-12 0.007346335885 -0.01845891785" mass="0.015952000000000004" fullinertia="1.123046913e-05 9.108277797e-06 2.852124151e-06 -6.808035937e-17 9.41477404e-16 2.660899168e-07" />
+            <geom type="mesh" mesh="RR_calf_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+            <geom name="RR_foot" type="sphere" pos="0 0.00825 -0.055" size="0.007" rgba=".2 .2 .2 1" />
+          </body>
+          <joint name="RR_HFE" axis="0 1 0" range="0.15 1" />
+          <inertial pos="1.282722686e-18 0.005222979142 -0.03691657553" mass="0.038507999999999994" fullinertia="3.360688269e-05 2.95346897e-05 7.114055136e-06 -2.943241621e-22 1.2747858e-21 -1.662132104e-06" />
+          <geom type="mesh" mesh="RR_thigh_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+          <geom name="RR_kfe_case_collision" type="box" pos="1.177569344e-18 0.003 -0.0575" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="5.551115123e-17 5.551115123e-17 -0.7071067812 0.7071067812" />
+        </body>
+        <joint name="RR_HAA" axis="1 0 0" range="-0.3 0.3" />
+        <inertial pos="-0.0167231887 -0.01440885314 -0.004145687934" mass="0.037550999999999994" fullinertia="8.537278037e-06 2.163923073e-05 2.422857507e-05 -3.824936419e-06 -2.845237621e-06 -7.373189342e-07" />
+        <geom type="mesh" mesh="RR_haa_mesh" contype="0" conaffinity="0" group="2" mass="0" rgba=".22 .58 .62 1" />
+        <geom name="RR_hfe_case_collision" type="box" pos="-0.035 -0.017 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.7071067812 0.7071067812 0 0" />
+      </body>
+      <geom name="FL_haa_case_collision" type="box" pos="0.022 0.036 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.5 0.5 0.5 0.5" />
+      <geom name="FR_haa_case_collision" type="box" pos="0.022 -0.036 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.5 0.5 0.5 0.5" />
+      <geom name="RL_haa_case_collision" type="box" pos="-0.022 0.036 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.5 0.5 -0.5 -0.5" />
+      <geom name="RR_haa_case_collision" type="box" pos="-0.022 -0.036 -0.0075" size="0.01 0.017 0.0115" group="3" rgba=".4 .4 .4 .15" quat="0.5 0.5 -0.5 -0.5" />
+      <geom name="base_core" type="box" pos="0 0 -0.031" size="0.072 0.018 0.0015" group="3" rgba=".4 .4 .4 .15" />
+      <geom name="base_cross_-18" type="box" pos="-0.018 0 -0.031" size="0.005 0.048 0.0015" group="3" rgba=".4 .4 .4 .15" />
+      <geom name="base_cross_18" type="box" pos="0.018 0 -0.031" size="0.005 0.048 0.0015" group="3" rgba=".4 .4 .4 .15" />
+      <geom name="lid" type="box" pos="0 0 0.021" size="0.072 0.025 0.001" group="3" rgba=".4 .4 .4 .15" />
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="FL_HAA_act" joint="FL_HAA" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="FL_HFE_act" joint="FL_HFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="FL_KFE_act" joint="FL_KFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="FR_HAA_act" joint="FR_HAA" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="FR_HFE_act" joint="FR_HFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="FR_KFE_act" joint="FR_KFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RL_HAA_act" joint="RL_HAA" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RL_HFE_act" joint="RL_HFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RL_KFE_act" joint="RL_KFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RR_HAA_act" joint="RR_HAA" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RR_HFE_act" joint="RR_HFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+    <motor name="RR_KFE_act" joint="RR_KFE" gear="1" ctrllimited="true" ctrlrange="-.65 .65" />
+  </actuator>
+  <keyframe>
+    <key name="home" qpos="0 0 0.1094363253 1 0 0 0 0 0.5 -1.1 0 0.5 -1.1 0 0.5 -1.1 0 0.5 -1.1" />
+  </keyframe>
+</mujoco>
