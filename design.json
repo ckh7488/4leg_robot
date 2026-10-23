@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "name": "Microquad XL330 V1",
+  "status": "engineering prototype; not fabrication released",
+  "budget_cap_krw": 1000000,
+  "nominal_mass_target_kg": 0.6,
+  "motor": {
+    "model": "ROBOTIS XL330-M288-T",
+    "unit_price_krw_vat": 26400,
+    "mass_kg": 0.018,
+    "supply_v": 5,
+    "allowed_voltage_v": [
+      3.7,
+      6
+    ],
+    "stall_torque_nm": 0.52,
+    "no_load_rpm": 103,
+    "continuous_torque_nm": null,
+    "fit_delay_s": 0.010220594809412403
+  },
+  "geometry_mm": {
+    "haa_x": 58,
+    "haa_y": 36,
+    "hfe_offset_x": -8,
+    "hfe_offset_y": 65,
+    "upper_length": 65,
+    "lower_foot_center_length": 55,
+    "knee_lateral_offset": 5,
+    "foot_lateral_offset": -8.25,
+    "foot_radius": 7,
+    "body_center_x": -8,
+    "body_length": 156,
+    "body_width": 96,
+    "body_bottom_z": -32.5,
+    "body_top_z": 20,
+    "body_wall": 2.4,
+    "plate_thickness": 3,
+    "front_spacer": 2,
+    "back_spacer": 2.5,
+    "front_cheek_z": 8.5,
+    "back_cheek_z": -28,
+    "bridge_z_min": -25,
+    "bridge_z_max": 8.5,
+    "haa_bridge_y_min": -35,
+    "haa_bridge_y_max": -29,
+    "upper_bridge_y_min": -35,
+    "upper_bridge_y_max": -29,
+    "lower_bridge_y_min": -50,
+    "lower_bridge_y_max": -44,
+    "cheek_width": 24,
+    "case_front_z": 3.5,
+    "case_back_z": -19.5,
+    "horn_face_z": 6.5,
+    "idler_face_z": -22.5,
+    "clearance_hole": 2.2,
+    "horn_pcd": 12,
+    "rotor_center_clearance": 7,
+    "case_axis_clearance": 16.6,
+    "battery_box": [
+      58,
+      32,
+      22
+    ],
+    "battery_center": [
+      -8,
+      0,
+      -17
+    ],
+    "sbc_box": [
+      65,
+      30,
+      10
+    ],
+    "sbc_center": [
+      -8,
+      0,
+      10
+    ]
+  },
+  "home_rad": [
+    0,
+    0.5,
+    -1.1
+  ],
+  "joint_limits_rad": {
+    "HAA": [
+      -0.35,
+      0.35
+    ],
+    "HFE": [
+      0.15,
+      1
+    ],
+    "KFE": [
+      -1.8,
+      -0.4
+    ]
+  },
+  "control": {
+    "policy_hz": 100,
+    "mcu_joint_bus_hz": 500,
+    "imu_hz": 1000,
+    "bus_count": 2,
+    "motors_per_bus": 6,
+    "baud": 2000000,
+    "return_delay_us": 0,
+    "initial_pwm_slope": 140,
+    "profile_velocity": 0,
+    "profile_acceleration": 0,
+    "position_p_gain_initial": 200,
+    "position_i_gain_initial": 0,
+    "position_d_gain_initial": 0
+  },
+  "response_acceptance_targets": {
+    "status": "design targets, not measurements or guarantees",
+    "command_to_first_motion_p95_ms": 40,
+    "loaded_10degree_step_settle_p95_ms": 150,
+    "stale_command_stop_ms": 100
+  },
+  "mass_budget_kg": {
+    "motors": 0.216,
+    "idlers_spacers_fasteners": 0.055,
+    "printed_structure": 0.16,
+    "battery": 0.055,
+    "power": 0.027,
+    "sbc": 0.017,
+    "mcu_imu": 0.015,
+    "wiring": 0.025,
+    "foot_pads": 0.01,
+    "margin": 0.02
+  },
+  "sources": [
+    {
+      "id": "R01",
+      "url": "https://www.robotis.com/shop/item.php?it_id=902-0163-000",
+      "scope": "price and lead time"
+    },
+    {
+      "id": "R02",
+      "url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+      "scope": "dimensions, stall vs continuous, voltage, registers, default PWM slope"
+    },
+    {
+      "id": "R03",
+      "url": "https://www.robotis.com/service/download.php?no=1987",
+      "scope": "OEM STEP; dynamically redirects to Dropbox"
+    },
+    {
+      "id": "R04",
+      "url": "https://github.com/Rhoban/bam",
+      "scope": "identified actuator model; not a unit-specific calibration"
+    },
+    {
+      "id": "R05",
+      "url": "https://github.com/pollen-robotics/microduck_rl",
+      "scope": "MuJoCo Warp real-robot transfer reference; its overvoltage settings are not copied"
+    },
+    {
+      "id": "R06",
+      "url": "https://github.com/dreamerarun/isaaclab_microduck",
+      "scope": "Isaac port reference; smoke check only, not validated physical walking"
+    },
+    {
+      "id": "R07",
+      "url": "https://us.store.bambulab.com/products/a1-mini",
+      "scope": "180mm build volume / 0.4mm nozzle"
+    }
+  ]
+}

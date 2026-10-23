@@ -1,0 +1,11 @@
+_deps/
+__pycache__/
+*.pyc
+_matplotlib_cache/
+_private/
+*.FCStd1
+*.bak
+sources/XL330-official.*
+sources/XL330-drawing-*.png
+sources/oem-inspection.json
+*.zip
