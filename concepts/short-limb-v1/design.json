@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "name": "짧은 팔다리 BLDC 로봇 — 형상 탐색 V1",
+  "date": "2026-10-24",
+  "status": "concept screening; not fabrication released; no walking simulation",
+  "requirements": {
+    "quadrupedal_locomotion": true,
+    "bipedal_walking_not_only_standing": true,
+    "self_righting_from_falls": true,
+    "fast_response": true,
+    "short_visible_limbs": true,
+    "motor_family": "brushless; integrated or DIY low-ratio drive still open",
+    "power": "external DC tether for initial development; read cable pull; do not use tether to support body",
+    "budget_reference_krw": 2000000,
+    "budget_is_hard_cap": false,
+    "manufacturing_or_purchase_release": false
+  },
+  "geometry_exploration_mm": {
+    "status": "design search ranges, not verified dimensions",
+    "upright_overall_height": [
+      280,
+      360
+    ],
+    "body_shell_width": [
+      180,
+      220
+    ],
+    "visible_appendage_length": [
+      50,
+      80
+    ],
+    "hip_to_ankle_link_sum": [
+      100,
+      120
+    ],
+    "rear_foot_length": [
+      70,
+      90
+    ],
+    "rear_foot_width": [
+      45,
+      65
+    ],
+    "note": "Part of each articulated leg may lie inside the shell. Internal clearances, joint axes, foot placement and recovery reach are unverified."
+  },
+  "architectures": [
+    {
+      "id": "twelve",
+      "name": "12관절 비교안",
+      "front_limbs": 2,
+      "front_axes_per_limb": 3,
+      "rear_limbs": 2,
+      "rear_axes_per_limb": 3,
+      "locomotion_axes": 12,
+      "head_pitch_axes": 1,
+      "rear_ankle_pitch": false,
+      "role": "Lower actuator count comparator; foot orientation is coupled to leg posture. Bipedal capability is not presumed."
+    },
+    {
+      "id": "fourteen",
+      "name": "14관절 우선 검토안",
+      "front_limbs": 2,
+      "front_axes_per_limb": 3,
+      "rear_limbs": 2,
+      "rear_axes_per_limb": 4,
+      "locomotion_axes": 14,
+      "head_pitch_axes": 1,
+      "rear_ankle_pitch": true,
+      "role": "Adds fore-aft rear-foot orientation control. Lateral ankle control, axis arrangement, flat contact and bipedal balance remain unverified. Not a committed motor count."
+    }
+  ],
+  "mass_allowance_kg": {
+    "status": "engineering allocations, not CAD or measured masses; locomotion motors excluded",
+    "frame_links_bearings_fasteners": 0.42,
+    "feet_and_front_pads": 0.18,
+    "thin_decorative_head_and_shell": 0.18,
+    "head_pitch_drive": 0.06,
+    "compute_imu_and_bus": 0.1,
+    "power_wiring_and_regen_share": 0.16,
+    "tether_attachment_and_force_sensor": 0.1
+  },
+  "actuator_mass_references": [
+    {
+      "id": "ak40",
+      "model": "CubeMars AK40-10 V3.0",
+      "mass_kg": 0.19,
+      "diameter_mm": 53,
+      "length_mm": 40.2,
+      "source_id": "ak40",
+      "selected": false
+    },
+    {
+      "id": "edulite",
+      "model": "RobStride EduLite 05",
+      "mass_kg": 0.242,
+      "source_id": "edulite",
+      "selected": false
+    }
+  ],
+  "screening": {
+    "gravity_m_s2": 9.81,
+    "illustrative_total_mass_kg": 4.0,
+    "mass_sweep_kg": [
+      3.0,
+      4.0,
+      5.0
+    ],
+    "vertical_reaction_moment_arms_m": [
+      0.03,
+      0.06
+    ],
+    "equal_load_support_counts": [
+      4,
+      2,
+      1
+    ],
+    "tether_force_n": 2.0,
+    "tether_height_m": 0.2,
+    "effective_link_examples_m": [
+      0.08,
+      0.11,
+      0.16
+    ],
+    "illustrative_tip_speed_m_s": 1.0,
+    "model_scope": "Quasi-static contribution from a vertical support force at a chosen joint: (m*g/support_count)*horizontal_moment_arm. Equal load sharing, no inertia, no lateral force or limb weight. Not joint-by-joint inverse dynamics, continuous rating or motor selection. Tip speed examples use one rigid rotating link, not robot walking speed."
+  },
+  "verification_gates": [
+    "Both stances: actual joint axes, ranges and motor envelopes fit without interference; face remains forward with head-pitch motion.",
+    "Single-support biped stance: feasible foot contact, center of pressure, joint torques and velocity; include head mass and sensed tether force.",
+    "Quadruped to biped transition and side/back self-righting: feet/forepaws can reach ground and produce useful moments before shell collision.",
+    "One actuator and then one leg: loaded response, current-to-torque calibration, holding temperature, transmission compliance, backlash and current limits.",
+    "Free-body walking and recovery simulation with identified actuator limits; later hardware transfer. A pose illustration or tether-assisted stand is not a pass."
+  ],
+  "sources": [
+    {
+      "id": "biped_physical",
+      "url": "https://arxiv.org/abs/2311.05818",
+      "scope": "뒷발 균형과 두 발 동작 실물 근거. 이 새 형상의 실증이 아님.",
+      "checked": "2026-10-24",
+      "title": "4족 로봇의 실제 두 발 동작 연구"
+    },
+    {
+      "id": "biped_sim",
+      "url": "https://arxiv.org/html/2407.02282v1",
+      "scope": "점 형태 발, 관절 가동 범위와 제어 축 부족의 문제. 이 논문의 보행 결과는 시뮬레이션임.",
+      "checked": "2026-10-24",
+      "title": "4족 로봇의 두 발 보행 시뮬레이션 연구"
+    },
+    {
+      "id": "ak40",
+      "url": "https://www.cubemars.com/product/ak40-10-v3-0-kv170-robotic-actuator.html",
+      "scope": "모듈 질량·외형 치수 참고. 선정된 제품이 아님.",
+      "checked": "2026-10-24",
+      "title": "CubeMars AK40-10 V3 제조사 사양"
+    },
+    {
+      "id": "edulite",
+      "url": "https://www.seeedstudio.com/Robostride-05-Edulite-Actuator-p-6667.html",
+      "scope": "모듈 질량 참고. 선정된 제품이 아님.",
+      "checked": "2026-10-24",
+      "title": "EduLite 05 판매처 사양"
+    },
+    {
+      "id": "regen",
+      "url": "https://docs.odriverobotics.com/v/latest/hardware/regen-clamp-datasheet.html",
+      "scope": "모터가 돌려보내는 에너지 처리 원리. 이 로봇의 회로 설계가 아님.",
+      "checked": "2026-10-24",
+      "title": "외부 전원과 회생 전력 처리"
+    }
+  ]
+}

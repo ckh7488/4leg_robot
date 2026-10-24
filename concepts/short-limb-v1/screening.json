@@ -1,0 +1,193 @@
+{
+  "status": "illustrative quasi-static and mass screening only",
+  "scope": "Quasi-static contribution from a vertical support force at a chosen joint: (m*g/support_count)*horizontal_moment_arm. Equal load sharing, no inertia, no lateral force or limb weight. Not joint-by-joint inverse dynamics, continuous rating or motor selection. Tip speed examples use one rigid rotating link, not robot walking speed.",
+  "static_cases": [
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.22072499999999998
+    },
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 0.44144999999999995
+    },
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 0.8828999999999999
+    },
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.44144999999999995
+    },
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 0.8828999999999999
+    },
+    {
+      "mass_kg": 3.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 1.7657999999999998
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.2943
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 0.5886
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 1.1772
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.5886
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 1.1772
+    },
+    {
+      "mass_kg": 4.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 2.3544
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.367875
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 0.73575
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.03,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 1.4715
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 4,
+      "support_force_contribution_nm": 0.73575
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 2,
+      "support_force_contribution_nm": 1.4715
+    },
+    {
+      "mass_kg": 5.0,
+      "horizontal_moment_arm_m": 0.06,
+      "equal_load_supports": 1,
+      "support_force_contribution_nm": 2.943
+    }
+  ],
+  "mass_scenarios": [
+    {
+      "architecture": "twelve",
+      "module": "ak40",
+      "locomotion_axes": 12,
+      "head_pitch_axes": 1,
+      "module_mass_total_kg": 2.2800000000000002,
+      "non_locomotion_module_allowance_kg": 1.2,
+      "estimated_total_kg": 3.4800000000000004
+    },
+    {
+      "architecture": "twelve",
+      "module": "edulite",
+      "locomotion_axes": 12,
+      "head_pitch_axes": 1,
+      "module_mass_total_kg": 2.904,
+      "non_locomotion_module_allowance_kg": 1.2,
+      "estimated_total_kg": 4.104
+    },
+    {
+      "architecture": "fourteen",
+      "module": "ak40",
+      "locomotion_axes": 14,
+      "head_pitch_axes": 1,
+      "module_mass_total_kg": 2.66,
+      "non_locomotion_module_allowance_kg": 1.2,
+      "estimated_total_kg": 3.8600000000000003
+    },
+    {
+      "architecture": "fourteen",
+      "module": "edulite",
+      "locomotion_axes": 14,
+      "head_pitch_axes": 1,
+      "module_mass_total_kg": 3.388,
+      "non_locomotion_module_allowance_kg": 1.2,
+      "estimated_total_kg": 4.588
+    }
+  ],
+  "single_rigid_link_examples": [
+    {
+      "length_m": 0.08,
+      "tip_speed_m_s": 1.0,
+      "angular_speed_rad_s": 12.5
+    },
+    {
+      "length_m": 0.11,
+      "tip_speed_m_s": 1.0,
+      "angular_speed_rad_s": 9.090909090909092
+    },
+    {
+      "length_m": 0.16,
+      "tip_speed_m_s": 1.0,
+      "angular_speed_rad_s": 6.25
+    }
+  ],
+  "tether_example": {
+    "force_n": 2.0,
+    "assumed_horizontal_force_height_m": 0.2,
+    "body_overturning_moment_nm": 0.4,
+    "if_instead_vertical_fraction_of_body_weight": 0.0509683995922528,
+    "note": "Horizontal and vertical examples are separate directions, not simultaneous components."
+  },
+  "verified": [
+    "Configuration arithmetic and explicit assumptions only"
+  ],
+  "not_verified": [
+    "Joint kinematics",
+    "Motor packaging",
+    "Mass properties",
+    "Ground contact",
+    "Standing",
+    "Walking",
+    "Self-righting",
+    "Actuator dynamics",
+    "Thermal limits",
+    "Sim-to-real",
+    "Total cost"
+  ],
+  "input_sha256": "f7f940452d6719c66814d0cf1e46fddca7f8472bd04bc750cd19e21f67636898"
+}
