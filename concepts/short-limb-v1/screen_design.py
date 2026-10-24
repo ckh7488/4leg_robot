@@ -54,15 +54,17 @@ def screen(config):
 
 
 def main():
-    raw = (HERE/'design.json').read_bytes()
+    # Git may normalize Windows CRLF checkouts to LF. Hash the same text everywhere.
+    raw = (HERE/'design.json').read_text(encoding='utf-8').encode('utf-8')
     config = json.loads(raw)
     report = screen(config)
     report['input_sha256'] = hashlib.sha256(raw).hexdigest()
-    (HERE/'screening.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    report['input_sha256_normalization'] = 'UTF-8 text with universal newlines normalized to LF'
+    (HERE/'screening.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     html = (HERE/'concept.template.html').read_text(encoding='utf-8')
     data = json.dumps({'config': config, 'report': report}, ensure_ascii=False).replace('</', '<\\/')
     html = html.replace('__CONCEPT_DATA__', data)
-    (HERE/'concept.html').write_text(html, encoding='utf-8')
+    (HERE/'concept.html').write_text(html, encoding='utf-8', newline='\n')
     print(json.dumps({'cases': len(report['static_cases']), 'mass_scenarios': report['mass_scenarios'],
                       'input_sha256': report['input_sha256'], 'walking_validated': False}, ensure_ascii=False, indent=2))
 
