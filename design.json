@@ -129,11 +129,17 @@
   },
   "response_acceptance_targets": {
     "status": "design targets, not measurements or guarantees",
+    "speed_and_accuracy_are_separate": true,
     "command_to_first_motion_p95_ms": 40,
-    "loaded_10degree_step_settle_p95_ms": 150,
+    "step_rise_to_90pct_of_reached_p95_ms": 150,
     "stale_command_stop_ms": 100,
-    "position_tolerance_deg": 0.2,
-    "settle_observed_hold_ms": 100
+    "static_compliance": "characterized in deg per N*m from loaded hold; no pass/fail until a gait accuracy budget exists; simulation must reproduce the measured 5V value",
+    "diagnostic_goal_band_deg": 0.2,
+    "diagnostic_settle_hold_ms": 100,
+    "terminal_stability_max_span_deg": 0.1,
+    "terminal_stability_max_drift_deg_s": 1.0,
+    "min_reached_command_fraction": 0.5,
+    "accuracy_acceptance_status": "pending gait accuracy budget; speed pass alone is not overall acceptance"
   },
   "mass_budget_kg": {
     "motors": 0.216,
@@ -155,7 +161,7 @@
     {
       "id": "R02",
       "url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
-      "scope": "dimensions, stall vs continuous, voltage, registers, default PWM slope"
+      "scope": "dimensions, stall vs continuous, voltage, stall current, registers, default PWM slope, gain ranges"
     },
     {
       "id": "R03",
@@ -182,5 +188,15 @@
       "url": "https://us.store.bambulab.com/products/a1-mini",
       "scope": "180mm build volume / 0.4mm nozzle"
     }
-  ]
+  ],
+  "power": {
+    "status": "open; not designed",
+    "motor_rail_v": 5,
+    "motor_stall_current_a_at_5v": 1.47,
+    "motor_rail_all_stall_reference_sum_a": 17.64,
+    "motor_rail_design_peak_a": null,
+    "walking_rail_current_a": null,
+    "regulator_part": null,
+    "note": "Reference sum assumes all 12 motors at the published 5V stall current; it is not a guaranteed rail peak bound or a regulator rating. Transients, margin, operating mode and verified current limiting remain open. Walking current is unmeasured; regulator, battery, wiring and connectors are not selected."
+  }
 }
