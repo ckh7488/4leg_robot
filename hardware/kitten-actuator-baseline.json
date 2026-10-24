@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
   "checked_on": "2026-10-24",
-  "status": "selected_for_next_mechanical_layout; not fabrication released",
+  "status": "provisional_reference; selection_reopened_after_Damiao_review; not fabrication released",
+  "selection_review": {
+    "checked_on": "2026-10-24",
+    "record": "kitten-damiao-review.json",
+    "reason": "The earlier final recommendation did not adequately compare DM-J4310 variants or the smaller DM-J3507. GIM4305 remains a useful lightweight walking reference, not a demonstrated market-wide optimum.",
+    "final_choice": null
+  },
   "user_direction": "새끼고양이 비율과 짧고 가벼운 다리, 고양이다운 움직임을 우선. 모터 하나를 정하고 진행하도록 선택을 위임받음.",
   "selection": {
     "manufacturer": "SteadyWin",

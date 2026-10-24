@@ -1,0 +1,83 @@
+{
+  "checked_on": "2026-10-24",
+  "scope": "Targeted correction of omitted Damiao candidates; not an exhaustive motor market survey or hardware qualification",
+  "decision": "Reopen final selection; retain GIM4305 only as a provisional walking reference",
+  "candidates": [
+    {
+      "model": "DM-J4310-2EC V1.1",
+      "voltage_v": 24,
+      "mass_with_driver_kg_approx": 0.3,
+      "diameter_length_mm": [56, 46],
+      "gear_ratio": 10,
+      "rated_torque_nm": 3,
+      "peak_torque_nm": 7,
+      "rated_rpm": 120,
+      "no_load_rpm": 200,
+      "control": "Integrated driver; MIT torque/position/velocity/gains interface; CAN; dual encoders",
+      "spec_sources": ["D1"],
+      "price": {"value": 116, "currency": "USD", "status": "Foxtech displayed price, integrated driver included, 24/48 V family listing; exact stock and Korea landed cost unconfirmed", "source": "D2"},
+      "twelve_actuators_mass_kg_calculated": 3.6
+    },
+    {
+      "model": "DM-J4310-2EC V1.2",
+      "voltage_v": 24,
+      "mass_with_driver_kg_approx": 0.325,
+      "diameter_length_mm": [57, 46],
+      "gear_ratio": 10,
+      "rated_torque_nm": 3.5,
+      "peak_torque_nm": 12.5,
+      "rated_rpm": 120,
+      "no_load_rpm": 200,
+      "spec_sources": ["D3", "D4"],
+      "spec_note": "Torque confirmed on manufacturer page; other fields from republished V1.2 manual. Do not mix 48 V no-load speed 450 rpm with 24 V.",
+      "price": {"value": 158, "currency": "EUR", "status": "Eckstein displayed V1.2 24V price including German 19% VAT; net EUR 132.77. Delivery listings conflict; Korea availability and landed cost unconfirmed", "source": "D5"},
+      "twelve_actuators_mass_kg_calculated": 3.9
+    },
+    {
+      "model": "DM-J3507-2EC",
+      "voltage_v": 24,
+      "mass_with_driver_kg_approx": 0.15,
+      "diameter_length_mm": [46, 37.9],
+      "gear_ratio": 7,
+      "rated_torque_nm": 0.8,
+      "peak_torque_nm": 3,
+      "rated_rpm": 150,
+      "no_load_rpm": 460,
+      "control": "Integrated driver; MIT mode; dual encoders; CAN/CAN FD support documented",
+      "spec_sources": ["D6", "D7"],
+      "spec_note": "Torque confirmed on manufacturer page; remaining fields from republished manual. Exact supplied hardware/firmware revision not confirmed.",
+      "price": {"value": 120, "currency": "USD", "status": "AIFITLAB displayed 24 V driver-included option; USB adapter excluded; backordered. Korea landed cost unconfirmed", "source": "D8"},
+      "twelve_actuators_mass_kg_calculated": 1.8
+    }
+  ],
+  "gim4305_comparator": {
+    "record": "kitten-actuator-baseline.json",
+    "mass_with_driver_kg_reference": 0.15,
+    "rated_torque_nm_catalog": 1,
+    "stall_or_peak_torque_nm_catalog": 3.47,
+    "current_exact_variant_store_price": null,
+    "price_note": "USD 110 is a published approximate Pupper BOM unit cost; USD 130 is a planning allowance, neither is a verified current quote.",
+    "pupper_variant_fit_verified": false
+  },
+  "interpretation": [
+    "DM-J4310 is a credible low-reduction torque-controlled candidate. Higher published torque at a similar advertised USD price warrants comparison; rejecting it merely as an arm motor is unjustified.",
+    "Twelve V1.1 units add approximately 1.8 kg versus the catalog GIM4305 reference. V1.2 adds approximately 2.1 kg. These are actuator-only comparison scenarios, not selected joint counts or complete robot masses.",
+    "Higher torque also increases available load capacity. Motor mass alone cannot rank loaded acceleration; rotor inertia, limb placement, gearbox friction, torque-speed curve and controller delay are unresolved.",
+    "DM-J3507 is a directly relevant smaller competitor. Smaller diameter, output encoder and CAN FD do not by themselves prove better leg response or transfer.",
+    "Pupper provides directly relevant public quadruped learning/deployment resources for GIM4305. The Damiao manufacturer's Wheel-legged repository description documents four DM4310 units; it is not evidence of a kitten quadruped learning policy.",
+    "Keep catalog rated/peak torque, no-load speed and real loaded response separate; peak duration and enclosed cooling conditions remain unverified."
+  ],
+  "evidence_limit": "Read product pages, manuals and project documentation. Did not run either robot, watch a full DM4310 walking demonstration, measure a motor, or establish that no other legged project exists.",
+  "sources": [
+    {"id": "D1", "type": "manufacturer_manual_republished_translation", "url": "https://damiao.enactic.ai/products/hardware/dm-j4310-2ec-v1.1/"},
+    {"id": "D2", "type": "seller_price", "url": "https://www.foxtechrobotics.com/damiao-j4310-2ec-mit-driven-brushless-servo-joint-motor.html"},
+    {"id": "D3", "type": "manufacturer_product", "url": "https://www.damiaokeji.com/index.php?c=show&id=125"},
+    {"id": "D4", "type": "manufacturer_manual_republished_translation", "url": "https://wiki.aifitlab.com/damiao-docs/dm-j4310-2ec-v12-motor-instruction-manual"},
+    {"id": "D5", "type": "seller_price", "url": "https://eckstein-shop.de/dm-j4310-2ec-v1-2-24v-dual-encoder-servo-motor"},
+    {"id": "D6", "type": "manufacturer_product", "url": "https://www.damiaokeji.com/index.php?c=show&id=118"},
+    {"id": "D7", "type": "manufacturer_manual_republished_translation", "url": "https://wiki.aifitlab.com/damiao-docs/dm-j3507-2ec-v11-motor-instruction-manual"},
+    {"id": "D8", "type": "seller_price", "url": "https://aifitlab.com/products/damiao-dm-j3507-2ec-motor"},
+    {"id": "D9", "type": "manufacturer_project_index", "url": "https://gitee.com/kit-miao", "locator": "Wheel-legged description: four DM4310, two DM6215 wheel motors, DM-MC02 board"},
+    {"id": "D10", "type": "project_documentation", "url": "https://pupper-v3-documentation.readthedocs.io/en/latest/"}
+  ]
+}
