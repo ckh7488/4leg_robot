@@ -16,3 +16,7 @@ concepts/doro-model-v3/*.cjs text eol=lf
 concepts/doro-model-v3/*.urdf text eol=lf
 concepts/doro-model-v3/vendor/*.js text eol=lf
 concepts/doro-model-v3/meshes/*.obj text eol=lf
+concepts/cat-layout-v4/*.js text eol=lf
+concepts/cat-layout-v4/*.cjs text eol=lf
+concepts/cat-layout-v4/*.urdf text eol=lf
+concepts/cat-layout-v4/meshes/*.obj text eol=lf

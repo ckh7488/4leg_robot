@@ -2,9 +2,11 @@
 
 > 신규 AI는 이 문서 → `docs/STATE.md` → `design.json` → 최신 `docs/audits/` 순서로 읽는다.
 
+최신 방향은 **[새끼고양이 체형 V4](concepts/cat-layout-v4/index.html)**다. 도로롱 머리는 뒤로 미루고, 짧고 둥근 몸과 짧은 앞다리의 네 발 자세를 기본으로 삼는다. 일어서면 앞발을 옆으로 벌릴 수 있는 구조다. 앞다리 합을 34→25cm로 줄였고 아래 도로롱 V3는 이전 비교안으로 보존한다. 실물 크기·모터·질량·속도는 아직 미정이다. [V4 범위](concepts/cat-layout-v4/README.md).
+
 2026-10-24 새 방향: **큰 얼굴·짧은 팔다리로 네 발 보행, 두 발 보행, 넘어짐 복구**. BLDC 관절과 외부 전원 케이블의 당김 측정을 검토한다. 최신 지시는 크기와 가격보다 물리 구조를 우선한다. [전체 구조안](concepts/doro-layout-v2/README.md), [그림 중심 자료](concepts/doro-layout-v2/index.html)를 먼저 본다.
 
-최신 결과는 **[전신 3차원 관절 모델 V3](concepts/doro-model-v3/index.html)**다. 두 발 서기·춤·앉았다 펴기·제자리걸음·네 발 자세 전환을 돌려 보고, 외피를 숨기거나 19개 관절을 직접 움직일 수 있다. 동일한 관절 트리의 MuJoCo/URDF도 제공한다. 583개 자세에서 도달/범위/단순 충돌 도형을 검사했으며 제작 CAD·실제 균형/보행/복구는 미완료다. [검증 범위와 재현](concepts/doro-model-v3/README.md)을 함께 읽는다.
+이전 결과는 **[전신 3차원 관절 모델 V3](concepts/doro-model-v3/index.html)**다. 두 발 서기·춤·앉았다 펴기·제자리걸음·네 발 자세 전환을 돌려 보고, 외피를 숨기거나 19개 관절을 직접 움직일 수 있다. 동일한 관절 트리의 MuJoCo/URDF도 제공한다. 583개 자세에서 도달/범위/단순 충돌 도형을 검사했으며 제작 CAD·실제 균형/보행/복구는 미완료다. [검증 범위와 재현](concepts/doro-model-v3/README.md)을 함께 읽는다.
 
 추가 목표는 사용자가 지정한 고양이 춤 영상의 팔 제스처와 몸·다리의 리듬감이다. [동작 목표](concepts/doro-layout-v2/motion_targets.json)와 [이전 V2 어깨의 네 가지 끝점 검사](concepts/doro-layout-v2/motion_report.json)를 기록했다. V3에서는 어깨를 앞·바깥으로 옮기고 범위와 팔꿈치 방향을 수정했다. 춤이나 균형의 성공을 검증한 것은 아니다.
 
@@ -32,7 +34,8 @@
 
 | 경로 | 내용 |
 |---|---|
-| `concepts/doro-model-v3/` | 최신 전신 관절 모델·동작 화면·MuJoCo/URDF |
+| `concepts/cat-layout-v4/` | 최신 새끼고양이 체형과 19축 배치·모양 |
+| `concepts/doro-model-v3/` | 이전 전신 관절 모델·동작 화면·MuJoCo/URDF |
 | `concepts/doro-layout-v2/` | 이전 전체 구조·발목 전달 장치 탐색 |
 | `concepts/short-limb-v1/` | 이전 작은 마디 탐색; 별도 design.json·그림·계산 |
 | `design.json` | 이전 XL330 구현의 설계 기준값; 해당 모델의 원본 |

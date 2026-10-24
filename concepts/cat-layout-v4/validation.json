@@ -1,0 +1,30 @@
+{
+  "numerical_placeholder_mass_kg": 16.272000000000002,
+  "mass_is_v4_estimate": false,
+  "joints": 19,
+  "links": 20,
+  "sampled_frames": 340,
+  "additional_random_fk_poses": 32,
+  "max_errors": {
+    "urdf_mujoco_link_position_m": 1.4220500840710912e-16,
+    "urdf_mujoco_rotation_matrix": 8.881784197001252e-16,
+    "site_position_m": 1.531840977573676e-06,
+    "sole_orientation_rad": 1.8611544365878127e-07,
+    "loop_closure_rad": 1.1662503022202841e-06
+  },
+  "automatic_primitive_overlaps_below_1mm": {},
+  "all_motor_pair_overlaps_below_1mm": {},
+  "floor_penetration_below_1mm_m": 0.0,
+  "free_base_zero_input_smoke": {
+    "seconds": 0.20000000000000015,
+    "finite": true,
+    "final_base_height_m": 0.2595840015964253,
+    "balance_test": false
+  },
+  "not_covered": [
+    "continuous paths between samples",
+    "complete shell, mounting and wiring clearances",
+    "joint-limit physical stops",
+    "balance, motor limits and self-righting"
+  ]
+}

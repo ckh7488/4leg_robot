@@ -1,0 +1,223 @@
+{
+  "name": "Cat layout V4",
+  "date": "2026-10-24",
+  "status": "cat proportion and joint-layout study; no actuator selection or dynamic validation",
+  "axes": {
+    "rear_each": 6,
+    "front_each": 3,
+    "neck": 1
+  },
+  "coordinates": "metres, radians internally; +x forward, +y left, +z up; intrinsic joints applied in tree order",
+  "geometry_m": {
+    "rear_links": [
+      0.14,
+      0.15
+    ],
+    "front_links": [
+      0.12,
+      0.13
+    ],
+    "hip_yaw_origin": [
+      0,
+      0.045,
+      -0.065
+    ],
+    "hip_roll_offset": [
+      0,
+      0.055,
+      -0.055
+    ],
+    "hip_pitch_offset": [
+      0,
+      0.055,
+      0
+    ],
+    "shoulder_roll_origin": [
+      0,
+      0.121,
+      0.16
+    ],
+    "shoulder_pitch_offset": [
+      0,
+      0.049,
+      0
+    ],
+    "neck_origin": [
+      0,
+      0,
+      0.25
+    ],
+    "head_center": [
+      0.02,
+      0,
+      0.04
+    ],
+    "head_radii": [
+      0.145,
+      0.165,
+      0.13
+    ],
+    "body_center": [
+      0,
+      0,
+      0.03
+    ],
+    "body_radii": [
+      0.115,
+      0.15,
+      0.215
+    ],
+    "rear_foot_size": [
+      0.11,
+      0.085,
+      0.014
+    ],
+    "ankle_to_sole": 0.04,
+    "paw_radius": 0.035,
+    "standing_base_height": 0.42,
+    "rear_sole_targets": [
+      [
+        0.02,
+        -0.155,
+        0
+      ],
+      [
+        0.02,
+        0.155,
+        0
+      ]
+    ],
+    "quad_paw_targets": [
+      [
+        0.11,
+        -0.17,
+        0.035
+      ],
+      [
+        0.11,
+        0.17,
+        0.035
+      ]
+    ],
+    "quad_rear_sole_targets": [
+      [
+        -0.1,
+        -0.155,
+        0
+      ],
+      [
+        -0.1,
+        0.155,
+        0
+      ]
+    ],
+    "quad_base_height": 0.265
+  },
+  "limits_deg": {
+    "hip_yaw": [
+      -45,
+      45
+    ],
+    "hip_roll": [
+      -45,
+      45
+    ],
+    "hip_pitch": [
+      -155,
+      75
+    ],
+    "knee": [
+      2,
+      145
+    ],
+    "ankle_pitch": [
+      -100,
+      90
+    ],
+    "ankle_roll": [
+      -45,
+      45
+    ],
+    "shoulder_roll": [
+      -110,
+      110
+    ],
+    "shoulder_pitch": [
+      -170,
+      130
+    ],
+    "elbow": [
+      2,
+      155
+    ],
+    "neck_pitch": [
+      -105,
+      35
+    ]
+  },
+  "mass_allocations_kg": {
+    "base": 3.6,
+    "hip_yaw": 0.38,
+    "hip_roll": 0.54,
+    "thigh": 1.33,
+    "shank": 1.33,
+    "ankle_pitch": 0.05,
+    "foot": 0.22,
+    "shoulder_roll": 0.43,
+    "upper_arm": 1.28,
+    "forearm": 0.32,
+    "head": 0.912
+  },
+  "motor_envelopes": {
+    "large": {
+      "radius_m": 0.0335,
+      "length_m": 0.038,
+      "reference": "unselected compact actuator space assumption"
+    },
+    "medium": {
+      "radius_m": 0.028,
+      "length_m": 0.034,
+      "reference": "unselected compact actuator space assumption"
+    },
+    "head": {
+      "radius_m": 0.02,
+      "length_m": 0.03,
+      "reference": "unselected neck actuator space assumption"
+    }
+  },
+  "simulation_assumptions": {
+    "gravity_m_s2": 9.81,
+    "timestep_s": 0.002,
+    "friction": [
+      0.8,
+      0.02,
+      0.002
+    ],
+    "joint_damping": 0.08,
+    "joint_armature": 0.002,
+    "abstract_output_torque_limit_nm": 30,
+    "note": "Torque bound, armature, damping, friction, link inertias and masses are placeholders. Serial output-axis actuation does not identify the physical coupled ankle transmission or real motor torque-speed/thermal response.",
+    "abstract_joint_velocity_limit_rad_s": 20
+  },
+  "motion_sampling": {
+    "fps": 24,
+    "period_s": 4,
+    "ik_position_tolerance_m": 0.0002,
+    "ik_orientation_tolerance_rad": 0.003
+  },
+  "changes_from_v2": [
+    "Cat-first quadruped reference posture; 250mm front and 290mm rear link sums.",
+    "Hip and shoulder locations now span the body along its spine. Quad paws are under each side, with shoulder roll close to zero.",
+    "Compact motor envelopes are assumed volumes, not selected BLDC hardware.",
+    "Character head, tail and covers are appearance surfaces; not manufactured shells."
+  ],
+  "sources": [],
+  "not_validated": [
+    "actuator selection and force/speed/thermal performance",
+    "mass and inertia allocations",
+    "physical housings, joints, shells and transmissions",
+    "balance, locomotion, transition and self-righting"
+  ],
+  "mass_status": "V3 numerical placeholders retained for kinematic calculation only; not a V4 mass estimate",
+  "appearance_direction": "Kitten: rounded short torso, relatively large cat head, similar front/rear limb lengths, four-foot posture primary; gentle short steps preferred over maximum speed. Head is replaceable later."
+}

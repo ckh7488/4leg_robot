@@ -1,0 +1,231 @@
+<mujoco model="kitten_v4_layout">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="false" />
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast" />
+  <default>
+    <joint damping="0.08" armature="0.002" />
+    <geom friction="0.8 0.02 0.002" condim="3" />
+  </default>
+  <visual>
+    <global offwidth="1000" offheight="1000" />
+  </visual>
+  <worldbody>
+    <light pos="1 -2 3" dir="-1 2 -3" />
+    <geom name="floor" type="plane" size="3 3 .02" rgba=".93 .92 .89 1" />
+    <body name="base" pos="0 0 0.42">
+      <freejoint name="floating_base" />
+      <inertial pos="0 0 0.025" mass="3.6" diaginertia="0.0438 0.03615 0.03939" />
+      <geom name="base_core" type="box" pos="0 0 0.04" size="0.07 0.075 0.075" euler="0 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="1" />
+      <geom name="base_cover" type="ellipsoid" pos="0 0 0.03" size="0.115 0.15 0.215" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+      <geom name="base_tether_socket" type="cylinder" pos="-0.12 0 0.1" size="0.018 0.015" euler="0 1.570796327 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="1" />
+      <body name="rear_R_yaw" pos="0 -0.045 -0.065">
+        <joint name="rear_R_yaw" type="hinge" axis="0 0 1" range="-0.7853981634 0.7853981634" />
+        <inertial pos="0 0 0" mass="0.38" diaginertia="0.0001583333333 0.0001583333333 0.0001583333333" />
+        <geom name="rear_R_yaw_motor" type="cylinder" pos="0 0 0" size="0.028 0.017" euler="0 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+        <geom name="rear_R_yaw_motor_fur" type="ellipsoid" pos="0 0 0" size="0.035 0.035 0.0306" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="rear_R_yaw_motor_cap" type="cylinder" pos="0 0 0.018" size="0.02016 0.002" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+        <body name="rear_R_roll" pos="0 -0.055 -0.055">
+          <joint name="rear_R_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
+          <inertial pos="0 0 0" mass="0.54" diaginertia="0.000225 0.000225 0.000225" />
+          <geom name="rear_R_roll_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="0 1.570796327 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="rear_R_roll_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="0 1.570796327 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="rear_R_roll_motor_cap" type="cylinder" pos="0.02 0 0" size="0.02412 0.002" euler="0 1.570796327 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <body name="rear_R_pitch" pos="0 -0.055 0">
+            <joint name="rear_R_pitch" type="hinge" axis="0 1 0" range="-2.705260341 1.308996939" />
+            <inertial pos="0 0 -0.06" mass="1.33" diaginertia="0.003236333333 0.003945666667 0.001507333333" />
+            <geom name="rear_R_pitch_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+            <geom name="rear_R_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="rear_R_pitch_motor_cap" type="cylinder" pos="0 0.02 0" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+            <geom name="rear_R_pitch_knee_drive" type="cylinder" pos="0 0 -0.095" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+            <geom name="rear_R_pitch_knee_drive_fur" type="ellipsoid" pos="0 0 -0.095" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="rear_R_pitch_knee_drive_cap" type="cylinder" pos="0 0.02 -0.095" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+            <geom name="rear_R_pitch_beam" type="box" pos="0 0 -0.07" size="0.013 0.013 0.07" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+            <geom name="rear_R_pitch_cover" type="ellipsoid" pos="0 0 -0.07" size="0.038 0.043 0.08" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <body name="rear_R_knee" pos="0 0 -0.14">
+              <joint name="rear_R_knee" type="hinge" axis="0 1 0" range="0.03490658504 2.530727415" />
+              <inertial pos="0 0 -0.075" mass="1.33" diaginertia="0.004710416667 0.003945666667 0.002981416667" />
+              <geom name="rear_R_knee_beam" type="box" pos="0 0 -0.075" size="0.013 0.013 0.075" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+              <geom name="rear_R_knee_cover" type="ellipsoid" pos="0 0 -0.075" size="0.038 0.043 0.085" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_R_knee_ankle_drive_a" type="cylinder" pos="0 -0.03 -0.075" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+              <geom name="rear_R_knee_ankle_drive_a_fur" type="ellipsoid" pos="0 -0.03 -0.075" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_R_knee_ankle_drive_a_cap" type="cylinder" pos="0 -0.01 -0.075" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+              <geom name="rear_R_knee_ankle_drive_b" type="cylinder" pos="0 0.03 -0.075" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+              <geom name="rear_R_knee_ankle_drive_b_fur" type="ellipsoid" pos="0 0.03 -0.075" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_R_knee_ankle_drive_b_cap" type="cylinder" pos="0 0.05 -0.075" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+              <body name="rear_R_ankle_pitch" pos="0 0 -0.15">
+                <joint name="rear_R_ankle_pitch" type="hinge" axis="0 1 0" range="-1.745329252 1.570796327" />
+                <inertial pos="0 0 0" mass="0.05" diaginertia="2.083333333e-05 2.083333333e-05 2.083333333e-05" />
+                <geom name="rear_R_ankle_pitch_gimbal" type="box" pos="0 0 0" size="0.025 0.035 0.018" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="1" />
+                <body name="rear_R_ankle_roll" pos="0 0 0">
+                  <joint name="rear_R_ankle_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
+                  <inertial pos="0.02 0 -0.035" mass="0.22" diaginertia="0.0002882916667 0.0005756666667 0.0007722916667" />
+                  <geom name="rear_R_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="1" conaffinity="1" group="1" />
+                  <geom name="rear_R_ankle_roll_foot" type="ellipsoid" pos="0.022 0 -0.023" size="0.064 0.05 0.017" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_R_ankle_roll_toe_-1" type="ellipsoid" pos="0.062 -0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_R_ankle_roll_toe_0" type="ellipsoid" pos="0.062 0 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_R_ankle_roll_toe_1" type="ellipsoid" pos="0.062 0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <site name="rear_R_sole" pos="0.02 0 -0.04" size=".006" rgba=".8 .3 .5 1" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="front_R_roll" pos="0 -0.121 0.16">
+        <joint name="front_R_roll" type="hinge" axis="1 0 0" range="-1.919862177 1.919862177" />
+        <inertial pos="0 0 0" mass="0.43" diaginertia="0.0001791666667 0.0001791666667 0.0001791666667" />
+        <geom name="front_R_roll_motor" type="cylinder" pos="0 0 0" size="0.028 0.017" euler="0 1.570796327 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+        <geom name="front_R_roll_motor_fur" type="ellipsoid" pos="0 0 0" size="0.035 0.035 0.0306" euler="0 1.570796327 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="front_R_roll_motor_cap" type="cylinder" pos="0.018 0 0" size="0.02016 0.002" euler="0 1.570796327 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+        <body name="front_R_pitch" pos="0 -0.049 0">
+          <joint name="front_R_pitch" type="hinge" axis="0 1 0" range="-2.967059728 2.268928028" />
+          <inertial pos="0 0 -0.055" mass="1.28" diaginertia="0.00384 0.004522666667 0.001450666667" />
+          <geom name="front_R_pitch_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="front_R_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="front_R_pitch_motor_cap" type="cylinder" pos="0 0.02 0" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <geom name="front_R_pitch_elbow_drive" type="cylinder" pos="0.04 0 -0.08" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="front_R_pitch_elbow_drive_fur" type="ellipsoid" pos="0.04 0 -0.08" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="front_R_pitch_elbow_drive_cap" type="cylinder" pos="0.04 0.02 -0.08" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <geom name="front_R_pitch_beam" type="box" pos="0 0 -0.06" size="0.013 0.013 0.06" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+          <geom name="front_R_pitch_cover" type="ellipsoid" pos="0 0 -0.06" size="0.038 0.043 0.07" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <body name="front_R_elbow" pos="0 0 -0.12">
+            <joint name="front_R_elbow" type="hinge" axis="0 -1 0" range="0.03490658504 2.705260341" />
+            <inertial pos="0 0 -0.1" mass="0.32" diaginertia="0.001197333333 0.001197333333 0.0002613333333" />
+            <geom name="front_R_elbow_beam" type="box" pos="0 0 -0.065" size="0.011 0.011 0.065" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+            <geom name="front_R_elbow_cover" type="ellipsoid" pos="0 0 -0.065" size="0.038 0.043 0.075" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="front_R_elbow_paw" type="sphere" pos="0 0 -0.13" size="0.035" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="1" conaffinity="1" group="1" />
+            <geom name="front_R_elbow_paw_pad" type="ellipsoid" pos="0.023 0 -0.13" size="0.022 0.028 0.028" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="0" conaffinity="0" group="3" />
+            <site name="front_R_paw" pos="0 0 -0.13" size=".006" rgba=".8 .3 .5 1" />
+          </body>
+        </body>
+      </body>
+      <body name="rear_L_yaw" pos="0 0.045 -0.065">
+        <joint name="rear_L_yaw" type="hinge" axis="0 0 1" range="-0.7853981634 0.7853981634" />
+        <inertial pos="0 0 0" mass="0.38" diaginertia="0.0001583333333 0.0001583333333 0.0001583333333" />
+        <geom name="rear_L_yaw_motor" type="cylinder" pos="0 0 0" size="0.028 0.017" euler="0 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+        <geom name="rear_L_yaw_motor_fur" type="ellipsoid" pos="0 0 0" size="0.035 0.035 0.0306" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="rear_L_yaw_motor_cap" type="cylinder" pos="0 0 0.018" size="0.02016 0.002" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+        <body name="rear_L_roll" pos="0 0.055 -0.055">
+          <joint name="rear_L_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
+          <inertial pos="0 0 0" mass="0.54" diaginertia="0.000225 0.000225 0.000225" />
+          <geom name="rear_L_roll_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="0 1.570796327 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="rear_L_roll_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="0 1.570796327 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="rear_L_roll_motor_cap" type="cylinder" pos="0.02 0 0" size="0.02412 0.002" euler="0 1.570796327 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <body name="rear_L_pitch" pos="0 0.055 0">
+            <joint name="rear_L_pitch" type="hinge" axis="0 1 0" range="-2.705260341 1.308996939" />
+            <inertial pos="0 0 -0.06" mass="1.33" diaginertia="0.003236333333 0.003945666667 0.001507333333" />
+            <geom name="rear_L_pitch_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+            <geom name="rear_L_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="rear_L_pitch_motor_cap" type="cylinder" pos="0 0.02 0" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+            <geom name="rear_L_pitch_knee_drive" type="cylinder" pos="0 0 -0.095" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+            <geom name="rear_L_pitch_knee_drive_fur" type="ellipsoid" pos="0 0 -0.095" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="rear_L_pitch_knee_drive_cap" type="cylinder" pos="0 0.02 -0.095" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+            <geom name="rear_L_pitch_beam" type="box" pos="0 0 -0.07" size="0.013 0.013 0.07" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+            <geom name="rear_L_pitch_cover" type="ellipsoid" pos="0 0 -0.07" size="0.038 0.043 0.08" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <body name="rear_L_knee" pos="0 0 -0.14">
+              <joint name="rear_L_knee" type="hinge" axis="0 1 0" range="0.03490658504 2.530727415" />
+              <inertial pos="0 0 -0.075" mass="1.33" diaginertia="0.004710416667 0.003945666667 0.002981416667" />
+              <geom name="rear_L_knee_beam" type="box" pos="0 0 -0.075" size="0.013 0.013 0.075" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+              <geom name="rear_L_knee_cover" type="ellipsoid" pos="0 0 -0.075" size="0.038 0.043 0.085" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_L_knee_ankle_drive_a" type="cylinder" pos="0 -0.03 -0.075" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+              <geom name="rear_L_knee_ankle_drive_a_fur" type="ellipsoid" pos="0 -0.03 -0.075" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_L_knee_ankle_drive_a_cap" type="cylinder" pos="0 -0.01 -0.075" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+              <geom name="rear_L_knee_ankle_drive_b" type="cylinder" pos="0 0.03 -0.075" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+              <geom name="rear_L_knee_ankle_drive_b_fur" type="ellipsoid" pos="0 0.03 -0.075" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+              <geom name="rear_L_knee_ankle_drive_b_cap" type="cylinder" pos="0 0.05 -0.075" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+              <body name="rear_L_ankle_pitch" pos="0 0 -0.15">
+                <joint name="rear_L_ankle_pitch" type="hinge" axis="0 1 0" range="-1.745329252 1.570796327" />
+                <inertial pos="0 0 0" mass="0.05" diaginertia="2.083333333e-05 2.083333333e-05 2.083333333e-05" />
+                <geom name="rear_L_ankle_pitch_gimbal" type="box" pos="0 0 0" size="0.025 0.035 0.018" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="1" />
+                <body name="rear_L_ankle_roll" pos="0 0 0">
+                  <joint name="rear_L_ankle_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
+                  <inertial pos="0.02 0 -0.035" mass="0.22" diaginertia="0.0002882916667 0.0005756666667 0.0007722916667" />
+                  <geom name="rear_L_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="1" conaffinity="1" group="1" />
+                  <geom name="rear_L_ankle_roll_foot" type="ellipsoid" pos="0.022 0 -0.023" size="0.064 0.05 0.017" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_L_ankle_roll_toe_-1" type="ellipsoid" pos="0.062 -0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_L_ankle_roll_toe_0" type="ellipsoid" pos="0.062 0 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <geom name="rear_L_ankle_roll_toe_1" type="ellipsoid" pos="0.062 0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+                  <site name="rear_L_sole" pos="0.02 0 -0.04" size=".006" rgba=".8 .3 .5 1" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="front_L_roll" pos="0 0.121 0.16">
+        <joint name="front_L_roll" type="hinge" axis="1 0 0" range="-1.919862177 1.919862177" />
+        <inertial pos="0 0 0" mass="0.43" diaginertia="0.0001791666667 0.0001791666667 0.0001791666667" />
+        <geom name="front_L_roll_motor" type="cylinder" pos="0 0 0" size="0.028 0.017" euler="0 1.570796327 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+        <geom name="front_L_roll_motor_fur" type="ellipsoid" pos="0 0 0" size="0.035 0.035 0.0306" euler="0 1.570796327 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="front_L_roll_motor_cap" type="cylinder" pos="0.018 0 0" size="0.02016 0.002" euler="0 1.570796327 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+        <body name="front_L_pitch" pos="0 0.049 0">
+          <joint name="front_L_pitch" type="hinge" axis="0 1 0" range="-2.967059728 2.268928028" />
+          <inertial pos="0 0 -0.055" mass="1.28" diaginertia="0.00384 0.004522666667 0.001450666667" />
+          <geom name="front_L_pitch_motor" type="cylinder" pos="0 0 0" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="front_L_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="front_L_pitch_motor_cap" type="cylinder" pos="0 0.02 0" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <geom name="front_L_pitch_elbow_drive" type="cylinder" pos="0.04 0 -0.08" size="0.0335 0.019" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+          <geom name="front_L_pitch_elbow_drive_fur" type="ellipsoid" pos="0.04 0 -0.08" size="0.041875 0.041875 0.0342" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <geom name="front_L_pitch_elbow_drive_cap" type="cylinder" pos="0.04 0.02 -0.08" size="0.02412 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+          <geom name="front_L_pitch_beam" type="box" pos="0 0 -0.06" size="0.013 0.013 0.06" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+          <geom name="front_L_pitch_cover" type="ellipsoid" pos="0 0 -0.06" size="0.038 0.043 0.07" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+          <body name="front_L_elbow" pos="0 0 -0.12">
+            <joint name="front_L_elbow" type="hinge" axis="0 -1 0" range="0.03490658504 2.705260341" />
+            <inertial pos="0 0 -0.1" mass="0.32" diaginertia="0.001197333333 0.001197333333 0.0002613333333" />
+            <geom name="front_L_elbow_beam" type="box" pos="0 0 -0.065" size="0.011 0.011 0.065" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
+            <geom name="front_L_elbow_cover" type="ellipsoid" pos="0 0 -0.065" size="0.038 0.043 0.075" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+            <geom name="front_L_elbow_paw" type="sphere" pos="0 0 -0.13" size="0.035" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="1" conaffinity="1" group="1" />
+            <geom name="front_L_elbow_paw_pad" type="ellipsoid" pos="0.023 0 -0.13" size="0.022 0.028 0.028" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="0" conaffinity="0" group="3" />
+            <site name="front_L_paw" pos="0 0 -0.13" size=".006" rgba=".8 .3 .5 1" />
+          </body>
+        </body>
+      </body>
+      <body name="neck_pitch" pos="0 0 0.25">
+        <joint name="neck_pitch" type="hinge" axis="0 1 0" range="-1.832595715 0.6108652382" />
+        <inertial pos="0.02 0 0.04" mass="0.912" diaginertia="0.0259312 0.0166896 0.0229216" />
+        <geom name="neck_pitch_motor" type="cylinder" pos="0 0 0" size="0.02 0.015" euler="1.570796327 0 0" rgba="0.15 0.19 0.21 1" contype="1" conaffinity="1" group="2" />
+        <geom name="neck_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.025 0.025 0.027" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_motor_cap" type="cylinder" pos="0 0.016 0" size="0.0144 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
+        <geom name="neck_pitch_head" type="ellipsoid" pos="0.02 0 0.04" size="0.145 0.165 0.13" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_cap" type="ellipsoid" pos="-0.01 0 0.085" size="0.124 0.167 0.108" euler="0 0 0" rgba="0.53 0.61 0.66 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_face" type="ellipsoid" pos="0.106 0 0.02" size="0.067 0.137 0.096" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_outline_-1" type="ellipsoid" pos="0.16 -0.07 0.054" size="0.01 0.037 0.04" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_color_-1" type="ellipsoid" pos="0.168 -0.07 0.055" size="0.007 0.031 0.034" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_pupil_-1" type="ellipsoid" pos="0.174 -0.07 0.054" size="0.004 0.011 0.03" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_glint_-1" type="sphere" pos="0.178 -0.061 0.069" size="0.007" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_muzzle_-1" type="ellipsoid" pos="0.165 -0.027 0.001" size="0.025 0.033 0.024" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_outline_1" type="ellipsoid" pos="0.16 0.07 0.054" size="0.01 0.037 0.04" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_color_1" type="ellipsoid" pos="0.168 0.07 0.055" size="0.007 0.031 0.034" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_pupil_1" type="ellipsoid" pos="0.174 0.07 0.054" size="0.004 0.011 0.03" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_glint_1" type="sphere" pos="0.178 0.061 0.069" size="0.007" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_muzzle_1" type="ellipsoid" pos="0.165 0.027 0.001" size="0.025 0.033 0.024" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_nose" type="ellipsoid" pos="0.189 0 0.015" size="0.01 0.015 0.009" euler="0 0 0" rgba="0.89 0.58 0.65 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_mouth" type="ellipsoid" pos="0.189 0 -0.009" size="0.003 0.008 0.005" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="rear_R_yaw_input" joint="rear_R_yaw" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_R_roll_input" joint="rear_R_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_R_pitch_input" joint="rear_R_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_R_knee_input" joint="rear_R_knee" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_R_ankle_pitch_input" joint="rear_R_ankle_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_R_ankle_roll_input" joint="rear_R_ankle_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_R_roll_input" joint="front_R_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_R_pitch_input" joint="front_R_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_R_elbow_input" joint="front_R_elbow" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_yaw_input" joint="rear_L_yaw" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_roll_input" joint="rear_L_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_pitch_input" joint="rear_L_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_knee_input" joint="rear_L_knee" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_ankle_pitch_input" joint="rear_L_ankle_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="rear_L_ankle_roll_input" joint="rear_L_ankle_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_L_roll_input" joint="front_L_roll" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_L_pitch_input" joint="front_L_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="front_L_elbow_input" joint="front_L_elbow" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+    <motor name="neck_pitch_input" joint="neck_pitch" gear="1" ctrlrange="-30 30" forcerange="-30 30" />
+  </actuator>
+  <keyframe>
+    <key name="stand" qpos="0 0 0.42 1 0 0 0 -1.022729231e-09 9.803559002e-09 -0.4762154059 0.9183366409 -0.4421212374 -1.398775398e-08 -0.1385755854 0.05722430744 1.407897345 1.022729231e-09 -9.803559039e-09 -0.4762154059 0.9183366409 -0.4421212374 1.398775402e-08 0.1385755854 0.05722430744 1.407897345 0" />
+    <key name="quad" qpos="0 0 0.265 0.7071067812 0 0.7071067812 0 3.116918747e-07 9.778640565e-08 -2.28205941 1.36640749 -0.6551443558 -4.283096144e-07 -4.440892099e-16 -0.9983396852 0.6881285717 -3.116918747e-07 -9.778640565e-08 -2.28205941 1.36640749 -0.6551443558 4.283096143e-07 4.440892099e-16 -0.9983396852 0.6881285717 -1.570796327" />
+  </keyframe>
+</mujoco>

@@ -1,0 +1,1431 @@
+<robot name="kitten_v4_layout">
+  <!--Concept model: allocated inertias, approximate collision envelopes, unvalidated actuators. Base is the root link.-->
+  <link name="base">
+    <inertial>
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
+      <mass value="3.6" />
+      <inertia ixx="0.043800000000000006" iyy="0.03615" izz="0.03939000000000001" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="base_core">
+      <origin xyz="0 0 0.04" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.15 0.15" />
+      </geometry>
+      <material name="base_core_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="base_core">
+      <origin xyz="0 0 0.04" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.15 0.15" />
+      </geometry>
+    </collision>
+    <visual name="base_cover">
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.115 0.15 0.215" />
+      </geometry>
+      <material name="base_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="base_tether_socket">
+      <origin xyz="-0.12 0 0.1" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.018" length="0.03" />
+      </geometry>
+      <material name="base_tether_socket_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="rear_R_yaw">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.38" />
+      <inertia ixx="0.00015833333333333338" iyy="0.00015833333333333338" izz="0.00015833333333333338" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_yaw_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+      <material name="rear_R_yaw_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_yaw_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_yaw_motor_fur">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.035 0.035 0.0306" />
+      </geometry>
+      <material name="rear_R_yaw_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_yaw_motor_cap">
+      <origin xyz="0 0 0.018" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.02016" length="0.004" />
+      </geometry>
+      <material name="rear_R_yaw_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_yaw" type="revolute">
+    <parent link="base" />
+    <child link="rear_R_yaw" />
+    <origin xyz="0 -0.045 -0.065" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_R_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.54" />
+      <inertia ixx="0.00022500000000000008" iyy="0.00022500000000000008" izz="0.00022500000000000008" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_R_roll_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_roll_motor_fur">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_R_roll_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_roll_motor_cap">
+      <origin xyz="0.02 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_R_roll_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_roll" type="revolute">
+    <parent link="rear_R_yaw" />
+    <child link="rear_R_roll" />
+    <origin xyz="0 -0.055 -0.055" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_R_pitch">
+    <inertial>
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <mass value="1.33" />
+      <inertia ixx="0.0032363333333333337" iyy="0.003945666666666668" izz="0.0015073333333333336" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_R_pitch_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_pitch_motor_fur">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_R_pitch_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_pitch_motor_cap">
+      <origin xyz="0 0.02 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_R_pitch_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_pitch_knee_drive">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_R_pitch_knee_drive_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_pitch_knee_drive">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_pitch_knee_drive_fur">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_R_pitch_knee_drive_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_pitch_knee_drive_cap">
+      <origin xyz="0 0.02 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_R_pitch_knee_drive_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_pitch_beam">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.14" />
+      </geometry>
+      <material name="rear_R_pitch_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_pitch_beam">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.14" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_pitch_cover">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.08" />
+      </geometry>
+      <material name="rear_R_pitch_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_pitch" type="revolute">
+    <parent link="rear_R_roll" />
+    <child link="rear_R_pitch" />
+    <origin xyz="0 -0.055 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.705260340591211" upper="1.3089969389957472" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_R_knee">
+    <inertial>
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <mass value="1.33" />
+      <inertia ixx="0.0047104166666666674" iyy="0.003945666666666668" izz="0.0029814166666666674" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_knee_beam">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.15" />
+      </geometry>
+      <material name="rear_R_knee_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_knee_beam">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.15" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_knee_cover">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.085" />
+      </geometry>
+      <material name="rear_R_knee_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_knee_ankle_drive_a">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_a_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_knee_ankle_drive_a">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_knee_ankle_drive_a_fur">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_a_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_knee_ankle_drive_a_cap">
+      <origin xyz="0 -0.01 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_a_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_knee_ankle_drive_b">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_b_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_knee_ankle_drive_b">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_knee_ankle_drive_b_fur">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_b_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_knee_ankle_drive_b_cap">
+      <origin xyz="0 0.05 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_R_knee_ankle_drive_b_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_knee" type="revolute">
+    <parent link="rear_R_pitch" />
+    <child link="rear_R_knee" />
+    <origin xyz="0 0 -0.14" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.03490658503988659" upper="2.530727415391778" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_R_ankle_pitch">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.05" />
+      <inertia ixx="2.0833333333333336e-05" iyy="2.0833333333333336e-05" izz="2.0833333333333336e-05" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_ankle_pitch_gimbal">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.07 0.036" />
+      </geometry>
+      <material name="rear_R_ankle_pitch_gimbal_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_ankle_pitch" type="revolute">
+    <parent link="rear_R_knee" />
+    <child link="rear_R_ankle_pitch" />
+    <origin xyz="0 0 -0.15" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.7453292519943295" upper="1.5707963267948966" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_R_ankle_roll">
+    <inertial>
+      <origin xyz="0.02 0 -0.035" rpy="0 0 0" />
+      <mass value="0.22" />
+      <inertia ixx="0.00028829166666666673" iyy="0.0005756666666666667" izz="0.0007722916666666669" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_R_ankle_roll_sole">
+      <origin xyz="0.02 0 -0.033" rpy="0 0 0" />
+      <geometry>
+        <box size="0.11 0.085 0.014" />
+      </geometry>
+      <material name="rear_R_ankle_roll_sole_color">
+        <color rgba="0.65 0.39 0.48 1" />
+      </material>
+    </visual>
+    <collision name="rear_R_ankle_roll_sole">
+      <origin xyz="0.02 0 -0.033" rpy="0 0 0" />
+      <geometry>
+        <box size="0.11 0.085 0.014" />
+      </geometry>
+    </collision>
+    <visual name="rear_R_ankle_roll_foot">
+      <origin xyz="0.022 0 -0.023" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.064 0.05 0.017" />
+      </geometry>
+      <material name="rear_R_ankle_roll_foot_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_ankle_roll_toe_-1">
+      <origin xyz="0.062 -0.022 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_R_ankle_roll_toe_-1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_ankle_roll_toe_0">
+      <origin xyz="0.062 0 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_R_ankle_roll_toe_0_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_R_ankle_roll_toe_1">
+      <origin xyz="0.062 0.022 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_R_ankle_roll_toe_1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_R_ankle_roll" type="revolute">
+    <parent link="rear_R_ankle_pitch" />
+    <child link="rear_R_ankle_roll" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="front_R_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.43" />
+      <inertia ixx="0.00017916666666666672" iyy="0.00017916666666666672" izz="0.00017916666666666672" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_R_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+      <material name="front_R_roll_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_R_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+    </collision>
+    <visual name="front_R_roll_motor_fur">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.035 0.035 0.0306" />
+      </geometry>
+      <material name="front_R_roll_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_R_roll_motor_cap">
+      <origin xyz="0.018 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.02016" length="0.004" />
+      </geometry>
+      <material name="front_R_roll_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_R_roll" type="revolute">
+    <parent link="base" />
+    <child link="front_R_roll" />
+    <origin xyz="0 -0.121 0.16" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.9198621771937625" upper="1.9198621771937625" effort="30" velocity="20" />
+  </joint>
+  <link name="front_R_pitch">
+    <inertial>
+      <origin xyz="0 0 -0.055" rpy="0 0 0" />
+      <mass value="1.28" />
+      <inertia ixx="0.00384" iyy="0.004522666666666667" izz="0.001450666666666667" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_R_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="front_R_pitch_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_R_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="front_R_pitch_motor_fur">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="front_R_pitch_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_R_pitch_motor_cap">
+      <origin xyz="0 0.02 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="front_R_pitch_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="front_R_pitch_elbow_drive">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="front_R_pitch_elbow_drive_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_R_pitch_elbow_drive">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="front_R_pitch_elbow_drive_fur">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="front_R_pitch_elbow_drive_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_R_pitch_elbow_drive_cap">
+      <origin xyz="0.04 0.02 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="front_R_pitch_elbow_drive_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="front_R_pitch_beam">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.12" />
+      </geometry>
+      <material name="front_R_pitch_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="front_R_pitch_beam">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.12" />
+      </geometry>
+    </collision>
+    <visual name="front_R_pitch_cover">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.07" />
+      </geometry>
+      <material name="front_R_pitch_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_R_pitch" type="revolute">
+    <parent link="front_R_roll" />
+    <child link="front_R_pitch" />
+    <origin xyz="0 -0.049 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.9670597283903604" upper="2.2689280275926285" effort="30" velocity="20" />
+  </joint>
+  <link name="front_R_elbow">
+    <inertial>
+      <origin xyz="0 0 -0.1" rpy="0 0 0" />
+      <mass value="0.32" />
+      <inertia ixx="0.0011973333333333337" iyy="0.0011973333333333337" izz="0.00026133333333333336" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_R_elbow_beam">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <box size="0.022 0.022 0.13" />
+      </geometry>
+      <material name="front_R_elbow_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="front_R_elbow_beam">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <box size="0.022 0.022 0.13" />
+      </geometry>
+    </collision>
+    <visual name="front_R_elbow_cover">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.075" />
+      </geometry>
+      <material name="front_R_elbow_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_R_elbow_paw">
+      <origin xyz="0 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.035" />
+      </geometry>
+      <material name="front_R_elbow_paw_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <collision name="front_R_elbow_paw">
+      <origin xyz="0 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.035" />
+      </geometry>
+    </collision>
+    <visual name="front_R_elbow_paw_pad">
+      <origin xyz="0.023 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.022 0.028 0.028" />
+      </geometry>
+      <material name="front_R_elbow_paw_pad_color">
+        <color rgba="0.65 0.39 0.48 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_R_elbow" type="revolute">
+    <parent link="front_R_pitch" />
+    <child link="front_R_elbow" />
+    <origin xyz="0 0 -0.12" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="0.03490658503988659" upper="2.705260340591211" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_yaw">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.38" />
+      <inertia ixx="0.00015833333333333338" iyy="0.00015833333333333338" izz="0.00015833333333333338" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_yaw_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+      <material name="rear_L_yaw_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_yaw_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_yaw_motor_fur">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.035 0.035 0.0306" />
+      </geometry>
+      <material name="rear_L_yaw_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_yaw_motor_cap">
+      <origin xyz="0 0 0.018" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.02016" length="0.004" />
+      </geometry>
+      <material name="rear_L_yaw_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_yaw" type="revolute">
+    <parent link="base" />
+    <child link="rear_L_yaw" />
+    <origin xyz="0 0.045 -0.065" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.54" />
+      <inertia ixx="0.00022500000000000008" iyy="0.00022500000000000008" izz="0.00022500000000000008" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_L_roll_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_roll_motor_fur">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_L_roll_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_roll_motor_cap">
+      <origin xyz="0.02 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_L_roll_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_roll" type="revolute">
+    <parent link="rear_L_yaw" />
+    <child link="rear_L_roll" />
+    <origin xyz="0 0.055 -0.055" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_pitch">
+    <inertial>
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <mass value="1.33" />
+      <inertia ixx="0.0032363333333333337" iyy="0.003945666666666668" izz="0.0015073333333333336" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_L_pitch_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_pitch_motor_fur">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_L_pitch_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_pitch_motor_cap">
+      <origin xyz="0 0.02 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_L_pitch_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_pitch_knee_drive">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_L_pitch_knee_drive_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_pitch_knee_drive">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_pitch_knee_drive_fur">
+      <origin xyz="0 0 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_L_pitch_knee_drive_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_pitch_knee_drive_cap">
+      <origin xyz="0 0.02 -0.095" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_L_pitch_knee_drive_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_pitch_beam">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.14" />
+      </geometry>
+      <material name="rear_L_pitch_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_pitch_beam">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.14" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_pitch_cover">
+      <origin xyz="0 0 -0.07" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.08" />
+      </geometry>
+      <material name="rear_L_pitch_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_pitch" type="revolute">
+    <parent link="rear_L_roll" />
+    <child link="rear_L_pitch" />
+    <origin xyz="0 0.055 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.705260340591211" upper="1.3089969389957472" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_knee">
+    <inertial>
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <mass value="1.33" />
+      <inertia ixx="0.0047104166666666674" iyy="0.003945666666666668" izz="0.0029814166666666674" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_knee_beam">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.15" />
+      </geometry>
+      <material name="rear_L_knee_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_knee_beam">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.15" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_knee_cover">
+      <origin xyz="0 0 -0.075" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.085" />
+      </geometry>
+      <material name="rear_L_knee_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_knee_ankle_drive_a">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_a_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_knee_ankle_drive_a">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_knee_ankle_drive_a_fur">
+      <origin xyz="0 -0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_a_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_knee_ankle_drive_a_cap">
+      <origin xyz="0 -0.01 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_a_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_knee_ankle_drive_b">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_b_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_knee_ankle_drive_b">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_knee_ankle_drive_b_fur">
+      <origin xyz="0 0.03 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_b_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_knee_ankle_drive_b_cap">
+      <origin xyz="0 0.05 -0.075" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="rear_L_knee_ankle_drive_b_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_knee" type="revolute">
+    <parent link="rear_L_pitch" />
+    <child link="rear_L_knee" />
+    <origin xyz="0 0 -0.14" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.03490658503988659" upper="2.530727415391778" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_ankle_pitch">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.05" />
+      <inertia ixx="2.0833333333333336e-05" iyy="2.0833333333333336e-05" izz="2.0833333333333336e-05" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_ankle_pitch_gimbal">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.07 0.036" />
+      </geometry>
+      <material name="rear_L_ankle_pitch_gimbal_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_ankle_pitch" type="revolute">
+    <parent link="rear_L_knee" />
+    <child link="rear_L_ankle_pitch" />
+    <origin xyz="0 0 -0.15" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.7453292519943295" upper="1.5707963267948966" effort="30" velocity="20" />
+  </joint>
+  <link name="rear_L_ankle_roll">
+    <inertial>
+      <origin xyz="0.02 0 -0.035" rpy="0 0 0" />
+      <mass value="0.22" />
+      <inertia ixx="0.00028829166666666673" iyy="0.0005756666666666667" izz="0.0007722916666666669" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="rear_L_ankle_roll_sole">
+      <origin xyz="0.02 0 -0.033" rpy="0 0 0" />
+      <geometry>
+        <box size="0.11 0.085 0.014" />
+      </geometry>
+      <material name="rear_L_ankle_roll_sole_color">
+        <color rgba="0.65 0.39 0.48 1" />
+      </material>
+    </visual>
+    <collision name="rear_L_ankle_roll_sole">
+      <origin xyz="0.02 0 -0.033" rpy="0 0 0" />
+      <geometry>
+        <box size="0.11 0.085 0.014" />
+      </geometry>
+    </collision>
+    <visual name="rear_L_ankle_roll_foot">
+      <origin xyz="0.022 0 -0.023" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.064 0.05 0.017" />
+      </geometry>
+      <material name="rear_L_ankle_roll_foot_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_ankle_roll_toe_-1">
+      <origin xyz="0.062 -0.022 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_L_ankle_roll_toe_-1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_ankle_roll_toe_0">
+      <origin xyz="0.062 0 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_L_ankle_roll_toe_0_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="rear_L_ankle_roll_toe_1">
+      <origin xyz="0.062 0.022 -0.025" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.02 0.017 0.015" />
+      </geometry>
+      <material name="rear_L_ankle_roll_toe_1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="rear_L_ankle_roll" type="revolute">
+    <parent link="rear_L_ankle_pitch" />
+    <child link="rear_L_ankle_roll" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.7853981633974483" upper="0.7853981633974483" effort="30" velocity="20" />
+  </joint>
+  <link name="front_L_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.43" />
+      <inertia ixx="0.00017916666666666672" iyy="0.00017916666666666672" izz="0.00017916666666666672" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_L_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+      <material name="front_L_roll_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_L_roll_motor">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.028" length="0.034" />
+      </geometry>
+    </collision>
+    <visual name="front_L_roll_motor_fur">
+      <origin xyz="0 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.035 0.035 0.0306" />
+      </geometry>
+      <material name="front_L_roll_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_L_roll_motor_cap">
+      <origin xyz="0.018 0 0" rpy="0 1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.02016" length="0.004" />
+      </geometry>
+      <material name="front_L_roll_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_L_roll" type="revolute">
+    <parent link="base" />
+    <child link="front_L_roll" />
+    <origin xyz="0 0.121 0.16" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.9198621771937625" upper="1.9198621771937625" effort="30" velocity="20" />
+  </joint>
+  <link name="front_L_pitch">
+    <inertial>
+      <origin xyz="0 0 -0.055" rpy="0 0 0" />
+      <mass value="1.28" />
+      <inertia ixx="0.00384" iyy="0.004522666666666667" izz="0.001450666666666667" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_L_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="front_L_pitch_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_L_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="front_L_pitch_motor_fur">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="front_L_pitch_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_L_pitch_motor_cap">
+      <origin xyz="0 0.02 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="front_L_pitch_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="front_L_pitch_elbow_drive">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+      <material name="front_L_pitch_elbow_drive_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="front_L_pitch_elbow_drive">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0335" length="0.038" />
+      </geometry>
+    </collision>
+    <visual name="front_L_pitch_elbow_drive_fur">
+      <origin xyz="0.04 0 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.041875 0.041875 0.0342" />
+      </geometry>
+      <material name="front_L_pitch_elbow_drive_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_L_pitch_elbow_drive_cap">
+      <origin xyz="0.04 0.02 -0.08" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02412" length="0.004" />
+      </geometry>
+      <material name="front_L_pitch_elbow_drive_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="front_L_pitch_beam">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.12" />
+      </geometry>
+      <material name="front_L_pitch_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="front_L_pitch_beam">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.026 0.12" />
+      </geometry>
+    </collision>
+    <visual name="front_L_pitch_cover">
+      <origin xyz="0 0 -0.06" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.07" />
+      </geometry>
+      <material name="front_L_pitch_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_L_pitch" type="revolute">
+    <parent link="front_L_roll" />
+    <child link="front_L_pitch" />
+    <origin xyz="0 0.049 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.9670597283903604" upper="2.2689280275926285" effort="30" velocity="20" />
+  </joint>
+  <link name="front_L_elbow">
+    <inertial>
+      <origin xyz="0 0 -0.1" rpy="0 0 0" />
+      <mass value="0.32" />
+      <inertia ixx="0.0011973333333333337" iyy="0.0011973333333333337" izz="0.00026133333333333336" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="front_L_elbow_beam">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <box size="0.022 0.022 0.13" />
+      </geometry>
+      <material name="front_L_elbow_beam_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <collision name="front_L_elbow_beam">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <box size="0.022 0.022 0.13" />
+      </geometry>
+    </collision>
+    <visual name="front_L_elbow_cover">
+      <origin xyz="0 0 -0.065" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.038 0.043 0.075" />
+      </geometry>
+      <material name="front_L_elbow_cover_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="front_L_elbow_paw">
+      <origin xyz="0 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.035" />
+      </geometry>
+      <material name="front_L_elbow_paw_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <collision name="front_L_elbow_paw">
+      <origin xyz="0 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.035" />
+      </geometry>
+    </collision>
+    <visual name="front_L_elbow_paw_pad">
+      <origin xyz="0.023 0 -0.13" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.022 0.028 0.028" />
+      </geometry>
+      <material name="front_L_elbow_paw_pad_color">
+        <color rgba="0.65 0.39 0.48 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="front_L_elbow" type="revolute">
+    <parent link="front_L_pitch" />
+    <child link="front_L_elbow" />
+    <origin xyz="0 0 -0.12" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <limit lower="0.03490658503988659" upper="2.705260340591211" effort="30" velocity="20" />
+  </joint>
+  <link name="neck_pitch">
+    <inertial>
+      <origin xyz="0.02 0 0.04" rpy="0 0 0" />
+      <mass value="0.912" />
+      <inertia ixx="0.025931199999999998" iyy="0.0166896" izz="0.022921599999999997" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual name="neck_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02" length="0.03" />
+      </geometry>
+      <material name="neck_pitch_motor_color">
+        <color rgba="0.15 0.19 0.21 1" />
+      </material>
+    </visual>
+    <collision name="neck_pitch_motor">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.02" length="0.03" />
+      </geometry>
+    </collision>
+    <visual name="neck_pitch_motor_fur">
+      <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.025 0.025 0.027" />
+      </geometry>
+      <material name="neck_pitch_motor_fur_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_motor_cap">
+      <origin xyz="0 0.016 0" rpy="1.570796327 0 0" />
+      <geometry>
+        <cylinder radius="0.0144" length="0.004" />
+      </geometry>
+      <material name="neck_pitch_motor_cap_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_head">
+      <origin xyz="0.02 0 0.04" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.145 0.165 0.13" />
+      </geometry>
+      <material name="neck_pitch_head_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_cap">
+      <origin xyz="-0.01 0 0.085" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.124 0.167 0.108" />
+      </geometry>
+      <material name="neck_pitch_cap_color">
+        <color rgba="0.53 0.61 0.66 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_face">
+      <origin xyz="0.106 0 0.02" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.067 0.137 0.096" />
+      </geometry>
+      <material name="neck_pitch_face_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_eye_outline_-1">
+      <origin xyz="0.16 -0.07 0.054" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.037 0.04" />
+      </geometry>
+      <material name="neck_pitch_eye_outline_-1_color">
+        <color rgba="0.2 0.12 0.2 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_eye_color_-1">
+      <origin xyz="0.168 -0.07 0.055" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.007 0.031 0.034" />
+      </geometry>
+      <material name="neck_pitch_eye_color_-1_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_pupil_-1">
+      <origin xyz="0.174 -0.07 0.054" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.011 0.03" />
+      </geometry>
+      <material name="neck_pitch_pupil_-1_color">
+        <color rgba="0.2 0.12 0.2 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_glint_-1">
+      <origin xyz="0.178 -0.061 0.069" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.007" />
+      </geometry>
+      <material name="neck_pitch_glint_-1_color">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_muzzle_-1">
+      <origin xyz="0.165 -0.027 0.001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.025 0.033 0.024" />
+      </geometry>
+      <material name="neck_pitch_muzzle_-1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_eye_outline_1">
+      <origin xyz="0.16 0.07 0.054" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.037 0.04" />
+      </geometry>
+      <material name="neck_pitch_eye_outline_1_color">
+        <color rgba="0.2 0.12 0.2 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_eye_color_1">
+      <origin xyz="0.168 0.07 0.055" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.007 0.031 0.034" />
+      </geometry>
+      <material name="neck_pitch_eye_color_1_color">
+        <color rgba="0.38 0.46 0.47 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_pupil_1">
+      <origin xyz="0.174 0.07 0.054" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.011 0.03" />
+      </geometry>
+      <material name="neck_pitch_pupil_1_color">
+        <color rgba="0.2 0.12 0.2 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_glint_1">
+      <origin xyz="0.178 0.061 0.069" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.007" />
+      </geometry>
+      <material name="neck_pitch_glint_1_color">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_muzzle_1">
+      <origin xyz="0.165 0.027 0.001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.025 0.033 0.024" />
+      </geometry>
+      <material name="neck_pitch_muzzle_1_color">
+        <color rgba="0.93 0.95 0.96 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_nose">
+      <origin xyz="0.189 0 0.015" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.015 0.009" />
+      </geometry>
+      <material name="neck_pitch_nose_color">
+        <color rgba="0.89 0.58 0.65 1" />
+      </material>
+    </visual>
+    <visual name="neck_pitch_mouth">
+      <origin xyz="0.189 0 -0.009" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/unit_sphere.obj" scale="0.003 0.008 0.005" />
+      </geometry>
+      <material name="neck_pitch_mouth_color">
+        <color rgba="0.2 0.12 0.2 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="neck_pitch" type="revolute">
+    <parent link="base" />
+    <child link="neck_pitch" />
+    <origin xyz="0 0 0.25" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.8325957145940461" upper="0.6108652381980153" effort="30" velocity="20" />
+  </joint>
+</robot>

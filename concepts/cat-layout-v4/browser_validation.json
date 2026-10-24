@@ -1,0 +1,26 @@
+{
+  "browser": "Microsoft Edge via Playwright",
+  "viewports": [
+    1440,
+    390,
+    320
+  ],
+  "joint_options": 19,
+  "fk_sample_poses": 6,
+  "max_browser_mujoco_link_position_error_m": 1.2719202621569003e-16,
+  "javascript_errors": [],
+  "external_requests": 0,
+  "controls_checked": [
+    "four mode initialization paths",
+    "layers",
+    "joint selection and manual angle",
+    "timeline",
+    "playback",
+    "speed",
+    "camera view buttons"
+  ],
+  "limitations": [
+    "no dynamic balance test",
+    "manual angles not collision validated"
+  ]
+}
