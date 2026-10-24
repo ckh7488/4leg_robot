@@ -58,7 +58,7 @@
                 <body name="rear_R_ankle_roll" pos="0 0 0">
                   <joint name="rear_R_ankle_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
                   <inertial pos="0.02 0 -0.035" mass="0.22" diaginertia="0.0002882916667 0.0005756666667 0.0007722916667" />
-                  <geom name="rear_R_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="1" conaffinity="1" group="1" />
+                  <geom name="rear_R_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.82 0.85 0.86 1" contype="1" conaffinity="1" group="1" />
                   <geom name="rear_R_ankle_roll_foot" type="ellipsoid" pos="0.022 0 -0.023" size="0.064 0.05 0.017" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
                   <geom name="rear_R_ankle_roll_toe_-1" type="ellipsoid" pos="0.062 -0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
                   <geom name="rear_R_ankle_roll_toe_0" type="ellipsoid" pos="0.062 0 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
@@ -93,7 +93,6 @@
             <geom name="front_R_elbow_beam" type="box" pos="0 0 -0.065" size="0.011 0.011 0.065" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
             <geom name="front_R_elbow_cover" type="ellipsoid" pos="0 0 -0.065" size="0.038 0.043 0.075" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
             <geom name="front_R_elbow_paw" type="sphere" pos="0 0 -0.13" size="0.035" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="1" conaffinity="1" group="1" />
-            <geom name="front_R_elbow_paw_pad" type="ellipsoid" pos="0.023 0 -0.13" size="0.022 0.028 0.028" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="0" conaffinity="0" group="3" />
             <site name="front_R_paw" pos="0 0 -0.13" size=".006" rgba=".8 .3 .5 1" />
           </body>
         </body>
@@ -139,7 +138,7 @@
                 <body name="rear_L_ankle_roll" pos="0 0 0">
                   <joint name="rear_L_ankle_roll" type="hinge" axis="1 0 0" range="-0.7853981634 0.7853981634" />
                   <inertial pos="0.02 0 -0.035" mass="0.22" diaginertia="0.0002882916667 0.0005756666667 0.0007722916667" />
-                  <geom name="rear_L_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="1" conaffinity="1" group="1" />
+                  <geom name="rear_L_ankle_roll_sole" type="box" pos="0.02 0 -0.033" size="0.055 0.0425 0.007" euler="0 0 0" rgba="0.82 0.85 0.86 1" contype="1" conaffinity="1" group="1" />
                   <geom name="rear_L_ankle_roll_foot" type="ellipsoid" pos="0.022 0 -0.023" size="0.064 0.05 0.017" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
                   <geom name="rear_L_ankle_roll_toe_-1" type="ellipsoid" pos="0.062 -0.022 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
                   <geom name="rear_L_ankle_roll_toe_0" type="ellipsoid" pos="0.062 0 -0.025" size="0.02 0.017 0.015" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
@@ -174,7 +173,6 @@
             <geom name="front_L_elbow_beam" type="box" pos="0 0 -0.065" size="0.011 0.011 0.065" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="1" conaffinity="1" group="1" />
             <geom name="front_L_elbow_cover" type="ellipsoid" pos="0 0 -0.065" size="0.038 0.043 0.075" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
             <geom name="front_L_elbow_paw" type="sphere" pos="0 0 -0.13" size="0.035" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="1" conaffinity="1" group="1" />
-            <geom name="front_L_elbow_paw_pad" type="ellipsoid" pos="0.023 0 -0.13" size="0.022 0.028 0.028" euler="0 0 0" rgba="0.65 0.39 0.48 1" contype="0" conaffinity="0" group="3" />
             <site name="front_L_paw" pos="0 0 -0.13" size=".006" rgba=".8 .3 .5 1" />
           </body>
         </body>
@@ -186,20 +184,15 @@
         <geom name="neck_pitch_motor_fur" type="ellipsoid" pos="0 0 0" size="0.025 0.025 0.027" euler="1.570796327 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
         <geom name="neck_pitch_motor_cap" type="cylinder" pos="0 0.016 0" size="0.0144 0.002" euler="1.570796327 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="2" />
         <geom name="neck_pitch_head" type="ellipsoid" pos="0.02 0 0.04" size="0.145 0.165 0.13" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_cap" type="ellipsoid" pos="-0.01 0 0.085" size="0.124 0.167 0.108" euler="0 0 0" rgba="0.53 0.61 0.66 1" contype="0" conaffinity="0" group="3" />
         <geom name="neck_pitch_face" type="ellipsoid" pos="0.106 0 0.02" size="0.067 0.137 0.096" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_eye_outline_-1" type="ellipsoid" pos="0.16 -0.07 0.054" size="0.01 0.037 0.04" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_eye_color_-1" type="ellipsoid" pos="0.168 -0.07 0.055" size="0.007 0.031 0.034" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_pupil_-1" type="ellipsoid" pos="0.174 -0.07 0.054" size="0.004 0.011 0.03" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_glint_-1" type="sphere" pos="0.178 -0.061 0.069" size="0.007" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_muzzle_-1" type="ellipsoid" pos="0.165 -0.027 0.001" size="0.025 0.033 0.024" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_eye_outline_1" type="ellipsoid" pos="0.16 0.07 0.054" size="0.01 0.037 0.04" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_eye_color_1" type="ellipsoid" pos="0.168 0.07 0.055" size="0.007 0.031 0.034" euler="0 0 0" rgba="0.38 0.46 0.47 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_pupil_1" type="ellipsoid" pos="0.174 0.07 0.054" size="0.004 0.011 0.03" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_glint_1" type="sphere" pos="0.178 0.061 0.069" size="0.007" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_muzzle_1" type="ellipsoid" pos="0.165 0.027 0.001" size="0.025 0.033 0.024" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_nose" type="ellipsoid" pos="0.189 0 0.015" size="0.01 0.015 0.009" euler="0 0 0" rgba="0.89 0.58 0.65 1" contype="0" conaffinity="0" group="3" />
-        <geom name="neck_pitch_mouth" type="ellipsoid" pos="0.189 0 -0.009" size="0.003 0.008 0.005" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_-1" type="ellipsoid" pos="0.164 -0.063 0.058" size="0.004 0.012 0.016" euler="0 0 -0.3" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_glint_-1" type="sphere" pos="0.168 -0.06 0.064" size="0.0025" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_muzzle_-1" type="ellipsoid" pos="0.165 -0.019 0.007" size="0.017 0.023 0.016" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_eye_1" type="ellipsoid" pos="0.164 0.063 0.058" size="0.004 0.012 0.016" euler="0 0 0.3" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_glint_1" type="sphere" pos="0.168 0.06 0.064" size="0.0025" euler="0 0 0" rgba="1 1 1 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_muzzle_1" type="ellipsoid" pos="0.165 0.019 0.007" size="0.017 0.023 0.016" euler="0 0 0" rgba="0.93 0.95 0.96 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_nose" type="ellipsoid" pos="0.183 0 0.015" size="0.006 0.01 0.006" euler="0 0 0" rgba="0.89 0.58 0.65 1" contype="0" conaffinity="0" group="3" />
+        <geom name="neck_pitch_mouth" type="ellipsoid" pos="0.183 0 -0.003" size="0.002 0.006 0.003" euler="0 0 0" rgba="0.2 0.12 0.2 1" contype="0" conaffinity="0" group="3" />
       </body>
     </body>
   </worldbody>

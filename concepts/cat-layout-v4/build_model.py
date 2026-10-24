@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 C = json.loads((HERE/'design.json').read_text(encoding='utf8'))
 G, MASS = C['geometry_m'], C['mass_allocations_kg']
 COL = {'white':[.93,.95,.96,1], 'pink':[.89,.58,.65,1], 'hair':[.53,.61,.66,1],
-       'dark':[.15,.19,.21,1], 'metal':[.38,.46,.47,1], 'pad':[.65,.39,.48,1],
+       'dark':[.15,.19,.21,1], 'metal':[.38,.46,.47,1], 'pad':[.82,.85,.86,1],
        'eye':[.20,.12,.20,1], 'cream':[1,.94,.88,1], 'light':[1,1,1,1]}
 
 
@@ -83,23 +83,19 @@ def build():
         s=link(pre+'_elbow',t['name'],[0,0,-up],[0,-1,0],'elbow',ko+' 팔꿈치',MASS['forearm'],[0,0,-.10],[.07,.07,.20])
         beam(s,lo,.011)
         geom(s,'paw','sphere',[0,0,-lo],[G['paw_radius']],'white','sole',collision=True)
-        geom(s,'paw_pad','ellipsoid',[.023,0,-lo],[.022,.028,.028],'pad','detail')
         s['sites'].append({'name':pre+'_paw','pos':[0,0,-lo]})
         joint_order += [n['name'] for n in [a,t,s]]
     head=link('neck_pitch','base',G['neck_origin'],[0,1,0],'neck_pitch','고개 끄덕이기',MASS['head'],G['head_center'],[.30,.46,.36])
     motor(head,'head')
     hc=np.array(G['head_center'])
     geom(head,'head','ellipsoid',hc,G['head_radii'],'white','shell')
-    geom(head,'cap','ellipsoid',hc+[-.030,0,.045],[.124,.167,.108],'hair','shell')
     geom(head,'face','ellipsoid',hc+[.086,0,-.020],[.067,.137,.096],'white','shell')
     for side in [-1,1]:
-        geom(head,'eye_outline_'+str(side),'ellipsoid',hc+[.140,side*.070,.014],[.010,.037,.040],'eye','detail')
-        geom(head,'eye_color_'+str(side),'ellipsoid',hc+[.148,side*.070,.015],[.007,.031,.034],'metal','detail')
-        geom(head,'pupil_'+str(side),'ellipsoid',hc+[.154,side*.070,.014],[.004,.011,.030],'eye','detail')
-        geom(head,'glint_'+str(side),'sphere',hc+[.158,side*.061,.029],[.007],'light','detail')
-        geom(head,'muzzle_'+str(side),'ellipsoid',hc+[.145,side*.027,-.039],[.025,.033,.024],'white','shell')
-    geom(head,'nose','ellipsoid',hc+[.169,0,-.025],[.010,.015,.009],'pink','detail')
-    geom(head,'mouth','ellipsoid',hc+[.169,0,-.049],[.003,.008,.005],'eye','detail')
+        geom(head,'eye_'+str(side),'ellipsoid',hc+[.144,side*.063,.018],[.004,.012,.016],'eye','detail',[0,0,side*.3])
+        geom(head,'glint_'+str(side),'sphere',hc+[.148,side*.060,.024],[.0025],'light','detail')
+        geom(head,'muzzle_'+str(side),'ellipsoid',hc+[.145,side*.019,-.033],[.017,.023,.016],'white','shell')
+    geom(head,'nose','ellipsoid',hc+[.163,0,-.025],[.006,.010,.006],'pink','detail')
+    geom(head,'mouth','ellipsoid',hc+[.163,0,-.043],[.002,.006,.003],'eye','detail')
     joint_order.append('neck_pitch')
     model={'config':C,'links':links,'joint_order':joint_order,'mass_kg':sum(n['mass'] for n in links),
            'scope':'Common visual, collision-approximation and kinematic tree; no fabrication or dynamic capability claim.'}

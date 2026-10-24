@@ -377,7 +377,7 @@
         <box size="0.11 0.085 0.014" />
       </geometry>
       <material name="rear_R_ankle_roll_sole_color">
-        <color rgba="0.65 0.39 0.48 1" />
+        <color rgba="0.82 0.85 0.86 1" />
       </material>
     </visual>
     <collision name="rear_R_ankle_roll_sole">
@@ -626,15 +626,6 @@
         <sphere radius="0.035" />
       </geometry>
     </collision>
-    <visual name="front_R_elbow_paw_pad">
-      <origin xyz="0.023 0 -0.13" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.022 0.028 0.028" />
-      </geometry>
-      <material name="front_R_elbow_paw_pad_color">
-        <color rgba="0.65 0.39 0.48 1" />
-      </material>
-    </visual>
   </link>
   <joint name="front_R_elbow" type="revolute">
     <parent link="front_R_pitch" />
@@ -980,7 +971,7 @@
         <box size="0.11 0.085 0.014" />
       </geometry>
       <material name="rear_L_ankle_roll_sole_color">
-        <color rgba="0.65 0.39 0.48 1" />
+        <color rgba="0.82 0.85 0.86 1" />
       </material>
     </visual>
     <collision name="rear_L_ankle_roll_sole">
@@ -1229,15 +1220,6 @@
         <sphere radius="0.035" />
       </geometry>
     </collision>
-    <visual name="front_L_elbow_paw_pad">
-      <origin xyz="0.023 0 -0.13" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.022 0.028 0.028" />
-      </geometry>
-      <material name="front_L_elbow_paw_pad_color">
-        <color rgba="0.65 0.39 0.48 1" />
-      </material>
-    </visual>
   </link>
   <joint name="front_L_elbow" type="revolute">
     <parent link="front_L_pitch" />
@@ -1294,15 +1276,6 @@
         <color rgba="0.93 0.95 0.96 1" />
       </material>
     </visual>
-    <visual name="neck_pitch_cap">
-      <origin xyz="-0.01 0 0.085" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.124 0.167 0.108" />
-      </geometry>
-      <material name="neck_pitch_cap_color">
-        <color rgba="0.53 0.61 0.66 1" />
-      </material>
-    </visual>
     <visual name="neck_pitch_face">
       <origin xyz="0.106 0 0.02" rpy="0 0 0" />
       <geometry>
@@ -1312,109 +1285,73 @@
         <color rgba="0.93 0.95 0.96 1" />
       </material>
     </visual>
-    <visual name="neck_pitch_eye_outline_-1">
-      <origin xyz="0.16 -0.07 0.054" rpy="0 0 0" />
+    <visual name="neck_pitch_eye_-1">
+      <origin xyz="0.164 -0.063 0.058" rpy="0 0 -0.3" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.037 0.04" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.012 0.016" />
       </geometry>
-      <material name="neck_pitch_eye_outline_-1_color">
-        <color rgba="0.2 0.12 0.2 1" />
-      </material>
-    </visual>
-    <visual name="neck_pitch_eye_color_-1">
-      <origin xyz="0.168 -0.07 0.055" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.007 0.031 0.034" />
-      </geometry>
-      <material name="neck_pitch_eye_color_-1_color">
-        <color rgba="0.38 0.46 0.47 1" />
-      </material>
-    </visual>
-    <visual name="neck_pitch_pupil_-1">
-      <origin xyz="0.174 -0.07 0.054" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.011 0.03" />
-      </geometry>
-      <material name="neck_pitch_pupil_-1_color">
+      <material name="neck_pitch_eye_-1_color">
         <color rgba="0.2 0.12 0.2 1" />
       </material>
     </visual>
     <visual name="neck_pitch_glint_-1">
-      <origin xyz="0.178 -0.061 0.069" rpy="0 0 0" />
+      <origin xyz="0.168 -0.06 0.064" rpy="0 0 0" />
       <geometry>
-        <sphere radius="0.007" />
+        <sphere radius="0.0025" />
       </geometry>
       <material name="neck_pitch_glint_-1_color">
         <color rgba="1 1 1 1" />
       </material>
     </visual>
     <visual name="neck_pitch_muzzle_-1">
-      <origin xyz="0.165 -0.027 0.001" rpy="0 0 0" />
+      <origin xyz="0.165 -0.019 0.007" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.025 0.033 0.024" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.017 0.023 0.016" />
       </geometry>
       <material name="neck_pitch_muzzle_-1_color">
         <color rgba="0.93 0.95 0.96 1" />
       </material>
     </visual>
-    <visual name="neck_pitch_eye_outline_1">
-      <origin xyz="0.16 0.07 0.054" rpy="0 0 0" />
+    <visual name="neck_pitch_eye_1">
+      <origin xyz="0.164 0.063 0.058" rpy="0 0 0.3" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.037 0.04" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.012 0.016" />
       </geometry>
-      <material name="neck_pitch_eye_outline_1_color">
-        <color rgba="0.2 0.12 0.2 1" />
-      </material>
-    </visual>
-    <visual name="neck_pitch_eye_color_1">
-      <origin xyz="0.168 0.07 0.055" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.007 0.031 0.034" />
-      </geometry>
-      <material name="neck_pitch_eye_color_1_color">
-        <color rgba="0.38 0.46 0.47 1" />
-      </material>
-    </visual>
-    <visual name="neck_pitch_pupil_1">
-      <origin xyz="0.174 0.07 0.054" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.004 0.011 0.03" />
-      </geometry>
-      <material name="neck_pitch_pupil_1_color">
+      <material name="neck_pitch_eye_1_color">
         <color rgba="0.2 0.12 0.2 1" />
       </material>
     </visual>
     <visual name="neck_pitch_glint_1">
-      <origin xyz="0.178 0.061 0.069" rpy="0 0 0" />
+      <origin xyz="0.168 0.06 0.064" rpy="0 0 0" />
       <geometry>
-        <sphere radius="0.007" />
+        <sphere radius="0.0025" />
       </geometry>
       <material name="neck_pitch_glint_1_color">
         <color rgba="1 1 1 1" />
       </material>
     </visual>
     <visual name="neck_pitch_muzzle_1">
-      <origin xyz="0.165 0.027 0.001" rpy="0 0 0" />
+      <origin xyz="0.165 0.019 0.007" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.025 0.033 0.024" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.017 0.023 0.016" />
       </geometry>
       <material name="neck_pitch_muzzle_1_color">
         <color rgba="0.93 0.95 0.96 1" />
       </material>
     </visual>
     <visual name="neck_pitch_nose">
-      <origin xyz="0.189 0 0.015" rpy="0 0 0" />
+      <origin xyz="0.183 0 0.015" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.01 0.015 0.009" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.006 0.01 0.006" />
       </geometry>
       <material name="neck_pitch_nose_color">
         <color rgba="0.89 0.58 0.65 1" />
       </material>
     </visual>
     <visual name="neck_pitch_mouth">
-      <origin xyz="0.189 0 -0.009" rpy="0 0 0" />
+      <origin xyz="0.183 0 -0.003" rpy="0 0 0" />
       <geometry>
-        <mesh filename="meshes/unit_sphere.obj" scale="0.003 0.008 0.005" />
+        <mesh filename="meshes/unit_sphere.obj" scale="0.002 0.006 0.003" />
       </geometry>
       <material name="neck_pitch_mouth_color">
         <color rgba="0.2 0.12 0.2 1" />

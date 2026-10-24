@@ -13,6 +13,7 @@ const {pathToFileURL}=require('url');
  let maxError=0;
  for(const sample of frames){
   const points=await page.evaluate(s=>{DoroDebug.setMode(s.mode);DoroDebug.seek(s.time);return Object.fromEntries(Object.keys(s.points).map(n=>[n,DoroDebug.point(n)]));},sample);
+  assert(await page.evaluate(()=>DoroDebug.surfacesFinite()));
   for(const [name,p] of Object.entries(points))maxError=Math.max(maxError,Math.hypot(...p.map((x,i)=>x-sample.points[name][i])));
  }
  assert(maxError<1e-9);assert.equal(await page.locator('#jointSelect option').count(),19);
