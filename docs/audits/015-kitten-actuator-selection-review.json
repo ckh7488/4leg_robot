@@ -1,0 +1,40 @@
+{
+  "reviewed_on": "2026-10-24",
+  "reviewed_commit": "b17a554",
+  "scope": "Motor design-baseline decision and requirement documentation only",
+  "review_method": "Re-read the committed baseline JSON and current STATE section, compare cited primary-source fields, and check the commit diff for accidental model changes.",
+  "decision": "GIM4305-10 V1.1 with GDS34 Driver (Pupper V3 version) selected as the next leg-layout baseline; no purchase or hardware qualification",
+  "checks_performed": [
+    "Parsed the baseline as JSON.",
+    "Checked the USD/KRW unit and total budget arithmetic, catalog actuator mass multiplication, and published BOM unit-cost division.",
+    "Checked that every referenced source ID exists.",
+    "Checked that current exact store price remains null, purchase_authorized is false, and hardware_tested is false.",
+    "Checked relative Markdown link targets in all six modified Markdown files and git diff --check.",
+    "Verified no diff in the legacy root design.json, V5 design.json, viewer.js or validation.json. Reviewed commit changes contain documentation and the new baseline data only."
+  ],
+  "findings": [
+    {
+      "status": "fixed_in_reviewed_commit",
+      "issue": "README's pre-existing historical V1 link pointed to a nonexistent index.html.",
+      "fix": "Linked the existing concepts/short-limb-v1/concept.html; relative-link check then passed."
+    },
+    {
+      "status": "explicitly_qualified",
+      "issue": "Manufacturer dimensions and mass describe the general GDS34 catalog configuration; the Pupper-specific revision has not been checked against a drawing.",
+      "handling": "Keep the catalog values as reference envelopes and verify exact connectors, firmware and mechanical envelope before releasing a build."
+    },
+    {
+      "status": "explicitly_qualified",
+      "issue": "Pupper's USD 110 unit cost is an approximate public BOM value, not a verified current store quote.",
+      "handling": "Current quote remains null. USD 130 is a separate planning allowance; taxes, shipping, other robot parts and availability remain open."
+    },
+    {
+      "status": "explicitly_qualified",
+      "issue": "A working Pupper and its air-cooled continuous-torque specification do not validate a different kitten body or enclosed actuator.",
+      "handling": "Do not claim policy transfer, kitten-scale fit, loaded response, thermal margin or complete kitten behavior from this selection."
+    }
+  ],
+  "not_run": ["new dynamics simulation", "Pupper code", "hardware response or thermal testing", "new viewer tests"],
+  "remaining_work": ["exact selected-variant drawing and supply", "mechanical layout and continuous pose clearance", "mass and load budgets", "actuator characterization and physics model", "complete robot cost"],
+  "result": "Decision recorded consistently; physical feasibility and procurement readiness remain unverified."
+}
