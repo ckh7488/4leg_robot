@@ -1,12 +1,14 @@
-# 새끼고양이 로봇 — 외형부터
+# 새끼고양이 로봇 — 동작과 구동계
 
 > 신규 AI는 이 문서 → `docs/STATE.md` → `design.json` → 최신 `docs/audits/` 순서로 읽는다.
 
-현재 작업은 **[새끼고양이 외형 V5](concepts/kitten-shape-v5/index.html)**다. 실제 새끼고양이에 가까운 외양과 크기를 먼저 3차원 화면에서 확인하고, 네 발 걷기와 고양이다운 자세를 비교한다. **모터와 실제 관절 구성은 외양을 정한 다음에 다시 설계한다.** 사람처럼 두 발로 서기·걷기·팔 벌리기와 이전 19축 구조는 현재 요구가 아니다.
+현재 방향은 **새끼고양이 비율과 짧고 가벼운 다리로 고양이다운 움직임을 만드는 것**이다. 장식 외피는 뒤로 미루고, 사용자의 요청에 따라 다리 모터의 설계 기준을 **SteadyWin GIM4305-10 V1.1 + GDS34 Driver (Pupper V3 version)**로 정했다. [선정 근거와 미확인 항목](hardware/kitten-actuator-baseline.json)을 읽는다. 사람처럼 두 발로 서기·걷기·팔 벌리기와 이전 19축 구조는 현재 요구가 아니다. 최종 축 수·치수·전체 질량은 미정이다.
 
-V5는 약 29cm 길이·17cm 등 높이의 임시 비율안이다. 실제 동물의 실측이나 제작 가능한 부품 배치를 뜻하지 않는다. 외형과 고정 길이의 다리로 만든 7가지 자세/움직임을 보여 주며, 내부 부품·힘·균형·보행 능력은 미검증이다. [V5 범위](concepts/kitten-shape-v5/README.md)를 함께 읽는다. 외양의 자연스러움에 대한 사용자 승인은 아직 없다.
+현재 볼 수 있는 **[외형 V5](concepts/kitten-shape-v5/index.html)**는 약 29cm 길이·17cm 등 높이의 임시 비율안이다. 이번 모터 선정으로 화면이나 물리 모델을 변경하지 않았다. 실제 동물의 실측이나 제작 가능한 부품 배치를 뜻하지 않는다. 외형과 고정 길이의 다리로 만든 7가지 자세/움직임을 보여 주며, 내부 부품·힘·균형·보행 능력은 미검증이다. [V5 범위](concepts/kitten-shape-v5/README.md)를 함께 읽는다. 외양의 자연스러움에 대한 사용자 승인은 아직 없다.
 
-이전 [고양이 V4](concepts/cat-layout-v4/index.html), [도로롱 V3](concepts/doro-model-v3/index.html), [전체 구조 V2](concepts/doro-layout-v2/index.html), [짧은 마디 V1](concepts/short-limb-v1/index.html)은 비교 기록으로 보존한다. 이들의 사람형 동작·19축·모터·질량 가정과 검증 결과를 V5에 적용하지 않는다. 루트 `design.json`은 아래의 이전 XL330 구현 원본이다.
+Pupper V3의 같은 계열 모터와 보행 자료를 개발 참고로 사용한다. 체형이 달라지므로 그 보행 정책을 그대로 사용할 수 있다고 가정하지 않는다. 제조사 GDS34 구성의 53×32mm·150g은 배치의 출발점이며 선택한 Pupper 전용 버전의 커넥터·도면 차이는 확인해야 한다. 12개 계산 예시에서는 구동부만 약 1.8kg이므로 실제 어린 고양이의 무게까지 재현한다고 약속하지 않는다. 전체 로봇 200만원 이내도 확인되지 않았다.
+
+이전 [고양이 V4](concepts/cat-layout-v4/index.html), [도로롱 V3](concepts/doro-model-v3/index.html), [전체 구조 V2](concepts/doro-layout-v2/index.html), [짧은 마디 V1](concepts/short-limb-v1/concept.html)은 비교 기록으로 보존한다. 이들의 사람형 동작·19축·모터·질량 가정과 검증 결과를 V5에 적용하지 않는다. 루트 `design.json`은 아래의 이전 XL330 구현 원본이다.
 
 ## 이전 XL330 기준 구현
 
@@ -39,7 +41,7 @@ V5는 약 29cm 길이·17cm 등 높이의 임시 비율안이다. 실제 동물�
 | `models/` | MuJoCo/URDF 및 구동계 설정 |
 | `scripts/` | 생성·검증·보고서 재현 코드 |
 | `control/` | 명령/관측 계약과 구동계 구현 |
-| `hardware/` | 전원·BOM·배선 미결 항목 (아직 설계 전) |
+| `hardware/` | 새끼고양이 모터 선정 기준 및 이전 XL330 전원·BOM 미결 항목 |
 | `reports/` | 실제 실행한 검사 결과; 통과 범위를 그대로 기재 |
 | `docs/STATE.md` | 현재 단계와 다음 작업 |
 | `docs/audits/` | 체크포인트 뒤 재검토 기록 |

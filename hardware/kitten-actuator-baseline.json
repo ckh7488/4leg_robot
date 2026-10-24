@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-24",
+  "status": "selected_for_next_mechanical_layout; not fabrication released",
+  "user_direction": "새끼고양이 비율과 짧고 가벼운 다리, 고양이다운 움직임을 우선. 모터 하나를 정하고 진행하도록 선택을 위임받음.",
+  "selection": {
+    "manufacturer": "SteadyWin",
+    "model": "GIM4305-10",
+    "motor_version": "V1.1",
+    "store_driver_option": "with GDS34 Driver (Pupper V3 version)",
+    "intended_use": "main leg joints",
+    "final_joint_count": null,
+    "purchase_authorized": false,
+    "hardware_tested": false,
+    "reasons": [
+      "Pupper V3 documents the same actuator family in a working quadruped, with public hardware, deployment and simulation resources.",
+      "A low 10:1 reduction and compact 150 g class integrated actuator are a useful starting point for a small dynamic robot.",
+      "GIM3505-8 is smaller, but the larger GIM4305 has higher published output torque and a more directly relevant walking implementation to study.",
+      "One existing actuator/controller combination reduces initial integration work; cost reduction through a custom controller can be evaluated after the first joint is characterized."
+    ],
+    "tradeoffs": [
+      "At twelve actuators, catalog motor mass alone is 1.8 kg. An actual very young kitten's weight and tiny dimensions are not promised.",
+      "A low gear ratio or the Pupper label does not guarantee our required loaded response, backdrivability, durability or sim-to-real performance.",
+      "Cooling inside a fur or silicone covering can reduce sustainable torque.",
+      "The exact Pupper driver hardware, connectors, firmware and supply availability must be matched; standard GDS34, GDZ34 and GDK34 are not assumed interchangeable."
+    ],
+    "source_ids": ["S1", "S2", "S3", "S4", "S5", "S6"]
+  },
+  "manufacturer_reference": {
+    "configuration": "2025 manufacturer catalog GIM4305-10 with GDS34 (SDC101); exact selected Pupper revision not yet dimensionally checked",
+    "rated_voltage_v": 24,
+    "gear_ratio": 10,
+    "mass_with_driver_kg": 0.15,
+    "diameter_mm": 53,
+    "length_with_driver_mm": 32,
+    "rated_torque_nm": 1.0,
+    "stall_or_peak_torque_nm": 3.47,
+    "torque_label_note": "Catalog row is Chinese stall torque / English Peak torque. Duration and thermal test conditions are not supplied here.",
+    "rated_output_rpm": 300,
+    "maximum_output_rpm": 366,
+    "communication": "CAN",
+    "source_ids": ["S1"],
+    "status": "manufacturer_reference; not a measurement of our hardware"
+  },
+  "pupper_reference": {
+    "robot_mass_kg": 3,
+    "actuator_count": 12,
+    "gear_ratio": 10,
+    "approximate_peak_torque_nm": 3.5,
+    "approximate_continuous_torque_nm": 1.0,
+    "continuous_condition": "with air cooling",
+    "approximate_maximum_output_rad_s": 30,
+    "speed_note": "Keep the Pupper value separate from the manufacturer's catalog RPM figures; firmware, voltage and conditions may differ.",
+    "learning_evidence": "Project documentation describes simulation-trained locomotion and provides real-robot demonstrations and deployment instructions.",
+    "transfer_to_our_cat": "unverified; changed geometry, mass, limits and coverings require a new model and policy validation",
+    "source_ids": ["S3", "S4", "S5", "S6"]
+  },
+  "cost": {
+    "currency": "USD",
+    "current_exact_store_unit_price": null,
+    "current_stock_and_korea_shipping": "unconfirmed",
+    "public_bom_reference": {
+      "row": 58,
+      "description": "Steadywin GIM4305 with SHS driver; next row requires Pupper v3 version",
+      "quantity": 12,
+      "total_usd": 1320,
+      "unit_usd_calculated": 110,
+      "status": "published approximate BOM cost; not a current vendor quotation",
+      "source_ids": ["S5"]
+    },
+    "planning_allowance": {
+      "status": "design_budget_assumption; not verified market price or procurement ceiling",
+      "unit_usd": 130,
+      "usd_to_krw_assumption": 1325,
+      "quantity_scenario": 12,
+      "quantity_note": "comparison scenario, not a finalized joint count",
+      "unit_krw_calculated": 172250,
+      "total_usd_calculated": 1560,
+      "total_krw_calculated": 2067000,
+      "actuator_mass_kg_calculated": 1.8,
+      "excluded": ["shipping", "import taxes", "payment fees", "spares", "all other robot parts"],
+      "whole_robot_cost_krw": null
+    }
+  },
+  "next_work": [
+    "Use the selected exact-variant drawing when available; include mounts, bearing support, connectors, cable bends and folding clearance in the layout.",
+    "Evaluate walking stance, sitting, crouching and reaching with the front paw, including continuous transitions and interference.",
+    "Allocate realistic masses and calculate joint demands before claiming torque margin. Preserve short light limbs; evaluate proximal placement and transmissions.",
+    "Characterize one joint's loaded response, current-to-output-torque relationship, delay, friction and temperature before hardware-wide validation; hardware operation requires a separate explicit command.",
+    "Model the chosen controller and actuator limits in physics simulation; do not reuse Pupper policies or catalog torque limits as validated cat performance."
+  ],
+  "unchanged_artifacts": ["root design.json remains legacy XL330", "concepts/kitten-shape-v5 remains a kinematic appearance preview"],
+  "sources": [
+    {
+      "id": "S1",
+      "type": "manufacturer_catalog",
+      "url": "https://www.worldrobotconference.com/profile/robot/download/2025/07/23/20250723171358000848_20250723171358A002.pdf",
+      "locator": "PDF page 11 (zero-based 10), first GIM specification table, GIM4305-10 column",
+      "scope": "general GDS34 configuration dimensions, mass, rated and stall/peak output, voltage and ratio"
+    },
+    {
+      "id": "S2",
+      "type": "manufacturer_store",
+      "url": "https://steadywin-motor.com/products/built-in-planetary-reduction-motor-aloha-accessories-quadruped-robot-joint-module-2",
+      "scope": "V1.1 driver mounting, explicit Pupper V3 GDS34 option, connector variant warning; exact option price and stock not confirmed"
+    },
+    {
+      "id": "S3",
+      "type": "project_documentation",
+      "url": "https://pupper-v3-documentation.readthedocs.io/en/latest/learn_more/tech_specs.html",
+      "scope": "Pupper mass, joint count and actuator performance including air-cooling condition"
+    },
+    {
+      "id": "S4",
+      "type": "project_documentation",
+      "url": "https://pupper-v3-documentation.readthedocs.io/en/latest/",
+      "scope": "locomotion training description and linked real-robot demonstrations; not evidence for our cat"
+    },
+    {
+      "id": "S5",
+      "type": "project_bill_of_materials",
+      "url": "https://docs.google.com/spreadsheets/d/1e6Hyhc8V6_9mfPMaPCI1v3W4uGBJp4r0xIzH3rUtAeI/edit?usp=sharing",
+      "locator": "rows 58-59 in the sheet exposed by the project sourcing-parts page",
+      "scope": "12 actuators, approximate total USD 1320 and explicit Pupper-version requirement; not a current quote"
+    },
+    {
+      "id": "S6",
+      "type": "project_source_code",
+      "url": "https://github.com/Nate711/pupperv3-monorepo",
+      "scope": "public code with separate simulated and real robot deployment instructions; not run in this checkpoint"
+    }
+  ]
+}
