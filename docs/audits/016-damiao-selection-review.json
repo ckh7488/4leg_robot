@@ -1,0 +1,20 @@
+{
+  "reviewed_on": "2026-10-24",
+  "reviewed_commit": "06d96e7",
+  "scope": "Targeted Damiao comparison and correction of final-selection status",
+  "method": "Re-read the committed comparison and baseline status; compare fields against the opened source manuals/product pages and seller listings.",
+  "checks_performed": [
+    "Parsed both actuator JSON files and checked all candidate source references.",
+    "Recalculated twelve-actuator masses: 3.6 kg, 3.9 kg and 1.8 kg.",
+    "Confirmed final_choice is null, baseline is provisional, purchase_authorized and hardware_tested remain false.",
+    "Ran git diff --check and confirmed no changes to legacy design.json or V5 model/viewer/validation."
+  ],
+  "findings": [
+    {"status": "qualified", "issue": "V1.1 price and V1.2 output must not be combined.", "handling": "Separate records, voltages, sources and seller currencies; exact order and landed costs remain unconfirmed."},
+    {"status": "qualified", "issue": "Some newer specifications are from retailer-republished manuals, not our hardware measurements.", "handling": "Source types explicitly identify republication; manufacturer torque confirmation is cited separately."},
+    {"status": "qualified", "issue": "DM-J3507 supply revision, backorder and comparative loaded response remain unresolved.", "handling": "Add as a candidate without declaring it the winner or replacing geometry."},
+    {"status": "qualified", "issue": "The earlier recommendation was based on a limited comparison.", "handling": "Current records reopen selection and explicitly disclaim an exhaustive survey; historical checkpoint 13 is marked superseded."}
+  ],
+  "not_run": ["hardware tests", "new physics simulation", "motor layout or stress analysis", "full market survey"],
+  "result": "Documentation correction and targeted comparison complete; final motor and physical feasibility remain open."
+}
