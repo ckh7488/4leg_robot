@@ -167,5 +167,144 @@
       "checked": "2026-10-24",
       "title": "외부 전원과 회생 전력 처리"
     }
-  ]
+  ],
+  "rear_leg_packaging": {
+    "status": "one-hind-leg kinematic proxy; not a released mechanical design",
+    "motor_envelope_reference": "ak40",
+    "motor_is_selected": false,
+    "upper_and_lower_length_candidates_mm": [
+      50,
+      55,
+      60
+    ],
+    "display_link_length_mm": 60,
+    "hip_pitch_forward_offset_mm": 40,
+    "hip_roll_housing_backward_center_mm": 25,
+    "minimum_envelope_gap_mm": 2,
+    "foot_dimensions_mm": [
+      80,
+      60,
+      6
+    ],
+    "ankle_axis_to_sole_mm": 35,
+    "sole_center_forward_offset_mm": 10,
+    "axes_in_upright_mount_frame": {
+      "hip_sway": [
+        1,
+        0,
+        0
+      ],
+      "hip_pitch": [
+        0,
+        1,
+        0
+      ],
+      "knee_pitch": [
+        0,
+        1,
+        0
+      ],
+      "ankle_pitch": [
+        0,
+        1,
+        0
+      ]
+    },
+    "joint_limits_deg": {
+      "hip_sway": [
+        -25,
+        25
+      ],
+      "hip_pitch": [
+        -160,
+        80
+      ],
+      "knee_pitch": [
+        0,
+        150
+      ],
+      "ankle_pitch": [
+        -150,
+        90
+      ]
+    },
+    "upright_frame": "x forward, y left, z up; mount rotates +90 degrees about y for the quadruped reference pose",
+    "sweep": {
+      "body_pitch_deg": [
+        0,
+        90
+      ],
+      "hip_sway_deg": [
+        -15,
+        0,
+        15
+      ],
+      "world_sagittal_hip_deg": [
+        -55,
+        -35,
+        0,
+        35
+      ],
+      "knee_deg": [
+        30,
+        70,
+        110,
+        140
+      ]
+    },
+    "poses": [
+      {
+        "id": "upright",
+        "title": "두 발 자세의 뒷다리",
+        "body_pitch_deg": 0,
+        "hip_sway_deg": 0,
+        "world_sagittal_hip_deg": -35,
+        "knee_deg": 70
+      },
+      {
+        "id": "quadruped",
+        "title": "네 발 자세의 뒷다리",
+        "body_pitch_deg": 90,
+        "hip_sway_deg": 0,
+        "world_sagittal_hip_deg": -35,
+        "knee_deg": 70
+      },
+      {
+        "id": "crouch",
+        "title": "깊게 굽힌 자세",
+        "body_pitch_deg": 0,
+        "hip_sway_deg": 0,
+        "world_sagittal_hip_deg": -55,
+        "knee_deg": 110
+      },
+      {
+        "id": "fold",
+        "title": "과도하게 접은 자세",
+        "body_pitch_deg": 0,
+        "hip_sway_deg": 0,
+        "world_sagittal_hip_deg": -70,
+        "knee_deg": 140
+      },
+      {
+        "id": "side",
+        "title": "옆으로 15도 기울인 다리",
+        "body_pitch_deg": 0,
+        "hip_sway_deg": 15,
+        "world_sagittal_hip_deg": -35,
+        "knee_deg": 70
+      }
+    ],
+    "force_example_total_robot_mass_kg": 4.0,
+    "force_example_support_counts": [
+      1,
+      2
+    ],
+    "limitations": [
+      "Only cylindrical motor envelopes and a rectangular foot are checked; visual link capsules are excluded. Screws, brackets, cables, housing cut-outs and other limbs are not modeled.",
+      "A fixed mount and prescribed poses are used. No simulation timesteps, controller or whole-body balance validation.",
+      "The joint-sway axis changes world orientation as the body pitches; this is a candidate axis arrangement, not a conventional quadruped hip assertion.",
+      "Vertical-force Jacobian calculations omit leg weight, inertia, horizontal force and contact-feasibility constraints.",
+      "This joint-mounted integrated-actuator layout is a comparison baseline. Remote knee/ankle transmission is not designed."
+    ]
+  }
 }

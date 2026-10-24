@@ -189,6 +189,6 @@
     "Sim-to-real",
     "Total cost"
   ],
-  "input_sha256": "32d647a5b9b0381e00b686f546283b23a65760dc2e8e5b9ed9a41e77c6a5bb2f",
+  "input_sha256": "dff3f3aea660c652db08befa5f8e8418bd445e504e716d4537ebbc2dbaa71312",
   "input_sha256_normalization": "UTF-8 text with universal newlines normalized to LF"
 }

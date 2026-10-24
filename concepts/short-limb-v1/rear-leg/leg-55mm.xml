@@ -1,0 +1,38 @@
+<mujoco model="short_limb_rear_leg_kinematic_proxy">
+  <compiler angle="degree" />
+  <option gravity="0 0 -9.81" timestep="0.001" />
+  <visual>
+    <global offwidth="1000" offheight="800" />
+    <headlight ambient=".5 .5 .5" diffuse=".6 .6 .6" />
+  </visual>
+  <default>
+    <geom contype="0" conaffinity="0" />
+  </default>
+  <worldbody>
+    <light pos="0 -1 2" dir="0 0 -1" />
+    <geom name="floor" type="plane" size="1 1 .01" rgba=".92 .91 .89 1" />
+    <body name="mount" mocap="true" pos="0 0 .2">
+      <geom name="hip_sway_motor" type="cylinder" size="0.0265 0.0201" pos="-0.025 0 0" quat="0.707106781187 0 0.707106781187 0" mass="0.19" rgba=".33 .39 .44 1" />
+      <body name="sway">
+        <joint name="hip_sway" type="hinge" axis="1 0 0" limited="true" range="-25 25" />
+        <geom name="hip_pitch_motor" type="cylinder" size="0.0265 0.0201" pos="0.04 0 0" quat="0.707106781187 0.707106781187 0 0" mass="0.19" rgba=".22 .51 .52 1" />
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" size=".006" mass=".02" rgba=".79 .79 .77 1" />
+        <body name="upper" pos="0.04 0 0">
+          <joint name="hip_pitch" type="hinge" axis="0 1 0" limited="true" range="-160 80" />
+          <geom name="knee_motor" type="cylinder" size="0.0265 0.0201" pos="0 0 -0.055" quat="0.707106781187 0.707106781187 0 0" mass="0.19" rgba=".22 .51 .52 1" />
+          <geom name="upper_visual_link" type="capsule" fromto="0 -0.0261 0 0 -0.0261 -0.055" size=".005" mass=".02" rgba=".79 .79 .77 1" />
+          <body name="lower" pos="0 0 -0.055">
+            <joint name="knee_pitch" type="hinge" axis="0 1 0" limited="true" range="0 150" />
+            <geom name="ankle_motor" type="cylinder" size="0.0265 0.0201" pos="0 0 -0.055" quat="0.707106781187 0.707106781187 0 0" mass="0.19" rgba=".22 .51 .52 1" />
+            <geom name="lower_visual_link" type="capsule" fromto="0 -0.0261 0 0 -0.0261 -0.055" size=".005" mass=".02" rgba=".79 .79 .77 1" />
+            <body name="foot" pos="0 0 -0.055">
+              <joint name="ankle_pitch" type="hinge" axis="0 1 0" limited="true" range="-150 90" />
+              <geom name="sole" type="box" size="0.04 0.03 0.003" pos="0.01 0 -0.032" mass=".08" rgba=".81 .48 .6 1" />
+              <site name="support_point" pos="0.01 0 -0.035" size=".003" rgba=".9 .6 .1 1" />
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
