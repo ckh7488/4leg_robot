@@ -6,6 +6,8 @@ Use root design.json as authoritative parameter source for the legacy XL330 mode
 
 Latest direction extends to whole-body physical layout with size and price temporarily deprioritized. Current V2 assumptions are concepts/doro-layout-v2/design.json; read before changing V2. V1 remains a historical small-limb comparator. V2 ideal-axis reach, mass allocations and sampled ankle linkage calculations are not fabrication fit, walking or self-righting validation.
 
+New user-selected dance references and grounded motion interpretations are in concepts/doro-layout-v2/motion_targets.json. Preserve the locomotion/recovery requirements. Current arm endpoint checks expose shoulder range limits; they are not gesture-path, collision or balance tests. Do not infer physical flight/contact, joint speed or motor load from composited video. Keep the current 19-axis configuration a comparator until gesture requirements and real packaging are reconciled.
+
 After each meaningful checkpoint: run relevant reproducible checks, commit, re-read committed inputs as if seeing them first, write an audit with findings and concrete evidence, fix meaningful findings, rerun affected checks, commit fixes. Keep known unknowns visible. Do not manufacture hardware measurements or claim Isaac validation without running Isaac. Record only actual tests.
 
 No purchases, actuator EEPROM writes, or hardware torque enabling from this repository without a separate explicit hardware command. Do not spawn agents unless explicitly requested. Preserve any user changes. Do not force-push. Do not commit environments, credentials, caches, OEM downloaded binaries, or machine-specific paths. A future reviewer should be able to reproduce checks from documented commands.

@@ -1,0 +1,171 @@
+{
+  "status": "endpoint geometry screen only; not a dance/clap/balance test",
+  "design_sha256": "3b0755aa8fb1fe4170e70265a53cc530cf9f4b3fd04f069216184f914c1b9a64",
+  "targets_sha256": "29d2066839b67f3fe7575109d29f22711c4429db663c2e198f8b4d2f9074de36",
+  "scope": "Four designer-chosen forepaw targets in the existing ideal-axis V2 model. These coordinates are not measurements extracted from the videos. Positive elbow branch and existing joint limits; no limit changes to make poses pass.",
+  "angle_order": [
+    "front_shoulder_roll",
+    "front_shoulder_pitch",
+    "front_elbow"
+  ],
+  "cases": [
+    {
+      "id": "arms_side_level",
+      "label_ko": "어깨 높이로 양팔 벌리기",
+      "paw_relative_xyz_m": [
+        0.08,
+        0.475,
+        0.06
+      ],
+      "arms": [
+        {
+          "side": -1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": -90.0,
+            "front_shoulder_pitch": -27.758243810890143,
+            "front_elbow": 51.8076421720218
+          },
+          "violations": [
+            "front_shoulder_roll"
+          ],
+          "endpoint_error_m": 2.7755575615628914e-17
+        },
+        {
+          "side": 1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": 90.0,
+            "front_shoulder_pitch": -27.758243810890143,
+            "front_elbow": 51.8076421720218
+          },
+          "violations": [
+            "front_shoulder_roll"
+          ],
+          "endpoint_error_m": 2.7755575615628914e-17
+        }
+      ],
+      "both_arms_reach_and_assumed_ranges": false,
+      "spherical_paw_surface_gap_m": 0.8799999999999999
+    },
+    {
+      "id": "arms_side_lower",
+      "label_ko": "조금 낮춰 양팔 벌리기",
+      "paw_relative_xyz_m": [
+        0.08,
+        0.46,
+        -0.025
+      ],
+      "arms": [
+        {
+          "side": -1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": -71.56505117707799,
+            "front_shoulder_pitch": -28.326756769923076,
+            "front_elbow": 52.85784491371429
+          },
+          "violations": [],
+          "endpoint_error_m": 0.0
+        },
+        {
+          "side": 1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": 71.56505117707799,
+            "front_shoulder_pitch": -28.326756769923076,
+            "front_elbow": 52.85784491371429
+          },
+          "violations": [],
+          "endpoint_error_m": 0.0
+        }
+      ],
+      "both_arms_reach_and_assumed_ranges": true,
+      "spherical_paw_surface_gap_m": 0.8500000000000001
+    },
+    {
+      "id": "paws_together_low",
+      "label_ko": "낮은 위치에서 앞발 모으기",
+      "paw_relative_xyz_m": [
+        0.23,
+        0.035,
+        0.005
+      ],
+      "arms": [
+        {
+          "side": -1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": 72.07208023799276,
+            "front_shoulder_pitch": -82.16883860014059,
+            "front_elbow": 78.1169220278401
+          },
+          "violations": [],
+          "endpoint_error_m": 3.925231146709438e-17
+        },
+        {
+          "side": 1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": -72.07208023799276,
+            "front_shoulder_pitch": -82.16883860014059,
+            "front_elbow": 78.1169220278401
+          },
+          "violations": [],
+          "endpoint_error_m": 3.925231146709438e-17
+        }
+      ],
+      "both_arms_reach_and_assumed_ranges": true,
+      "spherical_paw_surface_gap_m": 0.0
+    },
+    {
+      "id": "paws_together_high",
+      "label_ko": "어깨보다 높은 위치에서 앞발 모으기",
+      "paw_relative_xyz_m": [
+        0.23,
+        0.035,
+        0.08
+      ],
+      "arms": [
+        {
+          "side": -1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": -83.29016319224306,
+            "front_shoulder_pitch": -182.8250512289564,
+            "front_elbow": 81.5282688199984
+          },
+          "violations": [
+            "front_shoulder_roll",
+            "front_shoulder_pitch"
+          ],
+          "endpoint_error_m": 1.3877787807814457e-17
+        },
+        {
+          "side": 1,
+          "reachable": true,
+          "angles_deg": {
+            "front_shoulder_roll": 83.29016319224306,
+            "front_shoulder_pitch": -182.8250512289564,
+            "front_elbow": 81.5282688199984
+          },
+          "violations": [
+            "front_shoulder_roll",
+            "front_shoulder_pitch"
+          ],
+          "endpoint_error_m": 1.3877787807814457e-17
+        }
+      ],
+      "both_arms_reach_and_assumed_ranges": false,
+      "spherical_paw_surface_gap_m": 0.0
+    }
+  ],
+  "not_checked": [
+    "continuous trajectories",
+    "all-parts collisions",
+    "paw surface orientation or contact force",
+    "balance and support changes",
+    "torque, speed, thermal load",
+    "independent head/waist gestures"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-24",
+  "status": "user-selected motion references; feasibility targets, not demonstrated robot capabilities",
+  "preserved_requirements": ["quadruped walking", "actual biped walking", "self-righting", "external DC power with pull sensing, not body-weight suspension"],
+  "sources": [
+    {
+      "id": "morning",
+      "title": "아침이 왔다잖아 알람",
+      "url": "https://www.youtube.com/watch?v=LgB1_YUzYFQ",
+      "checked": "2026-10-24",
+      "duration_s": 33.661,
+      "visually_inspected_sample_times_s": [0.5, 3, 6, 9, 12, 18, 24, 30],
+      "observations": ["Upright cat figures with forelimbs spread or raised", "Changing whole-body orientation and hind-leg poses", "Composited backgrounds and screen-space rotation; no verifiable ground-contact sequence"],
+      "scope": "Visual pose samples, not continuous motion tracking or a measurement of real cat/robot joint dynamics. No claim about the production technique."
+    },
+    {
+      "id": "school",
+      "title": "우리 모두 다같이 학교가 알람",
+      "url": "https://www.youtube.com/watch?v=ETcfoe0UsNI",
+      "checked": "2026-10-24",
+      "duration_s": 14.741,
+      "visually_inspected_sample_times_s": [0.5, 3, 6, 9, 12, 14],
+      "observations": ["Upright paired cat figures with alternating lateral body/leg poses", "Forelimbs spread to the sides, then brought forward toward each other", "No identifiable physical floor or confirmed foot-contact schedule"],
+      "scope": "Visual pose samples; paw-to-paw impact and its force are not established. Timing, limb dimensions and joint angles have not been reconstructed."
+    }
+  ],
+  "proposed_robot_motion_targets": [
+    {"id": "upright_gesture", "label_ko": "몸을 세우고 짧은 팔 벌리기·모으기", "first_gate": "Arm reach, real shoulder range, head/shell/arm interference; then balance with moving arm masses."},
+    {"id": "rhythmic_sway", "label_ko": "박자에 맞춰 좌우 흔들기·무릎 굽혔다 펴기", "first_gate": "Initially keep both rear feet on the floor; solve contact forces, friction and motor load throughout the motion."},
+    {"id": "alternating_steps", "label_ko": "다리를 번갈아 드는 제자리걸음·짧은 옆걸음", "first_gate": "Transfer load before lifting a foot; verify single-support balance, foot clearance and landing."},
+    {"id": "turning", "label_ko": "발을 옮겨 방향 바꾸기", "first_gate": "Stepped turns with ground contact and tether routing; do not copy screen-space rotation as an airborne motion."}
+  ],
+  "not_inferred_from_video": ["Required motor torque or speed", "Exact joint angles or body dimensions", "An actual clap/impact", "A real jump, flight phase or ground-contact schedule", "Independent head/waist articulation"],
+  "engineering_screen": {
+    "scope": "Four designer-chosen forepaw targets in the existing ideal-axis V2 model. These coordinates are not measurements extracted from the videos. Positive elbow branch and existing joint limits; no limit changes to make poses pass.",
+    "coordinate_frame": "Metres relative to pelvis; +x forward, +y robot left, +z up. Target y is mirrored per arm. Torso upright at existing reference height.",
+    "cases": [
+      {"id": "arms_side_level", "label_ko": "어깨 높이로 양팔 벌리기", "paw_relative_xyz_m": [0.08, 0.475, 0.06]},
+      {"id": "arms_side_lower", "label_ko": "조금 낮춰 양팔 벌리기", "paw_relative_xyz_m": [0.08, 0.46, -0.025]},
+      {"id": "paws_together_low", "label_ko": "낮은 위치에서 앞발 모으기", "paw_relative_xyz_m": [0.23, 0.035, 0.005]},
+      {"id": "paws_together_high", "label_ko": "어깨보다 높은 위치에서 앞발 모으기", "paw_relative_xyz_m": [0.23, 0.035, 0.08]}
+    ]
+  },
+  "architecture_status": "The 19-axis V2 configuration remains a comparator. Arm/neck/waist axis additions are not selected. Current neck is pitch-only and torso rigid; independent head roll/yaw or waist twist must not be advertised as present.",
+  "next_gate": "Use required gesture reach and physical packaging together to select shoulder axes/ranges before freezing CAD. Preserve quadruped reach and self-righting paths. Adapt dance to valid ground contacts instead of copying floating image trajectories."
+}
