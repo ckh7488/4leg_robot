@@ -1,0 +1,101 @@
+{
+  "name": "도로롱 전체 구조 탐색 V2",
+  "date": "2026-10-24",
+  "status": "architecture and geometric reach study; not fabrication CAD or walking validation",
+  "user_direction": "Prioritize physical feasibility and reference silhouette; size and price are not current optimization constraints. Preserve quadruped walking, biped walking, self-righting and external power/pull measurement.",
+  "axes": {"rear_per_leg": 6, "front_per_leg": 3, "head_pitch": 1},
+  "geometry_m": {
+    "rear_links": [0.14, 0.15],
+    "front_links": [0.14, 0.16],
+    "hip_half_width": 0.125,
+    "shoulder_xyz": [0.08, 0.205, 0.06],
+    "neck_pivot_xyz": [0.025, 0, 0.16],
+    "head_center_above_neck": 0.06,
+    "head_radii_xyz": [0.15, 0.23, 0.18],
+    "body_center_xyz": [0, 0, 0.025],
+    "body_radii_xyz": [0.15, 0.20, 0.155],
+    "ankle_height": 0.055,
+    "rear_foot_length_width_height": [0.15, 0.11, 0.015],
+    "paw_radius": 0.035,
+    "carried_paw_relative_xyz": [0.16, 0.205, 0.005],
+    "quad_fore_contact_xy": [0.26, 0.24],
+    "upright_hip_height": 0.292,
+    "quadruped_hip_height": 0.26,
+    "quadruped_body_pitch_deg": 70,
+    "rear_ankle_x": 0.01,
+    "sweep_body_pitch_deg": [0, 30, 50, 70],
+    "sweep_hip_heights": [0.24, 0.26, 0.28, 0.292]
+  },
+  "joint_limit_assumptions_deg": {
+    "rear_hip_pitch": [-155, 70], "rear_knee": [0, 145],
+    "rear_ankle_pitch": [-100, 90], "front_shoulder_roll": [-75, 75],
+    "front_shoulder_pitch": [-170, 100], "front_elbow": [0, 155],
+    "head_pitch": [-95, 20]
+  },
+  "motor_references": {
+    "large": {"model": "CubeMars AK70-9 V3.0 KV60", "diameter_mm": 89, "length_mm": 49, "mass_kg": 0.54, "rated_torque_nm": 8.5, "peak_torque_nm": 29.2, "ratio": 9, "voltage_v": 48, "no_load_rpm": 320, "count": 14, "source_id": "ak70", "selected": false},
+    "medium": {"model": "CubeMars AK60-6 V3.0 KV80", "diameter_mm": 79, "length_mm": 43, "mass_kg": 0.38, "rated_torque_nm": 3, "peak_torque_nm": 9, "ratio": 6, "voltage_v": [24,48], "no_load_rpm_at_48v": 640, "count": 4, "source_id": "ak60", "selected": false},
+    "head": {"model": "CubeMars AK45-10 V3.0 KV75", "diameter_mm": 53, "length_mm": 45.2, "mass_kg": 0.262, "rated_torque_nm": 2.5, "peak_torque_nm": 7, "ratio": 10, "voltage_v": 24, "count": 1, "source_id": "ak70", "selected": false}
+  },
+  "motor_allocation": {
+    "rear_each": {"large": 5, "medium": 1, "note": "hip roll/pitch, knee, ankle pair large; hip yaw medium. Ankle pair would drive a coupled two-axis linkage, not two independent motors with a fixed ratio."},
+    "front_each": {"large": 2, "medium": 1, "note": "shoulder pitch and elbow large; shoulder roll medium"},
+    "head": {"head": 1}
+  },
+  "other_mass_allocations_kg": {
+    "frame_bearings_belts_linkages": 2.3,
+    "soles_and_front_pads": 0.45,
+    "hollow_head_face": 0.65,
+    "body_shell": 0.4,
+    "compute_power_electronics": 0.7,
+    "wire_tether_attachment": 0.35,
+    "unallocated_reserve": 0.8
+  },
+  "mass_location_assumptions": {
+    "body_frame_share_kg": 0.9,
+    "rear_frame_each_kg": 0.5,
+    "front_frame_each_kg": 0.2,
+    "rear_pad_each_kg": 0.125,
+    "front_pad_each_kg": 0.1,
+    "remote_knee_motor_upper_fraction": 0.2,
+    "remote_ankle_pair_lower_fraction": 0.2,
+    "remote_elbow_motor_upper_fraction": 0.2,
+    "body_core_xyz": [0, 0, 0.02]
+  },
+  "transmission_screen": {
+    "knee_additional_ratios": [1, 2, 2.5],
+    "assumed_efficiency": 0.9,
+    "output_pulley_pitch_radius_m": 0.03,
+    "torque_examples_nm": [10, 20, 30],
+    "note": "Torque/speed transformations and tight-minus-slack belt force only; no belt width, life, preload, tooth count, bearing or thermal qualification. Ankle coupled-linkage Jacobian is not designed."
+  },
+  "ankle_linkage": {
+    "status": "first closed-chain geometry, not released CAD",
+    "crank_axis_centers_m": [[-0.04,-0.10,0.12],[-0.04,0.10,0.12]],
+    "motor_housing_centers_m": [[-0.04,-0.04,0.12],[-0.04,0.04,0.12]],
+    "housing_half_spacing_comparisons_m": [0.055,0.04],
+    "foot_attachments_m": [[0.05,-0.045,-0.015],[0.05,0.045,-0.015]],
+    "crank_radii_m": [0.022,0.03,0.04,0.05],
+    "display_radius_m": 0.05,
+    "pitch_samples_deg": [-50,-35,-20,0,20,35],
+    "roll_samples_deg": [-20,-10,0,10,20],
+    "rod_radius_m": 0.004,
+    "clearance_sampling_intervals": 200,
+    "example_joint_torque_nm": [8,6],
+    "scope": "Two rigid rods and circular crank endpoints around parallel y axes; neutral crank angle zero defines rod length separately for each candidate. Foot orientation Ry(pitch)Rx(roll). Housings are reference cylinders. Rod-to-housing clearance only; bearings, crank/rod joints, full gimbal, shafts, other limbs and all-pairs collision omitted."
+  },
+  "gravity_m_s2": 9.81,
+  "sources": [
+    {"id": "disney", "url": "https://arxiv.org/html/2501.05204v1", "title": "Disney: Design and Control of a Bipedal Robotic Character", "checked": "2026-10-24", "evidence": "Physical character robot: 0.66m, 15.4kg, five axes per leg, rounded compliant feet without active ankle roll. Evidence of character-oriented biped mechanics; not a quadruped or this design."},
+    {"id": "solo", "url": "https://arxiv.org/html/1910.00093v2", "title": "Open Dynamic Robot Initiative: modular torque-controlled robot", "checked": "2026-10-24", "evidence": "Built low-ratio brushless belt-driven actuators and legged robot. Supports the transmission principle; does not validate our belt dimensions, loads or ankle linkage."},
+    {"id": "ak70", "url": "https://www.cubemars.com/product/ak70-9-v3-0-kv60-robotic-actuator.html", "title": "CubeMars AK70-9 V3 manufacturer specifications and comparison table", "checked": "2026-10-24", "evidence": "AK70 dimensions, rated and peak torque, speed, mass and voltage; comparison table also contains AK45-10 V3. Manufacturer declarations, not independent measurements."},
+    {"id": "ak60", "url": "https://www.cubemars.com/product/ak60-6-v3-0-kv80-robotic-actuator.html", "title": "CubeMars AK60-6 V3 manufacturer specifications", "checked": "2026-10-24", "evidence": "Dimensions, mass, rated/peak torque, speed and voltage. Manufacturer declaration; no motor selected."}
+  ],
+  "not_validated": [
+    "Detailed actuator packing and mounting: the reach model uses ideal intersecting axes, not full motor housings.",
+    "Full-range ankle feasibility and full mechanical interference; a sampled first rod/crank mapping is calculated, but bearing/gimbal design, stiffness, play, thermal load and continuous trajectories remain unverified.",
+    "All-pairs collision of links, head/body covers, motor housings, cables and mounts.",
+    "Whole-body dynamics, ground contact stability, walking, stance transitions, self-righting trajectory and hardware transfer.",
+    "Shell shapes and mass allocations are assumptions; no manufactured parts, load tests or material selections."
+  ]
+}

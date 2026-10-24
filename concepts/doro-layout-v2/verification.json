@@ -1,0 +1,8 @@
+{
+  "status": "selected rod-capsule vs motor-cylinder pairs only; not full mechanical clearance",
+  "input_sha256": "6d4d52eabb5dccf9c3b108ff2b5ad9b8d0d0b770d0108ef8c9e918af312f6d70",
+  "mujoco_version": "3.3.7",
+  "cases_checked": 32,
+  "minimum_mujoco_gap_m": 0.004467278456031858,
+  "maximum_gap_minus_conservative_bound_m": 0.00037790511845035846
+}
