@@ -1,0 +1,31 @@
+{
+  "commit": "fd4e7f3",
+  "regenerated_files_matching_bytes": [
+    "model.json",
+    "robot.xml",
+    "robot.urdf",
+    "meshes/unit_sphere.obj",
+    "motions.json",
+    "motion_validation.json",
+    "model-data.js",
+    "validation.json",
+    "browser_samples.json"
+  ],
+  "regression_tests": 3,
+  "motor_overlap_fault_rejected": true,
+  "urdf_axis_sign_fault_rejected": true,
+  "overlap_fault_pairs": {
+    "rear_R_pitch_motor / rear_R_pitch_knee_drive": -0.049
+  },
+  "hashes": {
+    "model.json": "4fa3ca2cf81eea03c59b32133a38f33431d12a49e4b9093a9924321005bdc8a1",
+    "robot.xml": "82bcce5e01708c418aab29bd66ba72a845e720437daa9df6f4d204a9334b18ed",
+    "robot.urdf": "202d02469a38871878652eef7247ca5454e80f760e280c6e1ac474d426f16e8c",
+    "meshes/unit_sphere.obj": "876cc4bc19ada05631ea2826da68a055edc70802de8cedcf1056a1108f4e76f1",
+    "motions.json": "de20e18bf79de89c8bfd13edc2472cfa3f26fa69386619654ae3c24fbbdc0444",
+    "motion_validation.json": "8b91a808c70fee071d5c567aa1b3cbc60cec5c97fe644870d6dac31dac879652",
+    "model-data.js": "c3253c762117f152ca3cd1921590142cae79864b104b1196718560136dfe694b",
+    "validation.json": "54c4c54a3b72959746013e96b255392f271349b730904b4bffd0a3d53c6ab1f9",
+    "browser_samples.json": "49707d3b2497e0bb144e128deb8a9f3d5374e086e78d48b50264997676d47f4c"
+  }
+}
