@@ -1,0 +1,11 @@
+{
+  "source_commit": "c79bf9ff57c2f456b710212a1c1e454758347169",
+  "commands": [
+    "node build.cjs (in extracted committed source directory)"
+  ],
+  "regenerated_files_byte_identical": {
+    "design-data.js": "27cff6d4012e5d902c23d29d2ef0bd7bb000ef8de2c9f4bcaaca97911d031f3e",
+    "validation.json": "394f0c5f4f183cf26de6aee2fad83594f035b702defdd1c9714729721feda6bf"
+  },
+  "independent_physics_validation": false
+}
