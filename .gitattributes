@@ -8,5 +8,6 @@
 *.png binary
 *.step binary
 *.xml text eol=lf
+*.html text eol=lf
 *.txt text eol=lf
 .gitignore text eol=lf
