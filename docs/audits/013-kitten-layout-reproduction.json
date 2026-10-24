@@ -1,0 +1,26 @@
+{
+  "commit": "921c73e",
+  "regenerated_files_matching_bytes": [
+    "model.json",
+    "robot.xml",
+    "robot.urdf",
+    "meshes/unit_sphere.obj",
+    "motions.json",
+    "motion_validation.json",
+    "model-data.js",
+    "validation.json",
+    "browser_samples.json"
+  ],
+  "regression_tests": 3,
+  "hashes": {
+    "model.json": "3616e7a2c194ee6c4cb20f320dfa1c845ad3db22feadfe7a978a5843b7b752e7",
+    "robot.xml": "2c800af495db34906e89dadf629c7e157e18173d5707673f342faa786a1edfe2",
+    "robot.urdf": "c0d88b32e53808ce8187bf2893fa8fd45000ad0f6608ca6e313cd31719e04158",
+    "meshes/unit_sphere.obj": "876cc4bc19ada05631ea2826da68a055edc70802de8cedcf1056a1108f4e76f1",
+    "motions.json": "6d46fc5e84fc1a35ae53b5461d6d75818e97f24b847a8c0b038929d7455f346b",
+    "motion_validation.json": "b0005bf42222b90e76f0ded2948df4f1ac669656d1f9dc28c267ce5a78b874a9",
+    "model-data.js": "c2c6233b66f52193ec61dcd514b3cd5c6a79ee549864f154dda0312ff4e901f0",
+    "validation.json": "e161ed1a79042670773c2ca64004ddddebd07d8041ac0c0713d68e0d4a9cbeec",
+    "browser_samples.json": "77d23ac45e95934b95b09290ba559859304bf6c4f92486d21f0fdcb013cb572b"
+  }
+}
