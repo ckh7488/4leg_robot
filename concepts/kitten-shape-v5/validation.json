@@ -1,0 +1,189 @@
+{
+  "scope": "Only numerical limb lengths and reach in the artistic posing rig. No collision, anatomical range, actuator, balance, or skin-fit test.",
+  "fps": 60,
+  "modes": {
+    "idle": {
+      "frames": 361,
+      "max_paw_target_error_m": 5.637184056103667e-17,
+      "max_segment_length_error_m": 2.0816681711721685e-17,
+      "min_joint_center_z_m": 0.01099999999999995,
+      "min_scheduled_stance_paws": 4,
+      "display_angles_deg": [
+        [
+          -1.6491350204869852,
+          1.6491350204869852
+        ],
+        [
+          -39.11052887304806,
+          23.87854151227113
+        ],
+        [
+          -73.79174339448566,
+          78.0226360745518
+        ],
+        [
+          -28.91210720150373,
+          74.91320188221454
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "walk": {
+      "frames": 97,
+      "max_paw_target_error_m": 5.41944938641421e-17,
+      "max_segment_length_error_m": 2.0816681711721685e-17,
+      "min_joint_center_z_m": 0.01099999999999995,
+      "min_scheduled_stance_paws": 3,
+      "display_angles_deg": [
+        [
+          -1.9429273434871117,
+          1.9184032375441267
+        ],
+        [
+          -64.9176559132372,
+          54.788448851987674
+        ],
+        [
+          -100.36625943146582,
+          102.40771876564533
+        ],
+        [
+          -52.68331755741124,
+          94.04880799979384
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "sit": {
+      "frames": 361,
+      "max_paw_target_error_m": 4.5102810375396984e-17,
+      "max_segment_length_error_m": 1.3877787807814457e-17,
+      "min_joint_center_z_m": 0.010999999999999961,
+      "min_scheduled_stance_paws": 4,
+      "display_angles_deg": [
+        [
+          -3.3533404943179153,
+          3.3533404943179153
+        ],
+        [
+          -26.32884267181363,
+          49.96820821438246
+        ],
+        [
+          -135.7198370326421,
+          61.828835119631975
+        ],
+        [
+          -25.49999244781835,
+          149.7516288182596
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "crouch": {
+      "frames": 301,
+      "max_paw_target_error_m": 4.85722573273506e-17,
+      "max_segment_length_error_m": 2.0816681711721685e-17,
+      "min_joint_center_z_m": 0.01099999999999995,
+      "min_scheduled_stance_paws": 4,
+      "display_angles_deg": [
+        [
+          -2.69326860677677,
+          2.69326860677677
+        ],
+        [
+          -57.29322547126853,
+          26.882272097494383
+        ],
+        [
+          -115.25309548553155,
+          132.35578725093478
+        ],
+        [
+          -65.06256177966627,
+          113.37082338803717
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "lie": {
+      "frames": 361,
+      "max_paw_target_error_m": 4.049752731053163e-17,
+      "max_segment_length_error_m": 2.0816681711721685e-17,
+      "min_joint_center_z_m": 0.010999999999999965,
+      "min_scheduled_stance_paws": 4,
+      "display_angles_deg": [
+        [
+          -3.150492486882424,
+          3.150492486882424
+        ],
+        [
+          -0.5956122321597647,
+          61.64146133958014
+        ],
+        [
+          -131.4622060484982,
+          95.80511799513802
+        ],
+        [
+          -30.354309353025958,
+          104.82074470891804
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "stretch": {
+      "frames": 301,
+      "max_paw_target_error_m": 5.637184056103667e-17,
+      "max_segment_length_error_m": 2.7755575615628914e-17,
+      "min_joint_center_z_m": 0.010999999999999958,
+      "min_scheduled_stance_paws": 4,
+      "display_angles_deg": [
+        [
+          -3.0492476527507915,
+          3.0492476527507915
+        ],
+        [
+          -1.9009375711623706,
+          25.796909546476652
+        ],
+        [
+          -54.762018774681906,
+          71.99912109877965
+        ],
+        [
+          -62.79603064525632,
+          80.32595273846748
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    },
+    "paw": {
+      "frames": 301,
+      "max_paw_target_error_m": 4.706186817419513e-17,
+      "max_segment_length_error_m": 2.0816681711721685e-17,
+      "min_joint_center_z_m": 0.010999999999999961,
+      "min_scheduled_stance_paws": 3,
+      "display_angles_deg": [
+        [
+          -3.3533404943179153,
+          3.3533404943179153
+        ],
+        [
+          -44.876314525174415,
+          49.96820821438246
+        ],
+        [
+          -135.7198370326421,
+          144.40820999591529
+        ],
+        [
+          -77.71600970628899,
+          149.7516288182596
+        ]
+      ],
+      "physical_feasibility": "unverified"
+    }
+  },
+  "max_scheduled_stance_foot_world_drift_per_sample_m": 7.178773634569646e-17
+}

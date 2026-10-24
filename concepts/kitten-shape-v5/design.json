@@ -1,0 +1,85 @@
+{
+  "name": "Kitten exterior study V5",
+  "date": "2026-10-24",
+  "priority": "Natural kitten appearance in a rotatable 3D viewer, then kitten poses and quadrupedal walking; choose physical joints and motors afterwards.",
+  "scope": "Art-directed appearance and fixed-length limb posing, not fabrication CAD or a dynamics simulator.",
+  "supersedes": [
+    "human-like upright stance",
+    "biped walking",
+    "arm spreading",
+    "Doro head requirement",
+    "V3/V4 19-axis architecture"
+  ],
+  "size_status": "Artist-selected kitten-scale proportions, not measurements of a particular kitten or an age/size standard.",
+  "geometry_m": {
+    "hip_x": -0.07,
+    "hip_height": 0.125,
+    "hip_half_width": 0.038,
+    "shoulder_half_width": 0.034,
+    "torso_span": 0.14,
+    "front_segments": [
+      0.05,
+      0.055,
+      0.023
+    ],
+    "rear_segments": [
+      0.05,
+      0.057,
+      0.034
+    ],
+    "paw_radii": [
+      0.022,
+      0.017,
+      0.011
+    ],
+    "skull_radii": [
+      0.043,
+      0.048,
+      0.045
+    ],
+    "head_offset": [
+      0.041,
+      0,
+      0.036
+    ]
+  },
+  "walk_preview": {
+    "cycle_s": 1.6,
+    "stride_m": 0.10,
+    "stance_fraction": 0.75,
+    "paw_lift_m": 0.016,
+    "note": "Artist-authored slow lateral-sequence preview. Timing and scale are not kitten motion capture or demonstrated robot performance. The floor scrolls under a centered body."
+  },
+  "hardware": {
+    "motor": null,
+    "mass_kg": null,
+    "joint_count": null,
+    "transmission": null,
+    "balance_controller": null
+  },
+  "unverified": [
+    "biological fidelity",
+    "motor and structure fit",
+    "shell deformation and collision",
+    "self-collision",
+    "load and heat",
+    "dynamic balance",
+    "real walking",
+    "self-righting"
+  ],
+  "sources_checked": "2026-10-24",
+  "sources": [
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1164673/",
+      "use": "Cat forelimbs include scapular motion, shoulder, elbow, wrist and digits; the display is a simplified posing rig, not a full anatomical replica."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4044364/",
+      "use": "Adult cats in this study walked in a hind-fore, same-side lateral sequence. Only ordering informs the preview; kitten timing is not established by this study."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33225430/",
+      "use": "Forelimb pronation and supination matter for climbing and grooming. A paw raised near the face is not proof of complete grooming ability."
+    }
+  ]
+}
