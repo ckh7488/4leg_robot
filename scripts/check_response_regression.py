@@ -53,14 +53,35 @@ class MetricsTest(unittest.TestCase):
         self.assertAlmostEqual(r['terminal_drift_deg_s'],2)
         self.assertFalse(r['terminal_estimate_stable'])
         self.assertIsNone(r['rise_to_90percent_of_final_ms'])
-    def test_tiny_fast_motion_is_not_overall_acceptance(self):
+    def test_tiny_fast_motion_fails_speed_screening(self):
+        for reached in [.11,.2,4.99,-.11,-.2,-4.99]:
+            r=self.trace([0,0]+[reached]*28,goal=10 if reached>0 else -10)
+            a=response_assessment(r,self.targets)
+            self.assertFalse(a['single_trial_targets_met'])
+            self.assertFalse(r['command_displacement_sufficient'])
+            self.assertIsNone(r['rise_to_90percent_of_final_ms'])
+            self.assertIsNone(a['accuracy_target_met'])
+            self.assertIsNone(a['overall_response_accepted'])
         r=self.trace([0,0]+[.2]*28)
-        a=response_assessment(r,self.targets)
-        self.assertTrue(a['single_trial_targets_met'])
         self.assertAlmostEqual(r['actual_to_command_step_ratio'],.02)
         self.assertAlmostEqual(r['terminal_goal_error_deg'],-9.8)
-        self.assertIsNone(a['accuracy_target_met'])
-        self.assertIsNone(a['overall_response_accepted'])
+    def test_displacement_floor_is_configurable_and_not_accuracy(self):
+        times=[(i+1)*.01 for i in range(30)]
+        for goal in [-10,10]:
+            values=[0,0]+[goal*.5]*28
+            r=step_metrics(times,values,0,goal,goal,min_reached_command_fraction=.5)
+            self.assertTrue(response_assessment(r,self.targets)['single_trial_targets_met'])
+            self.assertIsNone(response_assessment(r,self.targets)['overall_response_accepted'])
+            self.assertIsNone(step_metrics(times,values,0,goal,goal,
+                                          min_reached_command_fraction=.6)['rise_to_90percent_of_final_ms'])
+        for invalid in [0,1.01,float('nan')]:
+            with self.assertRaises(ValueError):
+                step_metrics(times,values,0,goal,goal,min_reached_command_fraction=invalid)
+    def test_stable_window_with_non_aligned_samples(self):
+        r=step_metrics([(i+1)*.007 for i in range(30)],[0,0]+[10]*28,0,10,10)
+        self.assertTrue(r['terminal_estimate_stable'])
+        self.assertGreaterEqual(r['terminal_window_ms'],100)
+        self.assertEqual(r['rise_to_90percent_of_final_ms'],21)
     def test_motion_at_detection_threshold_is_not_valid_speed(self):
         r=self.trace([0,0]+[.1]*28)
         self.assertIsNone(r['first_motion_ms'])

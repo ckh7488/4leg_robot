@@ -19,7 +19,8 @@ def complete_max(rows, field):
 def main():
     C=json.loads((ROOT/'design.json').read_text(encoding='utf-8'))
     targets=C['response_acceptance_targets'];rows=[]
-    for kp in GAINS:
+    gains=sorted(set(GAINS+[C['control']['position_p_gain_initial']]))
+    for kp in gains:
         c=copy.deepcopy(C);c['control']['position_p_gain_initial']=kp
         cases=run_cases(c);free=[r for r in cases if r['nominal_gravity_load_nm_at_zero']==0]
         rows.append({'firmware_kp':kp,'is_design_gain':kp==C['control']['position_p_gain_initial'],
@@ -37,7 +38,7 @@ def main():
     base=next(r for r in rows if r['firmware_kp']==design)
     worst=max(c['compliance_deg_per_nm'] for c in base['static_compliance'])
     out={'status':'What-if simulation sweep only; design gain unchanged; no hardware sample',
-         'design_kp':design,'gains':GAINS,'targets':targets,'results':rows,
+         'design_kp':design,'gains':gains,'targets':targets,'results':rows,
          'observation':{'compliance_times_kp_at_0.1nm':{r['firmware_kp']:round(r['firmware_kp']*r['static_compliance'][-1]['compliance_deg_per_nm']) for r in rows},
                         'note':'Roughly constant product means compliance is roughly inverse to P gain in this model.',
                         'kp_needed_for_0.2deg_at_0.1nm_if_inverse_scaling_from_design_gain_holds':round(design*worst*0.1/0.2),

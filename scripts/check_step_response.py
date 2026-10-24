@@ -41,7 +41,8 @@ def run_cases(C):
                                  tolerance_deg=targets['diagnostic_goal_band_deg'],
                                  min_hold_s=targets['diagnostic_settle_hold_ms']/1000,
                                  max_terminal_span_deg=targets['terminal_stability_max_span_deg'],
-                                 max_terminal_drift_deg_s=targets['terminal_stability_max_drift_deg_s'])
+                                 max_terminal_drift_deg_s=targets['terminal_stability_max_drift_deg_s'],
+                                 min_reached_command_fraction=targets['min_reached_command_fraction'])
             pre_stable=baseline_span<=.1 and baseline_speed<=1.0
             rows.append({'nominal_gravity_load_nm_at_zero':torque,'command_goal_deg':goal_deg,
                          'pre_step_actual_deg':baseline,'pre_step_span_100ms_deg':baseline_span,
@@ -80,9 +81,9 @@ def main():
          'transport_delay_quantized_ms':math.ceil(C['motor']['fit_delay_s']/DT)*DT*1000,'command_bus_hz':C['control']['mcu_joint_bus_hz'],'numerical_design_targets':targets,
          'fixture':{'arm_length_m':ARM_M,'inertia_at_com_kgm2':[.0001]*3,'pre_hold_s':PRE_STEPS*DT,'post_observation_s':POST_STEPS*DT,'timestep_s':DT},
          'definitions':{'first_motion':'Toward goal, more than 1% commanded step or 0.05 degree from actual pre-step position',
-                        'rise_to_90percent_of_final':'Command-to-90% latency including delay, not conventional 10%-90% rise time. Uses the terminal-window mean; undefined unless the complete window meets span/drift limits and motion toward the goal exceeds the motion threshold.',
-                        'terminal_estimate_stable':'Finite-window screening only: full diagnostic hold duration, span and least-squares drift within design.json limits; does not prove asymptotic stability.',
-                        'actual_to_command_step_ratio':'Actual terminal displacement from baseline divided by the commanded step. Report with absolute goal error; a small ratio can still meet speed-only targets.',
+                        'rise_to_90percent_of_final':'Command-to-90% latency including delay, not conventional 10%-90% rise time. Undefined unless the terminal estimate is stable, motion is toward the goal, and actual/commanded displacement meets min_reached_command_fraction.',
+                        'terminal_estimate_stable':'Finite-window screening only: full diagnostic hold duration including the sample bracketing its start, span and least-squares drift within design.json limits; does not prove asymptotic stability.',
+                        'actual_to_command_step_ratio':'Actual terminal displacement from baseline divided by the commanded step. Below the configured minimum the speed metric is invalid; passing this floor is not accuracy acceptance.',
                         'static_compliance':'Accuracy: pre-step hold offset under load relative to the unloaded fixture, divided by the nominal load; characterization only',
                         'goal_settle':'Diagnostic: within the diagnostic band of the commanded angle for all remaining samples with the diagnostic hold; with P-only control under load this is not expected',
                         'final_band':'Diagnostic only: settling near terminal 100ms mean'},

@@ -18,6 +18,7 @@
     "diagnostic_settle_hold_ms": 100,
     "terminal_stability_max_span_deg": 0.1,
     "terminal_stability_max_drift_deg_s": 1.0,
+    "min_reached_command_fraction": 0.5,
     "accuracy_acceptance_status": "pending gait accuracy budget; speed pass alone is not overall acceptance"
   },
   "fixture": {
@@ -33,9 +34,9 @@
   },
   "definitions": {
     "first_motion": "Toward goal, more than 1% commanded step or 0.05 degree from actual pre-step position",
-    "rise_to_90percent_of_final": "Command-to-90% latency including delay, not conventional 10%-90% rise time. Uses the terminal-window mean; undefined unless the complete window meets span/drift limits and motion toward the goal exceeds the motion threshold.",
-    "terminal_estimate_stable": "Finite-window screening only: full diagnostic hold duration, span and least-squares drift within design.json limits; does not prove asymptotic stability.",
-    "actual_to_command_step_ratio": "Actual terminal displacement from baseline divided by the commanded step. Report with absolute goal error; a small ratio can still meet speed-only targets.",
+    "rise_to_90percent_of_final": "Command-to-90% latency including delay, not conventional 10%-90% rise time. Undefined unless the terminal estimate is stable, motion is toward the goal, and actual/commanded displacement meets min_reached_command_fraction.",
+    "terminal_estimate_stable": "Finite-window screening only: full diagnostic hold duration including the sample bracketing its start, span and least-squares drift within design.json limits; does not prove asymptotic stability.",
+    "actual_to_command_step_ratio": "Actual terminal displacement from baseline divided by the commanded step. Below the configured minimum the speed metric is invalid; passing this floor is not accuracy acceptance.",
     "static_compliance": "Accuracy: pre-step hold offset under load relative to the unloaded fixture, divided by the nominal load; characterization only",
     "goal_settle": "Diagnostic: within the diagnostic band of the commanded angle for all remaining samples with the diagnostic hold; with P-only control under load this is not expected",
     "final_band": "Diagnostic only: settling near terminal 100ms mean"
@@ -60,6 +61,7 @@
       "terminal_drift_deg_s": -0.08922709321601283,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 0.9779146845196112,
       "actual_step_deg": -9.779146845196111,
       "goal_band_deg": 0.2,
@@ -68,6 +70,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false
@@ -97,6 +100,7 @@
       "terminal_drift_deg_s": 0.08923850625197872,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 0.9779443178537038,
       "actual_step_deg": 9.779443178537038,
       "goal_band_deg": 0.2,
@@ -105,6 +109,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false
@@ -134,6 +139,7 @@
       "terminal_drift_deg_s": -0.418585690970183,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 0.8029709307566983,
       "actual_step_deg": -8.029709307566984,
       "goal_band_deg": 0.2,
@@ -142,6 +148,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false
@@ -171,6 +178,7 @@
       "terminal_drift_deg_s": 0.24376366078380884,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 1.0034689724825823,
       "actual_step_deg": 10.034689724825823,
       "goal_band_deg": 0.2,
@@ -179,6 +187,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false
@@ -208,6 +217,7 @@
       "terminal_drift_deg_s": -0.7637391182819933,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 0.6230762674048906,
       "actual_step_deg": -6.230762674048907,
       "goal_band_deg": 0.2,
@@ -216,6 +226,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false
@@ -245,6 +256,7 @@
       "terminal_drift_deg_s": 0.3841117682548436,
       "terminal_window_ms": 100.0,
       "speed_metric_valid": true,
+      "command_displacement_sufficient": true,
       "actual_to_command_step_ratio": 0.9888921837948759,
       "actual_step_deg": 9.88892183794876,
       "goal_band_deg": 0.2,
@@ -253,6 +265,7 @@
       "numerical_target_checks": {
         "pre_step_stable": true,
         "terminal_estimate_stable": true,
+        "command_displacement_sufficient": true,
         "speed_metric_valid": true,
         "onset_within_design_target": true,
         "rise_within_design_target": false

@@ -138,6 +138,7 @@
     "diagnostic_settle_hold_ms": 100,
     "terminal_stability_max_span_deg": 0.1,
     "terminal_stability_max_drift_deg_s": 1.0,
+    "min_reached_command_fraction": 0.5,
     "accuracy_acceptance_status": "pending gait accuracy budget; speed pass alone is not overall acceptance"
   },
   "mass_budget_kg": {
