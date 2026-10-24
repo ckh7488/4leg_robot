@@ -4,9 +4,11 @@
 
 2026-10-24 새 방향: **큰 얼굴·짧은 팔다리로 네 발 보행, 두 발 보행, 넘어짐 복구**. BLDC 관절과 외부 전원 케이블의 당김 측정을 검토한다. 최신 지시는 크기와 가격보다 물리 구조를 우선한다. [전체 구조안](concepts/doro-layout-v2/README.md), [그림 중심 자료](concepts/doro-layout-v2/index.html)를 먼저 본다.
 
-추가 목표는 사용자가 지정한 고양이 춤 영상의 팔 제스처와 몸·다리의 리듬감이다. [동작 목표](concepts/doro-layout-v2/motion_targets.json)와 [현재 어깨의 네 가지 끝점 검사](concepts/doro-layout-v2/motion_report.json)를 기록했다. 현재 어깨 범위로 수평 팔 벌리기는 불가하여 실제 배치와 범위를 재검토한다. 춤이나 균형의 성공을 검증한 것은 아니다.
+최신 결과는 **[전신 3차원 관절 모델 V3](concepts/doro-model-v3/index.html)**다. 두 발 서기·춤·앉았다 펴기·제자리걸음·네 발 자세 전환을 돌려 보고, 외피를 숨기거나 19개 관절을 직접 움직일 수 있다. 동일한 관절 트리의 MuJoCo/URDF도 제공한다. 583개 자세에서 도달/범위/단순 충돌 도형을 검사했으며 제작 CAD·실제 균형/보행/복구는 미완료다. [검증 범위와 재현](concepts/doro-model-v3/README.md)을 함께 읽는다.
 
-최신 검토는 [도로롱 전체 구조 V2](concepts/doro-layout-v2/index.html)다. 사용자가 크기와 가격을 당장 크게 제한하지 않도록 지시하여, 높이 약 69cm·질량 예산 약 15kg·19축의 전체 구조와 모터를 옮긴 전달 장치를 검토했다. 두 자세의 이상적 발 도달, 질량/힘 산술, 두 막대 발목의 첫 치수안을 계산했다. 실제 모터 전체 배치·제작 CAD·보행·자가복구는 미완료다. 아래 V1은 이전 작은 마디 비교안으로 보존한다.
+추가 목표는 사용자가 지정한 고양이 춤 영상의 팔 제스처와 몸·다리의 리듬감이다. [동작 목표](concepts/doro-layout-v2/motion_targets.json)와 [이전 V2 어깨의 네 가지 끝점 검사](concepts/doro-layout-v2/motion_report.json)를 기록했다. V3에서는 어깨를 앞·바깥으로 옮기고 범위와 팔꿈치 방향을 수정했다. 춤이나 균형의 성공을 검증한 것은 아니다.
+
+이전 [도로롱 전체 구조 V2](concepts/doro-layout-v2/index.html)에서는 높이 약 69cm·질량 예산 약 15kg·19축의 구조와 모터를 옮긴 전달 장치를 검토했다. 두 자세의 이상적 발 도달, 질량/힘 산술, 두 막대 발목의 첫 치수안을 계산했다. V3는 독립 가정으로 확장한 약 78cm·16.3kg 예산의 전신 모델이다. 아래 V1은 이전 작은 마디 비교안으로 보존한다.
 
 이전 V1에서는 외형·치수 범위·12/14관절 후보·단순 힘/질량 계산과 [한쪽 뒷다리 외형 검사](concepts/short-limb-v1/rear-leg/index.html)까지 진행했다. 지름 53mm의 모터 원통을 넣은 288표본에서 짧은 마디·깊은 접힘의 충돌을 찾았다. 전체 몸체의 배치·보행·실물은 미검증이다. V1 가정은 `concepts/short-limb-v1/design.json`에서 관리한다. 루트 `design.json`과 기존 모델/검사는 아래 XL330 기준 구현이며, 새 로봇의 성능 근거가 아니다.
 
@@ -30,7 +32,9 @@
 
 | 경로 | 내용 |
 |---|---|
-| `concepts/short-limb-v1/` | 현재 새 구조 탐색; 별도 design.json·그림·계산 |
+| `concepts/doro-model-v3/` | 최신 전신 관절 모델·동작 화면·MuJoCo/URDF |
+| `concepts/doro-layout-v2/` | 이전 전체 구조·발목 전달 장치 탐색 |
+| `concepts/short-limb-v1/` | 이전 작은 마디 탐색; 별도 design.json·그림·계산 |
 | `design.json` | 이전 XL330 구현의 설계 기준값; 해당 모델의 원본 |
 | `cad/` | FreeCAD 원본과 STEP 조립체, 부품 목록 |
 | `print/` | 부품별 STL/3MF, 출력 방향과 수량 |

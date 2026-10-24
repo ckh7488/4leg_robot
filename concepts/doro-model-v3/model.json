@@ -1,0 +1,3607 @@
+{
+  "config": {
+    "name": "Doro articulated model V3",
+    "date": "2026-10-24",
+    "status": "articulated concept model; not fabrication release or validated locomotion",
+    "axes": {
+      "rear_each": 6,
+      "front_each": 3,
+      "neck": 1
+    },
+    "coordinates": "metres, radians internally; +x forward, +y left, +z up; intrinsic joints applied in tree order",
+    "geometry_m": {
+      "rear_links": [
+        0.14,
+        0.15
+      ],
+      "front_links": [
+        0.16,
+        0.18
+      ],
+      "hip_yaw_origin": [
+        0,
+        0.085,
+        0.075
+      ],
+      "hip_roll_offset": [
+        0,
+        0.055,
+        -0.075
+      ],
+      "hip_pitch_offset": [
+        0,
+        0.075,
+        -0.02
+      ],
+      "shoulder_roll_origin": [
+        0.14,
+        0.215,
+        0.095
+      ],
+      "shoulder_pitch_offset": [
+        0,
+        0.065,
+        0
+      ],
+      "neck_origin": [
+        0.02,
+        0,
+        0.16
+      ],
+      "head_center": [
+        0,
+        0,
+        0.06
+      ],
+      "head_radii": [
+        0.155,
+        0.23,
+        0.18
+      ],
+      "body_center": [
+        0,
+        0,
+        0.02
+      ],
+      "body_radii": [
+        0.155,
+        0.195,
+        0.205
+      ],
+      "rear_foot_size": [
+        0.17,
+        0.115,
+        0.018
+      ],
+      "ankle_to_sole": 0.055,
+      "paw_radius": 0.04,
+      "standing_base_height": 0.355,
+      "rear_sole_targets": [
+        [
+          0.025,
+          -0.215,
+          0
+        ],
+        [
+          0.025,
+          0.215,
+          0
+        ]
+      ],
+      "quad_paw_targets": [
+        [
+          0.31,
+          -0.33,
+          0.04
+        ],
+        [
+          0.31,
+          0.33,
+          0.04
+        ]
+      ]
+    },
+    "limits_deg": {
+      "hip_yaw": [
+        -45,
+        45
+      ],
+      "hip_roll": [
+        -45,
+        45
+      ],
+      "hip_pitch": [
+        -155,
+        75
+      ],
+      "knee": [
+        2,
+        145
+      ],
+      "ankle_pitch": [
+        -100,
+        90
+      ],
+      "ankle_roll": [
+        -45,
+        45
+      ],
+      "shoulder_roll": [
+        -110,
+        110
+      ],
+      "shoulder_pitch": [
+        -170,
+        130
+      ],
+      "elbow": [
+        2,
+        155
+      ],
+      "neck_pitch": [
+        -95,
+        25
+      ]
+    },
+    "mass_allocations_kg": {
+      "base": 3.6,
+      "hip_yaw": 0.38,
+      "hip_roll": 0.54,
+      "thigh": 1.33,
+      "shank": 1.33,
+      "ankle_pitch": 0.05,
+      "foot": 0.22,
+      "shoulder_roll": 0.43,
+      "upper_arm": 1.28,
+      "forearm": 0.32,
+      "head": 0.912
+    },
+    "motor_envelopes": {
+      "large": {
+        "radius_m": 0.0445,
+        "length_m": 0.049,
+        "reference": "AK70-9 V3 KV60"
+      },
+      "medium": {
+        "radius_m": 0.0395,
+        "length_m": 0.043,
+        "reference": "AK60-6 V3 KV80"
+      },
+      "head": {
+        "radius_m": 0.0265,
+        "length_m": 0.0452,
+        "reference": "AK45-10 V3"
+      }
+    },
+    "simulation_assumptions": {
+      "gravity_m_s2": 9.81,
+      "timestep_s": 0.002,
+      "friction": [
+        0.8,
+        0.02,
+        0.002
+      ],
+      "joint_damping": 0.08,
+      "joint_armature": 0.002,
+      "abstract_output_torque_limit_nm": 30,
+      "note": "Torque bound, armature, damping, friction, link inertias and masses are placeholders. Serial output-axis actuation does not identify the physical coupled ankle transmission or real motor torque-speed/thermal response.",
+      "abstract_joint_velocity_limit_rad_s": 20
+    },
+    "motion_sampling": {
+      "fps": 24,
+      "period_s": 4,
+      "ik_position_tolerance_m": 0.0002,
+      "ik_orientation_tolerance_rad": 0.003
+    },
+    "changes_from_v2": [
+      "Explicit displaced yaw/roll/pitch hip frames and separate shoulder roll/pitch frames replace intersecting hip/shoulder axes.",
+      "Front links are 160+180mm. Outboard shoulder frame and a proposed +/-110 degree roll range support gesture exploration; clearance and real stop geometry remain to be engineered.",
+      "A complete 19-joint tree with visual envelopes, approximate collision primitives, allocated inertias, sites and abstract torque inputs is exported to MuJoCo and URDF.",
+      "Reference actuator cylinders show volume allocations, not completed mounts, belt drives or coupled ankle rods. The V2 ankle linkage is not silently transplanted into the new limb geometry.",
+      "Shoulders are forward of the torso by 140mm; positive elbow flexion uses the negative Y axis. Prescribed transition paws follow a world-space path to avoid leg and floor crossings."
+    ],
+    "sources": [
+      {
+        "url": "https://www.youtube.com/watch?v=LgB1_YUzYFQ",
+        "role": "User-selected character motion reference; sampled poses only, no measured forces/contact schedule"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=ETcfoe0UsNI",
+        "role": "User-selected character motion reference; sampled poses only, no measured forces/contact schedule"
+      },
+      {
+        "url": "https://www.cubemars.com/product/ak70-9-v3-0-kv60-robotic-actuator.html",
+        "role": "Reference actuator exterior dimensions; checked in V2 on 2026-10-24; no purchase selection"
+      },
+      {
+        "url": "https://www.cubemars.com/product/ak60-6-v3-0-kv80-robotic-actuator.html",
+        "role": "Reference actuator exterior dimensions; checked in V2 on 2026-10-24"
+      }
+    ],
+    "not_validated": [
+      "manufacturable bearings, shafts, fasteners and transmissions",
+      "all physical clearances including hollow covers and wiring",
+      "stability, walking, dance and self-righting dynamics",
+      "motor response, heat and sim-to-real",
+      "self-righting animation is not supplied"
+    ]
+  },
+  "links": [
+    {
+      "name": "base",
+      "parent": null,
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "axis": null,
+      "kind": null,
+      "label": "몸통",
+      "mass": 3.6,
+      "com": [
+        0,
+        0,
+        0.025
+      ],
+      "inertia_box": [
+        0.23,
+        0.28,
+        0.26
+      ],
+      "geoms": [
+        {
+          "name": "base_core",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            0.025
+          ],
+          "size": [
+            0.1,
+            0.085,
+            0.11
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "base_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            0.02
+          ],
+          "size": [
+            0.155,
+            0.195,
+            0.205
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "base_tether_socket",
+          "type": "cylinder",
+          "pos": [
+            -0.12,
+            0,
+            0.1
+          ],
+          "size": [
+            0.018,
+            0.015
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "inertia_diag": [
+        0.043800000000000006,
+        0.03615,
+        0.03939000000000001
+      ]
+    },
+    {
+      "name": "rear_R_yaw",
+      "parent": "base",
+      "origin": [
+        0,
+        -0.085,
+        0.075
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "kind": "hip_yaw",
+      "label": "오른쪽 골반 돌리기",
+      "mass": 0.38,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_yaw_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0395,
+            0.0215
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_yaw_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.0,
+            0.0225
+          ],
+          "size": [
+            0.02844,
+            0.002
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00015833333333333338,
+        0.00015833333333333338,
+        0.00015833333333333338
+      ]
+    },
+    {
+      "name": "rear_R_roll",
+      "parent": "rear_R_yaw",
+      "origin": [
+        0,
+        -0.055,
+        -0.075
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "hip_roll",
+      "label": "오른쪽 다리 벌리기",
+      "mass": 0.54,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_roll_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_roll_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.025500000000000002,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00022500000000000008,
+        0.00022500000000000008,
+        0.00022500000000000008
+      ]
+    },
+    {
+      "name": "rear_R_pitch",
+      "parent": "rear_R_roll",
+      "origin": [
+        0,
+        -0.075,
+        -0.02
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "hip_pitch",
+      "label": "오른쪽 다리 앞뒤",
+      "mass": 1.33,
+      "com": [
+        0,
+        0,
+        -0.06
+      ],
+      "inertia_box": [
+        0.1,
+        0.06,
+        0.16
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_pitch_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_pitch_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_R_pitch_knee_drive",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            -0.095
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_pitch_knee_drive_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            -0.095
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_R_pitch_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.07
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.07
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "rear_R_pitch_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.07
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.08
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -2.705260340591211,
+        1.3089969389957472
+      ],
+      "inertia_diag": [
+        0.0032363333333333337,
+        0.003945666666666668,
+        0.0015073333333333336
+      ]
+    },
+    {
+      "name": "rear_R_knee",
+      "parent": "rear_R_pitch",
+      "origin": [
+        0,
+        0,
+        -0.14
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "knee",
+      "label": "오른쪽 무릎",
+      "mass": 1.33,
+      "com": [
+        0,
+        0,
+        -0.075
+      ],
+      "inertia_box": [
+        0.1,
+        0.13,
+        0.16
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_knee_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.075
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.075
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "rear_R_knee_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.075
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.08499999999999999
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_R_knee_ankle_drive_a",
+          "type": "cylinder",
+          "pos": [
+            0,
+            -0.04,
+            -0.075
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_knee_ankle_drive_a_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            -0.014499999999999999,
+            -0.075
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_R_knee_ankle_drive_b",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0.04,
+            -0.075
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_R_knee_ankle_drive_b_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.0655,
+            -0.075
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        0.03490658503988659,
+        2.530727415391778
+      ],
+      "inertia_diag": [
+        0.0047104166666666674,
+        0.003945666666666668,
+        0.0029814166666666674
+      ]
+    },
+    {
+      "name": "rear_R_ankle_pitch",
+      "parent": "rear_R_knee",
+      "origin": [
+        0,
+        0,
+        -0.15
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "ankle_pitch",
+      "label": "오른쪽 발목 앞뒤",
+      "mass": 0.05,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_ankle_pitch_gimbal",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.025,
+            0.035,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -1.7453292519943295,
+        1.5707963267948966
+      ],
+      "inertia_diag": [
+        2.0833333333333336e-05,
+        2.0833333333333336e-05,
+        2.0833333333333336e-05
+      ]
+    },
+    {
+      "name": "rear_R_ankle_roll",
+      "parent": "rear_R_ankle_pitch",
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "ankle_roll",
+      "label": "오른쪽 발목 좌우",
+      "mass": 0.22,
+      "com": [
+        0.02,
+        0,
+        -0.035
+      ],
+      "inertia_box": [
+        0.17,
+        0.115,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_R_ankle_roll_sole",
+          "type": "box",
+          "pos": [
+            0.02,
+            0,
+            -0.046
+          ],
+          "size": [
+            0.085,
+            0.0575,
+            0.009
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.65,
+            0.39,
+            0.48,
+            1
+          ],
+          "layer": "sole",
+          "collision": true
+        },
+        {
+          "name": "rear_R_ankle_roll_foot",
+          "type": "ellipsoid",
+          "pos": [
+            0.023,
+            0,
+            -0.033
+          ],
+          "size": [
+            0.089,
+            0.063,
+            0.028
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_R_ankle_roll_toe_-1",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            -0.029,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_R_ankle_roll_toe_0",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            0.0,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_R_ankle_roll_toe_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            0.029,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [
+        {
+          "name": "rear_R_sole",
+          "pos": [
+            0.02,
+            0,
+            -0.055
+          ]
+        }
+      ],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00028829166666666673,
+        0.0005756666666666667,
+        0.0007722916666666669
+      ]
+    },
+    {
+      "name": "front_R_roll",
+      "parent": "base",
+      "origin": [
+        0.14,
+        -0.215,
+        0.095
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "shoulder_roll",
+      "label": "오른쪽 어깨 벌리기",
+      "mass": 0.43,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "front_R_roll_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0395,
+            0.0215
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_R_roll_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0225,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.02844,
+            0.002
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -1.9198621771937625,
+        1.9198621771937625
+      ],
+      "inertia_diag": [
+        0.00017916666666666672,
+        0.00017916666666666672,
+        0.00017916666666666672
+      ]
+    },
+    {
+      "name": "front_R_pitch",
+      "parent": "front_R_roll",
+      "origin": [
+        0,
+        -0.065,
+        0
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "shoulder_pitch",
+      "label": "오른쪽 팔 앞뒤",
+      "mass": 1.28,
+      "com": [
+        0,
+        0,
+        -0.055
+      ],
+      "inertia_box": [
+        0.1,
+        0.06,
+        0.18
+      ],
+      "geoms": [
+        {
+          "name": "front_R_pitch_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_R_pitch_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "front_R_pitch_elbow_drive",
+          "type": "cylinder",
+          "pos": [
+            0.06,
+            0,
+            -0.1
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_R_pitch_elbow_drive_cap",
+          "type": "cylinder",
+          "pos": [
+            0.06,
+            0.025500000000000002,
+            -0.1
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "front_R_pitch_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.08
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.08
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "front_R_pitch_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.08
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.09
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -2.9670597283903604,
+        2.2689280275926285
+      ],
+      "inertia_diag": [
+        0.00384,
+        0.004522666666666667,
+        0.001450666666666667
+      ]
+    },
+    {
+      "name": "front_R_elbow",
+      "parent": "front_R_pitch",
+      "origin": [
+        0,
+        0,
+        -0.16
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "kind": "elbow",
+      "label": "오른쪽 팔꿈치",
+      "mass": 0.32,
+      "com": [
+        0,
+        0,
+        -0.1
+      ],
+      "inertia_box": [
+        0.07,
+        0.07,
+        0.2
+      ],
+      "geoms": [
+        {
+          "name": "front_R_elbow_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.09
+          ],
+          "size": [
+            0.011,
+            0.011,
+            0.09
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "front_R_elbow_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.09
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.09999999999999999
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "front_R_elbow_paw",
+          "type": "sphere",
+          "pos": [
+            0,
+            0,
+            -0.18
+          ],
+          "size": [
+            0.04
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "sole",
+          "collision": true
+        },
+        {
+          "name": "front_R_elbow_paw_pad",
+          "type": "ellipsoid",
+          "pos": [
+            0.023,
+            0,
+            -0.18
+          ],
+          "size": [
+            0.022,
+            0.028,
+            0.028
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.65,
+            0.39,
+            0.48,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        }
+      ],
+      "sites": [
+        {
+          "name": "front_R_paw",
+          "pos": [
+            0,
+            0,
+            -0.18
+          ]
+        }
+      ],
+      "limits": [
+        0.03490658503988659,
+        2.705260340591211
+      ],
+      "inertia_diag": [
+        0.0011973333333333337,
+        0.0011973333333333337,
+        0.00026133333333333336
+      ]
+    },
+    {
+      "name": "rear_L_yaw",
+      "parent": "base",
+      "origin": [
+        0,
+        0.085,
+        0.075
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "kind": "hip_yaw",
+      "label": "왼쪽 골반 돌리기",
+      "mass": 0.38,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_yaw_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0395,
+            0.0215
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_yaw_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.0,
+            0.0225
+          ],
+          "size": [
+            0.02844,
+            0.002
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00015833333333333338,
+        0.00015833333333333338,
+        0.00015833333333333338
+      ]
+    },
+    {
+      "name": "rear_L_roll",
+      "parent": "rear_L_yaw",
+      "origin": [
+        0,
+        0.055,
+        -0.075
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "hip_roll",
+      "label": "왼쪽 다리 벌리기",
+      "mass": 0.54,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_roll_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_roll_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.025500000000000002,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00022500000000000008,
+        0.00022500000000000008,
+        0.00022500000000000008
+      ]
+    },
+    {
+      "name": "rear_L_pitch",
+      "parent": "rear_L_roll",
+      "origin": [
+        0,
+        0.075,
+        -0.02
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "hip_pitch",
+      "label": "왼쪽 다리 앞뒤",
+      "mass": 1.33,
+      "com": [
+        0,
+        0,
+        -0.06
+      ],
+      "inertia_box": [
+        0.1,
+        0.06,
+        0.16
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_pitch_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_pitch_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_L_pitch_knee_drive",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            -0.095
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_pitch_knee_drive_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            -0.095
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_L_pitch_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.07
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.07
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "rear_L_pitch_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.07
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.08
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -2.705260340591211,
+        1.3089969389957472
+      ],
+      "inertia_diag": [
+        0.0032363333333333337,
+        0.003945666666666668,
+        0.0015073333333333336
+      ]
+    },
+    {
+      "name": "rear_L_knee",
+      "parent": "rear_L_pitch",
+      "origin": [
+        0,
+        0,
+        -0.14
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "knee",
+      "label": "왼쪽 무릎",
+      "mass": 1.33,
+      "com": [
+        0,
+        0,
+        -0.075
+      ],
+      "inertia_box": [
+        0.1,
+        0.13,
+        0.16
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_knee_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.075
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.075
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "rear_L_knee_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.075
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.08499999999999999
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_L_knee_ankle_drive_a",
+          "type": "cylinder",
+          "pos": [
+            0,
+            -0.04,
+            -0.075
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_knee_ankle_drive_a_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            -0.014499999999999999,
+            -0.075
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "rear_L_knee_ankle_drive_b",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0.04,
+            -0.075
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "rear_L_knee_ankle_drive_b_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.0655,
+            -0.075
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        0.03490658503988659,
+        2.530727415391778
+      ],
+      "inertia_diag": [
+        0.0047104166666666674,
+        0.003945666666666668,
+        0.0029814166666666674
+      ]
+    },
+    {
+      "name": "rear_L_ankle_pitch",
+      "parent": "rear_L_knee",
+      "origin": [
+        0,
+        0,
+        -0.15
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "ankle_pitch",
+      "label": "왼쪽 발목 앞뒤",
+      "mass": 0.05,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_ankle_pitch_gimbal",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.025,
+            0.035,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -1.7453292519943295,
+        1.5707963267948966
+      ],
+      "inertia_diag": [
+        2.0833333333333336e-05,
+        2.0833333333333336e-05,
+        2.0833333333333336e-05
+      ]
+    },
+    {
+      "name": "rear_L_ankle_roll",
+      "parent": "rear_L_ankle_pitch",
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "ankle_roll",
+      "label": "왼쪽 발목 좌우",
+      "mass": 0.22,
+      "com": [
+        0.02,
+        0,
+        -0.035
+      ],
+      "inertia_box": [
+        0.17,
+        0.115,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "rear_L_ankle_roll_sole",
+          "type": "box",
+          "pos": [
+            0.02,
+            0,
+            -0.046
+          ],
+          "size": [
+            0.085,
+            0.0575,
+            0.009
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.65,
+            0.39,
+            0.48,
+            1
+          ],
+          "layer": "sole",
+          "collision": true
+        },
+        {
+          "name": "rear_L_ankle_roll_foot",
+          "type": "ellipsoid",
+          "pos": [
+            0.023,
+            0,
+            -0.033
+          ],
+          "size": [
+            0.089,
+            0.063,
+            0.028
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_L_ankle_roll_toe_-1",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            -0.029,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_L_ankle_roll_toe_0",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            0.0,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "rear_L_ankle_roll_toe_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.078,
+            0.029,
+            -0.033
+          ],
+          "size": [
+            0.028,
+            0.021,
+            0.018
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [
+        {
+          "name": "rear_L_sole",
+          "pos": [
+            0.02,
+            0,
+            -0.055
+          ]
+        }
+      ],
+      "limits": [
+        -0.7853981633974483,
+        0.7853981633974483
+      ],
+      "inertia_diag": [
+        0.00028829166666666673,
+        0.0005756666666666667,
+        0.0007722916666666669
+      ]
+    },
+    {
+      "name": "front_L_roll",
+      "parent": "base",
+      "origin": [
+        0.14,
+        0.215,
+        0.095
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "kind": "shoulder_roll",
+      "label": "왼쪽 어깨 벌리기",
+      "mass": 0.43,
+      "com": [
+        0,
+        0,
+        0
+      ],
+      "inertia_box": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "geoms": [
+        {
+          "name": "front_L_roll_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0395,
+            0.0215
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_L_roll_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0225,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.02844,
+            0.002
+          ],
+          "rpy": [
+            0,
+            1.5707963267948966,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -1.9198621771937625,
+        1.9198621771937625
+      ],
+      "inertia_diag": [
+        0.00017916666666666672,
+        0.00017916666666666672,
+        0.00017916666666666672
+      ]
+    },
+    {
+      "name": "front_L_pitch",
+      "parent": "front_L_roll",
+      "origin": [
+        0,
+        0.065,
+        0
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "shoulder_pitch",
+      "label": "왼쪽 팔 앞뒤",
+      "mass": 1.28,
+      "com": [
+        0,
+        0,
+        -0.055
+      ],
+      "inertia_box": [
+        0.1,
+        0.06,
+        0.18
+      ],
+      "geoms": [
+        {
+          "name": "front_L_pitch_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_L_pitch_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.025500000000000002,
+            0.0
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "front_L_pitch_elbow_drive",
+          "type": "cylinder",
+          "pos": [
+            0.06,
+            0,
+            -0.1
+          ],
+          "size": [
+            0.0445,
+            0.0245
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "front_L_pitch_elbow_drive_cap",
+          "type": "cylinder",
+          "pos": [
+            0.06,
+            0.025500000000000002,
+            -0.1
+          ],
+          "size": [
+            0.03204,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "front_L_pitch_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.08
+          ],
+          "size": [
+            0.013,
+            0.013,
+            0.08
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "front_L_pitch_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.08
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.09
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -2.9670597283903604,
+        2.2689280275926285
+      ],
+      "inertia_diag": [
+        0.00384,
+        0.004522666666666667,
+        0.001450666666666667
+      ]
+    },
+    {
+      "name": "front_L_elbow",
+      "parent": "front_L_pitch",
+      "origin": [
+        0,
+        0,
+        -0.16
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ],
+      "kind": "elbow",
+      "label": "왼쪽 팔꿈치",
+      "mass": 0.32,
+      "com": [
+        0,
+        0,
+        -0.1
+      ],
+      "inertia_box": [
+        0.07,
+        0.07,
+        0.2
+      ],
+      "geoms": [
+        {
+          "name": "front_L_elbow_beam",
+          "type": "box",
+          "pos": [
+            0,
+            0,
+            -0.09
+          ],
+          "size": [
+            0.011,
+            0.011,
+            0.09
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "structure",
+          "collision": true
+        },
+        {
+          "name": "front_L_elbow_cover",
+          "type": "ellipsoid",
+          "pos": [
+            0,
+            0,
+            -0.09
+          ],
+          "size": [
+            0.038,
+            0.043,
+            0.09999999999999999
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "front_L_elbow_paw",
+          "type": "sphere",
+          "pos": [
+            0,
+            0,
+            -0.18
+          ],
+          "size": [
+            0.04
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.93,
+            0.92,
+            0.87,
+            1
+          ],
+          "layer": "sole",
+          "collision": true
+        },
+        {
+          "name": "front_L_elbow_paw_pad",
+          "type": "ellipsoid",
+          "pos": [
+            0.023,
+            0,
+            -0.18
+          ],
+          "size": [
+            0.022,
+            0.028,
+            0.028
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.65,
+            0.39,
+            0.48,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        }
+      ],
+      "sites": [
+        {
+          "name": "front_L_paw",
+          "pos": [
+            0,
+            0,
+            -0.18
+          ]
+        }
+      ],
+      "limits": [
+        0.03490658503988659,
+        2.705260340591211
+      ],
+      "inertia_diag": [
+        0.0011973333333333337,
+        0.0011973333333333337,
+        0.00026133333333333336
+      ]
+    },
+    {
+      "name": "neck_pitch",
+      "parent": "base",
+      "origin": [
+        0.02,
+        0,
+        0.16
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "kind": "neck_pitch",
+      "label": "고개 끄덕이기",
+      "mass": 0.912,
+      "com": [
+        0,
+        0,
+        0.06
+      ],
+      "inertia_box": [
+        0.3,
+        0.46,
+        0.36
+      ],
+      "geoms": [
+        {
+          "name": "neck_pitch_motor",
+          "type": "cylinder",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            0.0265,
+            0.0226
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.15,
+            0.19,
+            0.21,
+            1
+          ],
+          "layer": "motor",
+          "collision": true
+        },
+        {
+          "name": "neck_pitch_motor_cap",
+          "type": "cylinder",
+          "pos": [
+            0.0,
+            0.0236,
+            0.0
+          ],
+          "size": [
+            0.01908,
+            0.002
+          ],
+          "rpy": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "color": [
+            0.38,
+            0.46,
+            0.47,
+            1
+          ],
+          "layer": "motor",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_head",
+          "type": "ellipsoid",
+          "pos": [
+            0.0,
+            0.0,
+            0.06
+          ],
+          "size": [
+            0.155,
+            0.23,
+            0.18
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            0.94,
+            0.88,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_hair_back",
+          "type": "ellipsoid",
+          "pos": [
+            -0.04,
+            0.0,
+            0.088
+          ],
+          "size": [
+            0.142,
+            0.238,
+            0.175
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_face",
+          "type": "ellipsoid",
+          "pos": [
+            0.111,
+            0.0,
+            0.047
+          ],
+          "size": [
+            0.06,
+            0.168,
+            0.123
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            0.94,
+            0.88,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bun_-1",
+          "type": "ellipsoid",
+          "pos": [
+            -0.025,
+            -0.232,
+            0.095
+          ],
+          "size": [
+            0.081,
+            0.078,
+            0.086
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.82,
+            0.43,
+            0.59,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bun_top_-1",
+          "type": "ellipsoid",
+          "pos": [
+            -0.015,
+            -0.245,
+            0.14
+          ],
+          "size": [
+            0.06,
+            0.055,
+            0.057
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_white_-1",
+          "type": "ellipsoid",
+          "pos": [
+            0.162,
+            -0.066,
+            0.075
+          ],
+          "size": [
+            0.014,
+            0.036,
+            0.043
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_-1",
+          "type": "ellipsoid",
+          "pos": [
+            0.174,
+            -0.067,
+            0.065
+          ],
+          "size": [
+            0.008,
+            0.02,
+            0.027
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.2,
+            0.12,
+            0.2,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_glint_-1",
+          "type": "sphere",
+          "pos": [
+            0.182,
+            -0.061,
+            0.078
+          ],
+          "size": [
+            0.007
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_blush_-1",
+          "type": "ellipsoid",
+          "pos": [
+            0.158,
+            -0.117,
+            0.018999999999999996
+          ],
+          "size": [
+            0.009,
+            0.024,
+            0.012
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.82,
+            0.43,
+            0.59,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bun_1",
+          "type": "ellipsoid",
+          "pos": [
+            -0.025,
+            0.232,
+            0.095
+          ],
+          "size": [
+            0.081,
+            0.078,
+            0.086
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.82,
+            0.43,
+            0.59,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bun_top_1",
+          "type": "ellipsoid",
+          "pos": [
+            -0.015,
+            0.245,
+            0.14
+          ],
+          "size": [
+            0.06,
+            0.055,
+            0.057
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_white_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.162,
+            0.066,
+            0.075
+          ],
+          "size": [
+            0.014,
+            0.036,
+            0.043
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.174,
+            0.067,
+            0.065
+          ],
+          "size": [
+            0.008,
+            0.02,
+            0.027
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.2,
+            0.12,
+            0.2,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_eye_glint_1",
+          "type": "sphere",
+          "pos": [
+            0.182,
+            0.061,
+            0.078
+          ],
+          "size": [
+            0.007
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_blush_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.158,
+            0.117,
+            0.018999999999999996
+          ],
+          "size": [
+            0.009,
+            0.024,
+            0.012
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.82,
+            0.43,
+            0.59,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_0",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            -0.14,
+            0.13419999999999999
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.074
+          ],
+          "rpy": [
+            0,
+            -0.13,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_1",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            -0.09333333333333335,
+            0.14446666666666666
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.063
+          ],
+          "rpy": [
+            0,
+            0.0,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_2",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            -0.046666666666666676,
+            0.15473333333333333
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.074
+          ],
+          "rpy": [
+            0,
+            0.13,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_3",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            0.0,
+            0.16499999999999998
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.063
+          ],
+          "rpy": [
+            0,
+            -0.13,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_4",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            0.04666666666666666,
+            0.15473333333333333
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.074
+          ],
+          "rpy": [
+            0,
+            0.0,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_5",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            0.09333333333333332,
+            0.14446666666666666
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.063
+          ],
+          "rpy": [
+            0,
+            0.13,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_bang_6",
+          "type": "ellipsoid",
+          "pos": [
+            0.11,
+            0.14,
+            0.13419999999999999
+          ],
+          "size": [
+            0.055,
+            0.032,
+            0.074
+          ],
+          "rpy": [
+            0,
+            -0.13,
+            0
+          ],
+          "color": [
+            0.91,
+            0.61,
+            0.73,
+            1
+          ],
+          "layer": "shell",
+          "collision": false
+        },
+        {
+          "name": "neck_pitch_mouth",
+          "type": "ellipsoid",
+          "pos": [
+            0.173,
+            0.0,
+            0.008
+          ],
+          "size": [
+            0.005,
+            0.012,
+            0.006
+          ],
+          "rpy": [
+            0,
+            0,
+            0
+          ],
+          "color": [
+            0.2,
+            0.12,
+            0.2,
+            1
+          ],
+          "layer": "detail",
+          "collision": false
+        }
+      ],
+      "sites": [],
+      "limits": [
+        -1.6580627893946132,
+        0.4363323129985824
+      ],
+      "inertia_diag": [
+        0.025931199999999998,
+        0.0166896,
+        0.022921599999999997
+      ]
+    }
+  ],
+  "joint_order": [
+    "rear_R_yaw",
+    "rear_R_roll",
+    "rear_R_pitch",
+    "rear_R_knee",
+    "rear_R_ankle_pitch",
+    "rear_R_ankle_roll",
+    "front_R_roll",
+    "front_R_pitch",
+    "front_R_elbow",
+    "rear_L_yaw",
+    "rear_L_roll",
+    "rear_L_pitch",
+    "rear_L_knee",
+    "rear_L_ankle_pitch",
+    "rear_L_ankle_roll",
+    "front_L_roll",
+    "front_L_pitch",
+    "front_L_elbow",
+    "neck_pitch"
+  ],
+  "mass_kg": 16.272000000000002,
+  "scope": "Common visual, collision-approximation and kinematic tree; no fabrication or dynamic capability claim."
+}

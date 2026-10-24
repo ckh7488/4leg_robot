@@ -1,0 +1,227 @@
+{
+  "name": "Doro articulated model V3",
+  "date": "2026-10-24",
+  "status": "articulated concept model; not fabrication release or validated locomotion",
+  "axes": {
+    "rear_each": 6,
+    "front_each": 3,
+    "neck": 1
+  },
+  "coordinates": "metres, radians internally; +x forward, +y left, +z up; intrinsic joints applied in tree order",
+  "geometry_m": {
+    "rear_links": [
+      0.14,
+      0.15
+    ],
+    "front_links": [
+      0.16,
+      0.18
+    ],
+    "hip_yaw_origin": [
+      0,
+      0.085,
+      0.075
+    ],
+    "hip_roll_offset": [
+      0,
+      0.055,
+      -0.075
+    ],
+    "hip_pitch_offset": [
+      0,
+      0.075,
+      -0.02
+    ],
+    "shoulder_roll_origin": [
+      0.14,
+      0.215,
+      0.095
+    ],
+    "shoulder_pitch_offset": [
+      0,
+      0.065,
+      0
+    ],
+    "neck_origin": [
+      0.02,
+      0,
+      0.16
+    ],
+    "head_center": [
+      0,
+      0,
+      0.06
+    ],
+    "head_radii": [
+      0.155,
+      0.23,
+      0.18
+    ],
+    "body_center": [
+      0,
+      0,
+      0.02
+    ],
+    "body_radii": [
+      0.155,
+      0.195,
+      0.205
+    ],
+    "rear_foot_size": [
+      0.17,
+      0.115,
+      0.018
+    ],
+    "ankle_to_sole": 0.055,
+    "paw_radius": 0.04,
+    "standing_base_height": 0.355,
+    "rear_sole_targets": [
+      [
+        0.025,
+        -0.215,
+        0
+      ],
+      [
+        0.025,
+        0.215,
+        0
+      ]
+    ],
+    "quad_paw_targets": [
+      [
+        0.31,
+        -0.33,
+        0.04
+      ],
+      [
+        0.31,
+        0.33,
+        0.04
+      ]
+    ]
+  },
+  "limits_deg": {
+    "hip_yaw": [
+      -45,
+      45
+    ],
+    "hip_roll": [
+      -45,
+      45
+    ],
+    "hip_pitch": [
+      -155,
+      75
+    ],
+    "knee": [
+      2,
+      145
+    ],
+    "ankle_pitch": [
+      -100,
+      90
+    ],
+    "ankle_roll": [
+      -45,
+      45
+    ],
+    "shoulder_roll": [
+      -110,
+      110
+    ],
+    "shoulder_pitch": [
+      -170,
+      130
+    ],
+    "elbow": [
+      2,
+      155
+    ],
+    "neck_pitch": [
+      -95,
+      25
+    ]
+  },
+  "mass_allocations_kg": {
+    "base": 3.6,
+    "hip_yaw": 0.38,
+    "hip_roll": 0.54,
+    "thigh": 1.33,
+    "shank": 1.33,
+    "ankle_pitch": 0.05,
+    "foot": 0.22,
+    "shoulder_roll": 0.43,
+    "upper_arm": 1.28,
+    "forearm": 0.32,
+    "head": 0.912
+  },
+  "motor_envelopes": {
+    "large": {
+      "radius_m": 0.0445,
+      "length_m": 0.049,
+      "reference": "AK70-9 V3 KV60"
+    },
+    "medium": {
+      "radius_m": 0.0395,
+      "length_m": 0.043,
+      "reference": "AK60-6 V3 KV80"
+    },
+    "head": {
+      "radius_m": 0.0265,
+      "length_m": 0.0452,
+      "reference": "AK45-10 V3"
+    }
+  },
+  "simulation_assumptions": {
+    "gravity_m_s2": 9.81,
+    "timestep_s": 0.002,
+    "friction": [
+      0.8,
+      0.02,
+      0.002
+    ],
+    "joint_damping": 0.08,
+    "joint_armature": 0.002,
+    "abstract_output_torque_limit_nm": 30,
+    "note": "Torque bound, armature, damping, friction, link inertias and masses are placeholders. Serial output-axis actuation does not identify the physical coupled ankle transmission or real motor torque-speed/thermal response.",
+    "abstract_joint_velocity_limit_rad_s": 20
+  },
+  "motion_sampling": {
+    "fps": 24,
+    "period_s": 4,
+    "ik_position_tolerance_m": 0.0002,
+    "ik_orientation_tolerance_rad": 0.003
+  },
+  "changes_from_v2": [
+    "Explicit displaced yaw/roll/pitch hip frames and separate shoulder roll/pitch frames replace intersecting hip/shoulder axes.",
+    "Front links are 160+180mm. Outboard shoulder frame and a proposed +/-110 degree roll range support gesture exploration; clearance and real stop geometry remain to be engineered.",
+    "A complete 19-joint tree with visual envelopes, approximate collision primitives, allocated inertias, sites and abstract torque inputs is exported to MuJoCo and URDF.",
+    "Reference actuator cylinders show volume allocations, not completed mounts, belt drives or coupled ankle rods. The V2 ankle linkage is not silently transplanted into the new limb geometry.",
+    "Shoulders are forward of the torso by 140mm; positive elbow flexion uses the negative Y axis. Prescribed transition paws follow a world-space path to avoid leg and floor crossings."
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=LgB1_YUzYFQ",
+      "role": "User-selected character motion reference; sampled poses only, no measured forces/contact schedule"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ETcfoe0UsNI",
+      "role": "User-selected character motion reference; sampled poses only, no measured forces/contact schedule"
+    },
+    {
+      "url": "https://www.cubemars.com/product/ak70-9-v3-0-kv60-robotic-actuator.html",
+      "role": "Reference actuator exterior dimensions; checked in V2 on 2026-10-24; no purchase selection"
+    },
+    {
+      "url": "https://www.cubemars.com/product/ak60-6-v3-0-kv80-robotic-actuator.html",
+      "role": "Reference actuator exterior dimensions; checked in V2 on 2026-10-24"
+    }
+  ],
+  "not_validated": [
+    "manufacturable bearings, shafts, fasteners and transmissions",
+    "all physical clearances including hollow covers and wiring",
+    "stability, walking, dance and self-righting dynamics",
+    "motor response, heat and sim-to-real",
+    "self-righting animation is not supplied"
+  ]
+}
