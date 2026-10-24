@@ -18,6 +18,18 @@ def rotation(axis, a):
     return np.eye(3) + math.sin(a)*K + (1-math.cos(a))*(K@K)
 
 
+def motor_distance(m, d, a, b):
+    """Signed distance with an inscribed-ball guard for coincident cylinders.
+
+    MuJoCo 3.3.7 can return zero for exactly coincident convex cylinders.
+    Each cylinder contains a sphere of radius min(radius, half-length).
+    Its overlap gives a guaranteed penetration lower bound, not a full fit test.
+    """
+    dist = mujoco.mj_geomDistance(m,d,a,b,.005,None)
+    inside_spheres = np.linalg.norm(d.geom_xpos[a]-d.geom_xpos[b])-min(m.geom_size[a,:2])-min(m.geom_size[b,:2])
+    return min(dist,float(inside_spheres))
+
+
 def validate():
     model = json.loads((HERE/'model.json').read_text(encoding='utf8'))
     clips = json.loads((HERE/'motions.json').read_text(encoding='utf8'))
@@ -78,7 +90,7 @@ def validate():
             # Explicit queries include adjacent/same-body motor envelopes that
             # automatic contact filtering would otherwise omit.
             for a,b in motor_pairs:
-                dist=mujoco.mj_geomDistance(m,d,a,b,.005,None)
+                dist=motor_distance(m,d,a,b)
                 if dist<-.001:
                     pair=' / '.join(mujoco.mj_id2name(m,mujoco.mjtObj.mjOBJ_GEOM,g) for g in [a,b])
                     motor_overlaps[pair]=min(motor_overlaps.get(pair,0),float(dist))

@@ -11,3 +11,8 @@
 *.html text eol=lf
 *.txt text eol=lf
 .gitignore text eol=lf
+concepts/doro-model-v3/*.js text eol=lf
+concepts/doro-model-v3/*.cjs text eol=lf
+concepts/doro-model-v3/*.urdf text eol=lf
+concepts/doro-model-v3/vendor/*.js text eol=lf
+concepts/doro-model-v3/meshes/*.obj text eol=lf

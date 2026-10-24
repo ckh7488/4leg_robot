@@ -38,15 +38,18 @@ V2의 한 점에 모인 골반/어깨 축을 실제 거리만큼 떨어뜨렸다
 - `model-data.js`, `viewer.js`, `index.html`: 오프라인 화면.
 - `check_viewer.cjs`, `browser_samples.json`: 실제 브라우저와 MuJoCo 위치 대조 및 조작 검사.
 
-저장소 루트에서 NumPy, MuJoCo 3.3.7, trimesh 5.1.1가 있는 Python 환경으로 실행한다. trimesh는 단위 구 메시 생성에 사용하며 현재 검사 환경은 5.1.1다.
+저장소 루트에서 NumPy, MuJoCo 3.3.7, trimesh 5.1.1이 있는 Python 환경으로 실행한다. trimesh는 단위 구 메시 생성에 사용한다.
 
 ```text
 python concepts/doro-model-v3/build_motions.py
 python concepts/doro-model-v3/validate.py
+python concepts/doro-model-v3/test_validation.py
 node concepts/doro-model-v3/check_viewer.cjs outputs/doro-v3
 ```
 
 화면 검사는 Node.js의 `playwright`와 Microsoft Edge가 필요하다. 검사 출력·스크린샷은 지정한 출력 폴더에 기록한다. Python 검사에만 브라우저가 필요한 것은 아니다. MuJoCo `stand`/`quad` keyframe에서 각각 시작할 수 있다. URDF의 루트 링크는 `base`이며 전역 몸통 위치는 소비하는 프로그램에서 설정한다.
+
+모터 원통이 정확히 포개질 때 MuJoCo의 거리 함수가 0을 반환하는 경우를 발견했다. 각 원통 내부에 들어가는 구의 겹침으로 보완하여 이 경우도 거부한다. 정확한 겹침·부분 겹침·분리된 원통의 회귀검사 3개를 제공한다.
 
 ## 물리 모델의 가정
 
